@@ -29,7 +29,7 @@
 
     border-bottom: 2px solid transparent;
 
-    transition: all 0.2s ease;
+    transition: border-bottom 0.2s ease;
 
     &:hover {
       border-bottom: 2px solid #f9351f80;
@@ -62,7 +62,7 @@
 
     cursor: pointer;
 
-    transition: all 0.2s ease;
+    transition: color 0.2s ease, font-weight 0.2s ease, border-bottom 0.2s ease;
 
     &:hover {
       border-bottom: 2px solid #f93822;
