@@ -179,17 +179,16 @@
     flex-direction: column;
     gap: 16px;
 
-    align-self: baseline;
-
     margin-top: 85px;
 
     position: fixed;
     left: 0;
+    top: 0;
 
     width: 100%;
-    height: calc(100vh - 85px);
 
-    min-height: 500px;
+    min-height: 460px;
+    height: calc(100vh - 85px); // fallback
     height: -webkit-fill-available;
 
     padding: 48px 24px 0;
@@ -220,5 +219,11 @@
 
   .socialLinks {
     display: flex;
+  }
+}
+
+@media (max-height: 548px) {
+  .navLinks {
+    position: absolute;
   }
 }
