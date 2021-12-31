@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import LogoSvg from 'public/svg/octane-logo'
 import MenuMobileSvg from 'public/svg/menu-mobile'
@@ -20,12 +20,8 @@ const social = [
   { name: 'Behance', href: 'https://www.behance.net/octanestudio' },
 ]
 
-function NavLinks({ isOpen, setIsOpen }) {
+function NavLinks({ isOpen, closeMenu }) {
   const router = useRouter()
-
-  function closeMenu() {
-    setIsOpen(false)
-  }
 
   return (
     <ul className={`${styles.navLinks} ${isOpen ? 'open' : ''}`}>
@@ -68,16 +64,31 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
 
+  function closeMenu() {
+    setMenuOpen(false)
+  }
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [menuOpen])
+
   return (
-    <header className={styles.navbarHeader}>
-      <nav>
+    <header className={`${styles.navbarHeader} ${menuOpen ? 'menuOpen' : ''}`}>
+      <nav className={styles.nav}>
         <Link href="/" passHref>
-          <a className={`${styles.logoLink} ${router.pathname == '/' ? 'active' : ''}`}>
+          <a
+            className={`${styles.logoLink} ${router.pathname == '/' ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
             <LogoSvg />
           </a>
         </Link>
 
-        <NavLinks isOpen={menuOpen} setIsOpen={setMenuOpen} />
+        <NavLinks isOpen={menuOpen} closeMenu={closeMenu} />
         <button
           className={styles.menuMobileButton}
           onClick={() => setMenuOpen(oldState => !oldState)}

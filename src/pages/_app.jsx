@@ -1,4 +1,4 @@
-import Navbar from '../components/common/Navbar'
+import Navbar from '../components/common/navbar'
 
 import '../styles/GlobalFonts.css'
 import '../styles/GlobalStyle.css'

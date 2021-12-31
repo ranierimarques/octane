@@ -1,4 +1,4 @@
-.navbarHeader {
+.navbarHeader:global {
   width: 100%;
   height: 85px;
 
@@ -8,17 +8,23 @@
   position: sticky;
   top: 0;
 
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  z-index: 10;
 
-    max-width: 1168px;
-    height: 100%;
-
-    padding: 0 24px;
-    margin: 0 auto;
+  &.menuOpen {
+    background: #121212;
   }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1168px;
+  height: 100%;
+
+  padding: 0 24px;
+  margin: 0 auto;
 }
 
 .logoLink:global {
@@ -222,7 +228,7 @@
   }
 }
 
-@media (max-height: 548px) {
+@media (max-height: 548px) and (max-width: 1120px) {
   .navLinks {
     position: absolute;
   }
