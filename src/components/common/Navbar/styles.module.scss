@@ -183,11 +183,12 @@
 
     margin-top: 85px;
 
-    position: absolute;
+    position: fixed;
     left: 0;
 
     width: 100%;
     height: calc(100vh - 85px);
+    height: -webkit-fill-available;
 
     padding: 48px 24px 0;
 
