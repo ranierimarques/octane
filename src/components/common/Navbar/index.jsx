@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
-import LogoSvg from 'public/svg/octane-logo.jsx'
+import LogoSvg from 'public/svg/octane-logo'
+import MenuMobileSvg from 'public/svg/menu-mobile'
+import CloseMenuSvg from 'public/svg/close-menu'
 
 import styles from './styles.module.scss'
 
@@ -11,14 +14,24 @@ const routes = [
   { href: '/contato', name: 'Contato' },
 ]
 
-function NavLinks() {
+const social = [
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/octane-studio/' },
+  { name: 'Instagram', href: 'https://www.instagram.com/octane.std/' },
+  { name: 'Behance', href: 'https://www.behance.net/octanestudio' },
+]
+
+function NavLinks({ isOpen, setIsOpen }) {
   const router = useRouter()
 
+  function closeMenu() {
+    setIsOpen(false)
+  }
+
   return (
-    <ul className={styles.navLinks}>
+    <ul className={`${styles.navLinks} ${isOpen ? 'open' : ''}`}>
       {routes.map(route => {
         return (
-          <li key={route.name}>
+          <li key={route.name} onClick={closeMenu}>
             <Link href={route.href} passHref>
               <a
                 className={`${styles.navLink} ${
@@ -32,15 +45,27 @@ function NavLinks() {
         )
       })}
       <Link href="/orcamento" passHref>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={closeMenu}>
           <a draggable="false">Orçamento</a>
         </button>
       </Link>
+      <ul className={styles.socialLinks}>
+        {social.map(social => {
+          return (
+            <li key={social.name}>
+              <a href={social.href} target="_blank" rel="noreferrer noopener">
+                {social.name}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
     </ul>
   )
 }
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
 
   return (
@@ -52,7 +77,18 @@ function Navbar() {
           </a>
         </Link>
 
-        <NavLinks />
+        <NavLinks isOpen={menuOpen} setIsOpen={setMenuOpen} />
+        <button
+          className={styles.menuMobileButton}
+          onClick={() => setMenuOpen(oldState => !oldState)}
+        >
+          <MenuMobileSvg
+            className={`${styles.menuMobileSvg} ${!menuOpen ? 'visible' : ''}`}
+          />
+          <CloseMenuSvg
+            className={`${styles.closeMenuSvg} ${menuOpen ? 'visible' : ''}`}
+          />
+        </button>
       </nav>
     </header>
   )
