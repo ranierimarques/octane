@@ -188,6 +188,8 @@
 
     width: 100%;
     height: calc(100vh - 85px);
+
+    min-height: 500px;
     height: -webkit-fill-available;
 
     padding: 48px 24px 0;
