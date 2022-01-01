@@ -28,7 +28,7 @@ function NavLinks({ isOpen, closeMenu }) {
       {routes.map(route => {
         return (
           <li key={route.name} onClick={closeMenu}>
-            <Link href={route.href} passHref>
+            <Link href={route.href}>
               <a
                 className={`${styles.navLink} ${
                   router.pathname == route.href ? 'active' : ''
@@ -72,14 +72,14 @@ function Navbar() {
     if (menuOpen) {
       document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = ''
     }
   }, [menuOpen])
 
   return (
     <header className={`${styles.navbarHeader} ${menuOpen ? 'menuOpen' : ''}`}>
       <nav className={styles.nav}>
-        <Link href="/" passHref>
+        <Link href="/">
           <a
             className={`${styles.logoLink} ${router.pathname == '/' ? 'active' : ''}`}
             onClick={closeMenu}

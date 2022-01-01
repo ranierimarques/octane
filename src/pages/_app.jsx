@@ -1,13 +1,17 @@
 import Navbar from '../components/common/navbar'
+import Footer from 'src/components/common/footer'
 
-import '../styles/GlobalFonts.css'
-import '../styles/GlobalStyle.css'
+import globalStyles from '../styles/GlobalStyles'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Navbar />
+      <style jsx global>
+        {globalStyles}
+      </style>
+      {/* <Navbar /> */}
       <Component {...pageProps} />
+      {/* <Footer /> */}
     </>
   )
 }

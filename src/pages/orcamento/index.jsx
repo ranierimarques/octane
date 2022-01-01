@@ -1,5 +1,11 @@
-function Orcamento() {
-  return <div />
-}
+import Head from 'next/head'
 
-export default Orcamento
+export default function Index() {
+  return (
+    <>
+      <Head>
+        <title>Octane | A inovação começa aqui!</title>
+      </Head>
+    </>
+  )
+}

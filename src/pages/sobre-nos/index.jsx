@@ -1,5 +1,16 @@
-function SobreNos() {
-  return <div />
-}
+import Head from 'next/head'
 
-export default SobreNos
+import Home from 'src/layout/aboutUs/home'
+import WhatIsOctane from 'src/layout/aboutUs/whatIsOctane'
+
+export default function Index() {
+  return (
+    <>
+      <Head>
+        <title>Octane | A inovação começa aqui!</title>
+      </Head>
+      <Home />
+      <WhatIsOctane />
+    </>
+  )
+}
