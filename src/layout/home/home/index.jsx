@@ -34,7 +34,12 @@ function Home() {
       </S.Main>
 
       <S.Image1>
-        <Image src={illustrationImg} alt="Ilustração Inicio Octane" priority />
+        <Image
+          src={illustrationImg}
+          alt="Ilustração Inicio Octane"
+          priority
+          unoptimized
+        />
       </S.Image1>
     </S.Section>
   )
