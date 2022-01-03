@@ -1,4 +1,4 @@
-import styles from './styles.module.scss'
+import * as S from './styles'
 
 function Home() {
   return <div></div>

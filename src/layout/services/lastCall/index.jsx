@@ -1,4 +1,4 @@
-import styles from './styles.module.scss'
+import * as S from './styles'
 
 function LastCall() {
   return <div></div>

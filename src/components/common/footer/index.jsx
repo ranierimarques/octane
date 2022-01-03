@@ -7,7 +7,7 @@ import BehanceSvg from 'public/svg/behance-icon'
 import HeartSvg from 'public/svg/heart-icon'
 import ArrowUpSvg from 'public/svg/arrow-up'
 
-import styles from './styles.module.scss'
+import * as S from './styles'
 
 function Footer() {
   return (
