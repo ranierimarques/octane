@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
       <style jsx global>
         {globalStyles}
       </style>
-      {/* <Navbar /> */}
+      <Navbar />
       <Component {...pageProps} />
       {/* <Footer /> */}
     </>

@@ -1,12 +1,10 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import LogoSvg from 'public/svg/octane-logo'
-import MenuMobileSvg from 'public/svg/menu-mobile'
-import CloseMenuSvg from 'public/svg/close-menu'
 
-import styles from './styles.module.scss'
+import * as S from './styles'
 
 const routes = [
   { href: '/servicos', name: 'Serviços' },
@@ -21,31 +19,25 @@ const social = [
 ]
 
 function NavLinks({ isOpen, closeMenu }) {
-  const router = useRouter()
+  const { pathname } = useRouter()
 
   return (
-    <ul className={`${styles.navLinks} ${isOpen ? 'open' : ''}`}>
+    <S.NavLinks className={isOpen && 'open'}>
       {routes.map(route => {
         return (
           <li key={route.name} onClick={closeMenu}>
-            <Link href={route.href}>
-              <a
-                className={`${styles.navLink} ${
-                  router.pathname == route.href ? 'active' : ''
-                }`}
-              >
-                {route.name}
-              </a>
+            <Link href={route.href} passHref>
+              <S.Link className={pathname == route.href && 'active'}>{route.name}</S.Link>
             </Link>
           </li>
         )
       })}
       <Link href="/orcamento" passHref>
-        <button className={styles.button} onClick={closeMenu}>
+        <S.Button onClick={closeMenu}>
           <a draggable="false">Orçamento</a>
-        </button>
+        </S.Button>
       </Link>
-      <ul className={styles.socialLinks}>
+      <S.SocialLinks>
         {social.map(social => {
           return (
             <li key={social.name}>
@@ -55,14 +47,14 @@ function NavLinks({ isOpen, closeMenu }) {
             </li>
           )
         })}
-      </ul>
-    </ul>
+      </S.SocialLinks>
+    </S.NavLinks>
   )
 }
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const router = useRouter()
+  const { pathname } = useRouter()
 
   function closeMenu() {
     setMenuOpen(false)
@@ -71,37 +63,26 @@ function Navbar() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
     }
+    document.body.style.overflow = ''
   }, [menuOpen])
 
   return (
-    <header className={`${styles.navbarHeader} ${menuOpen ? 'menuOpen' : ''}`}>
-      <nav className={styles.nav}>
-        <Link href="/">
-          <a
-            className={`${styles.logoLink} ${router.pathname == '/' ? 'active' : ''}`}
-            onClick={closeMenu}
-          >
+    <S.Header className={menuOpen && 'menuOpen'}>
+      <S.Nav>
+        <Link href="/" passHref>
+          <S.LogoLink className={pathname == '/' && 'active'} onClick={closeMenu}>
             <LogoSvg />
-          </a>
+          </S.LogoLink>
         </Link>
 
         <NavLinks isOpen={menuOpen} closeMenu={closeMenu} />
-        <button
-          className={styles.menuMobileButton}
-          onClick={() => setMenuOpen(oldState => !oldState)}
-        >
-          <MenuMobileSvg
-            className={`${styles.menuMobileSvg} ${!menuOpen ? 'visible' : ''}`}
-          />
-          <CloseMenuSvg
-            className={`${styles.closeMenuSvg} ${menuOpen ? 'visible' : ''}`}
-          />
-        </button>
-      </nav>
-    </header>
+        <S.MenuMobileButton onClick={() => setMenuOpen(!menuOpen)}>
+          <S.MenuOpenSvg className={!menuOpen && 'visible'} />
+          <S.MenuCloseSvg className={menuOpen && 'visible'} />
+        </S.MenuMobileButton>
+      </S.Nav>
+    </S.Header>
   )
 }
 
