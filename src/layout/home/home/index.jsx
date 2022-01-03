@@ -1,43 +1,42 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import homeIllustrationImg from 'public/images/home-illustration.png'
+import illustrationImg from 'public/images/home-illustration.png'
 import ArrowDownSvg from 'public/svg/arrow-down'
 import OctaneGhostSvg from 'public/svg/octane-ghost'
 
-import styles from './styles.module.scss'
+import * as S from './styles'
 
 function Home() {
+  const scrollTo = () => window.scrollTo({ behavior: 'smooth', top: 0 })
+
   return (
-    <section className={styles.section}>
-      <div className={styles.main}>
-        <div className={styles.hat}>
+    <S.Section>
+      <S.Main>
+        <S.Hat>
           <OctaneGhostSvg />
           <span>Boas vindas à Octane</span>
-        </div>
+        </S.Hat>
         <h1>Construindo o futuro por meio do Design e da Programação</h1>
         <h2>
           Somos um estúdio brasileiro que constrói sites modernos, escaláveis e rápidos.
         </h2>
-        <div className={styles.buttons}>
+        <S.Buttons>
           <Link href="/orcamento" passHref>
-            <button className={styles.primaryButton}>
+            <S.PrimaryButton>
               <a draggable="false">Vamos fazer um projeto juntos</a>
-            </button>
+            </S.PrimaryButton>
           </Link>
-          <button
-            className={styles.secondaryButton}
-            onClick={() => window.scrollTo({ behavior: 'smooth', top: 0 })}
-          >
+          <S.SecondaryButton onClick={scrollTo}>
             Descobrir <ArrowDownSvg />
-          </button>
-        </div>
-      </div>
+          </S.SecondaryButton>
+        </S.Buttons>
+      </S.Main>
 
-      <div className={styles.image1}>
-        <Image src={homeIllustrationImg} alt="Ilustração Inicio Octane" priority />
-      </div>
-    </section>
+      <S.Image1>
+        <Image src={illustrationImg} alt="Ilustração Inicio Octane" priority />
+      </S.Image1>
+    </S.Section>
   )
 }
 

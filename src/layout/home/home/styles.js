@@ -1,4 +1,6 @@
-.section {
+import { styled } from 'linaria/react'
+
+export const Section = styled.section`
   display: flex;
   justify-content: space-between;
 
@@ -6,9 +8,9 @@
 
   padding: 0 24px;
   margin: 0 auto;
-}
+`
 
-.main {
+export const Main = styled.div`
   margin-top: 80px;
 
   h1 {
@@ -32,9 +34,9 @@
 
     margin-bottom: 32px;
   }
-}
+`
 
-.hat {
+export const Hat = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 16px;
@@ -55,15 +57,15 @@
     letter-spacing: 0.2px;
     color: #f93822;
   }
-}
+`
 
-.buttons {
+export const Buttons = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
-}
+`
 
-.primaryButton {
+export const PrimaryButton = styled.button`
   font-weight: 475;
   font-size: 16px;
   line-height: 19px;
@@ -78,16 +80,16 @@
   cursor: pointer;
   transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
+  :hover {
     opacity: 0.8;
   }
 
-  &:active {
+  :active {
     opacity: 0.5;
   }
-}
+`
 
-.secondaryButton {
+export const SecondaryButton = styled.button`
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
@@ -105,16 +107,16 @@
   cursor: pointer;
   transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
+  :hover {
     background: #1d1b1b;
   }
-}
+`
 
-.image1 {
+export const Image1 = styled.div`
   position: relative;
   top: 10px;
   right: -22.5px;
 
   pointer-events: none;
   user-select: none;
-}
+`

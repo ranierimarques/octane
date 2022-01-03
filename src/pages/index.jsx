@@ -13,11 +13,11 @@ export default function Index() {
         <title>Octane | A inovação começa aqui!</title>
       </Head>
 
-      {/* <Home />
+      <Home />
       <WhyChooseOctane />
       <HowWeWork />
       <Faq />
-      <LastCall /> */}
+      <LastCall />
     </>
   )
 }
