@@ -6,7 +6,7 @@ import OurServices from 'src/layout/services/ourServices'
 import Methodologies from 'src/layout/services/methodologies'
 import LastCall from 'src/layout/services/lastCall'
 
-export default function Index() {
+function Index() {
   return (
     <>
       <Head>
@@ -20,3 +20,5 @@ export default function Index() {
     </>
   )
 }
+
+export default Index

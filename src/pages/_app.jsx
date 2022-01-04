@@ -1,7 +1,7 @@
-import Navbar from '../components/common/navbar'
+import { Navbar } from '../components/common/navbar'
 import Footer from 'src/components/common/footer'
 
-import globalStyles from '../styles/GlobalStyles'
+import globalStyles from '../styles/global-styles'
 
 function MyApp({ Component, pageProps }) {
   return (

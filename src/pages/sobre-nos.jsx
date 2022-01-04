@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-import Home from 'src/layout/aboutUs/home'
-import WhatIsOctane from 'src/layout/aboutUs/whatIsOctane'
+import Home from 'src/layout/about-us/home'
+import WhatIsOctane from 'src/layout/about-us/whatIsOctane'
 
-export default function Index() {
+function Index() {
   return (
     <>
       <Head>
@@ -14,3 +14,5 @@ export default function Index() {
     </>
   )
 }
+
+export default Index

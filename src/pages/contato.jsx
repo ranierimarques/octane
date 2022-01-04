@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function Index() {
+function Index() {
   return (
     <>
       <Head>
@@ -9,3 +9,5 @@ export default function Index() {
     </>
   )
 }
+
+export default Index

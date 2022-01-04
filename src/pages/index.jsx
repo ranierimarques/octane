@@ -6,7 +6,7 @@ import HowWeWork from 'src/layout/home/howWeWork'
 import LastCall from 'src/layout/home/lastCall'
 import WhyChooseOctane from 'src/layout/home/whyChooseOctane'
 
-export default function Index() {
+function Index() {
   return (
     <>
       <Head>
@@ -21,3 +21,5 @@ export default function Index() {
     </>
   )
 }
+
+export default Index
