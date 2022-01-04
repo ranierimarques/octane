@@ -17,6 +17,7 @@ function NavLinks({ menuOpen, closeMenu }) {
           <LogoSvg />
         </S.LogoLink>
       </Link>
+
       <S.NavLinks className={menuOpen && 'open'}>
         <RoutesLinks closeMenu={closeMenu} />
 

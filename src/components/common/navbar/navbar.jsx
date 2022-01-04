@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { NavLinks } from './index'
+import { MenuButton, NavLinks } from './index'
 
 import * as S from './navbar.styles'
 
@@ -14,17 +14,16 @@ function toggleScrollbarVisibility(menuOpen) {
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
+  const closeMenu = () => setMenuOpen(false)
+
   useEffect(() => toggleScrollbarVisibility(menuOpen), [menuOpen])
 
   return (
     <S.Header className={menuOpen && 'menuOpen'}>
       <S.Nav>
-        <NavLinks menuOpen={menuOpen} closeMenu={() => setMenuOpen(false)} />
+        <NavLinks menuOpen={menuOpen} closeMenu={closeMenu} />
 
-        <S.MenuMobileButton onClick={() => setMenuOpen(!menuOpen)}>
-          <S.MenuOpenSvg className={!menuOpen && 'visible'} />
-          <S.MenuCloseSvg className={menuOpen && 'visible'} />
-        </S.MenuMobileButton>
+        <MenuButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       </S.Nav>
     </S.Header>
   )
