@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-function Index() {
+function Contato() {
   return (
     <>
       <Head>
@@ -10,4 +10,4 @@ function Index() {
   )
 }
 
-export default Index
+export default Contato

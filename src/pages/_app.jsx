@@ -1,5 +1,4 @@
-import { Navbar } from '../components/common/navbar'
-import Footer from 'src/components/common/footer'
+import { Navbar, Footer } from 'src/common'
 
 import globalStyles from '../styles/global-styles'
 
