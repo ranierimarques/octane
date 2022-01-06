@@ -3,20 +3,34 @@ import { InstagramIcon, LinkedinIcon, BehanceIcon } from 'public/svg'
 import * as S from './social-links.styles'
 
 const social = [
-  { href: 'https://www.instagram.com/octane.std/', icon: <InstagramIcon /> },
-  { href: 'https://www.linkedin.com/company/octane-studio/', icon: <LinkedinIcon /> },
-  { href: 'https://www.behance.net/octanestudio', icon: <BehanceIcon /> },
+  {
+    label: 'Instagram',
+    href: 'https://instagram.comwww.instagram.com/octane.std/',
+    icon: <InstagramIcon />,
+  },
+  {
+    label: 'Linkedin',
+    href: 'https://www.linkedin.com/company/octane-studio/',
+    icon: <LinkedinIcon />,
+  },
+  {
+    label: 'Behance',
+    href: 'https://www.behance.net/octanestudio',
+    icon: <BehanceIcon />,
+  },
 ]
 
 function SocialLinks() {
   return (
-    <div>
+    <S.Container>
       {social.map((social, index) => (
-        <a key={index} href={social.href} target="_blank" rel="noreferrer noopener">
-          {social.icon}
-        </a>
+        <li key={index} aria-label={social.label}>
+          <S.Link href={social.href} target="_blank" rel="noreferrer noopener">
+            {social.icon}
+          </S.Link>
+        </li>
       ))}
-    </div>
+    </S.Container>
   )
 }
 

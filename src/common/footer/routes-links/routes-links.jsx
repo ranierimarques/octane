@@ -32,21 +32,21 @@ const navigation = [
 
 function RoutesLinks() {
   return (
-    <nav>
+    <S.Nav>
       {navigation.map(navigation => (
         <ul key={navigation.title}>
-          <span>{navigation.title}</span>
+          <S.Title>{navigation.title}</S.Title>
 
           {navigation.routes.map(route => (
-            <li key={route.name}>
-              <Link href={route.href}>
-                <a>{route.name}</a>
+            <S.Item key={route.name}>
+              <Link href={route.href} passHref>
+                <S.Link>{route.name}</S.Link>
               </Link>
-            </li>
+            </S.Item>
           ))}
         </ul>
       ))}
-    </nav>
+    </S.Nav>
   )
 }
 

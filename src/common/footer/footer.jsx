@@ -7,38 +7,44 @@ import { OctaneLogo, HeartIcon, ArrowUp } from 'public/svg'
 import * as S from './footer.styles'
 
 function Footer() {
+  const scrollTo = () => window.scrollTo({ behavior: 'smooth', top: 0 })
+
   return (
-    <footer>
-      <div>
-        <div>
-          <Link href="/">
-            <a>
-              <OctaneLogo />
-            </a>
-          </Link>
-          <span>Um estúdio de inovação para quem quer inovar!</span>
-          <span>
-            Octane 2021 <br />
-            Todos os direitos reservados
-          </span>
-        </div>
+    <S.Footer>
+      <S.Content>
+        <S.Main>
+          <S.Octane>
+            <Link href="/">
+              <a>
+                <OctaneLogo />
+              </a>
+            </Link>
+            <S.Slogan>
+              Um estúdio de inovação <br /> para quem quer inovar!
+            </S.Slogan>
+            <S.Copy>
+              Octane 2021 <br />
+              Todos os direitos reservados
+            </S.Copy>
+          </S.Octane>
 
-        <RoutesLinks />
-      </div>
+          <RoutesLinks />
+        </S.Main>
 
-      <div>
-        <SocialLinks />
+        <S.Bottom>
+          <SocialLinks />
 
-        <div>
-          <span>
-            Feito com <HeartIcon />
-          </span>
-          <button aria-label="Subir até o topo da página">
-            <ArrowUp />
-          </button>
-        </div>
-      </div>
-    </footer>
+          <S.Right>
+            <S.MadeBy>
+              Feito com <HeartIcon />
+            </S.MadeBy>
+            <S.UpButton aria-label="Subir até o topo da página" onClick={scrollTo}>
+              <ArrowUp />
+            </S.UpButton>
+          </S.Right>
+        </S.Bottom>
+      </S.Content>
+    </S.Footer>
   )
 }
 
