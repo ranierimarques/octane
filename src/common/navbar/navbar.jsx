@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { MenuButton, NavLinks } from './index'
+import { MenuButton, NavLinks } from '.'
 
 import * as S from './navbar.styles'
 

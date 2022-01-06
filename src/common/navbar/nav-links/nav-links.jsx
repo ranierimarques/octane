@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { RoutesLinks, SocialLinks } from '../index'
 
-import LogoSvg from 'public/svg/octane-logo'
+import { OctaneLogo } from 'public/svg'
 
 import * as S from './nav-links.styles'
 
@@ -14,7 +14,7 @@ function NavLinks({ menuOpen, closeMenu }) {
     <>
       <Link href="/" passHref>
         <S.LogoLink className={pathname == '/' && 'active'} onClick={closeMenu}>
-          <LogoSvg />
+          <OctaneLogo />
         </S.LogoLink>
       </Link>
 

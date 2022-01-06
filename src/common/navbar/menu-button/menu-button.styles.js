@@ -1,7 +1,6 @@
 import { styled } from 'linaria/react'
 
-import MenuOpen from 'public/svg/menu-mobile'
-import MenuClose from 'public/svg/close-menu'
+import { MenuMobile, CloseMenu } from 'public/svg'
 
 export const MenuMobileButton = styled.button`
   display: none;
@@ -12,7 +11,7 @@ export const MenuMobileButton = styled.button`
   }
 `
 
-export const MenuOpenSvg = styled(MenuOpen)`
+export const MenuOpenSvg = styled(MenuMobile)`
   display: none;
 
   box-sizing: content-box;
@@ -23,7 +22,7 @@ export const MenuOpenSvg = styled(MenuOpen)`
   }
 `
 
-export const MenuCloseSvg = styled(MenuClose)`
+export const MenuCloseSvg = styled(CloseMenu)`
   display: none;
 
   box-sizing: content-box;
