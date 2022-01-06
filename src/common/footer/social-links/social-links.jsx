@@ -1,11 +1,11 @@
-import { InstagramIcon, LinkedinIcon, BehanceIcon } from 'public/svg'
+import { InstagramIcon, LinkedinIcon, BehanceIcon } from 'public/svgs'
 
 import * as S from './social-links.styles'
 
 const social = [
   {
     label: 'Instagram',
-    href: 'https://instagram.comwww.instagram.com/octane.std/',
+    href: 'https://www.instagram.com/octane.std/',
     icon: <InstagramIcon />,
   },
   {

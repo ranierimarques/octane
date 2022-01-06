@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import illustrationImg from 'public/images/home-illustration.webp'
-import ArrowDownSvg from 'public/svg/arrow-down'
-import OctaneGhostSvg from 'public/svg/octane-ghost'
+import ArrowDownSvg from 'public/svgs/arrow-down'
+import OctaneGhostSvg from 'public/svgs/octane-ghost'
 
 import * as S from './home.styles'
 

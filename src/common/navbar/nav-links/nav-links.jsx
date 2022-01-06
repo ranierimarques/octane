@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { RoutesLinks, SocialLinks } from '../index'
 
-import { OctaneLogo } from 'public/svg'
+import { OctaneLogo } from 'public/svgs'
 
 import * as S from './nav-links.styles'
 
