@@ -13,12 +13,12 @@ function Home() {
       <S.Main>
         <S.Hat>
           <OctaneGhost />
-          <span>Boas vindas à Octane</span>
+          <S.Text>Boas vindas à Octane</S.Text>
         </S.Hat>
-        <h1>Construindo o futuro por meio do Design e da Programação</h1>
-        <h2>
+        <S.Title>Construindo o futuro por meio do Design e da Programação</S.Title>
+        <S.Description>
           Somos um estúdio brasileiro que constrói sites modernos, escaláveis e rápidos.
-        </h2>
+        </S.Description>
         <S.Buttons>
           <Button>Vamos fazer um projeto juntos</Button>
           <Button secondary>Descobrir</Button>
