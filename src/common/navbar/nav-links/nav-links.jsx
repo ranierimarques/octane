@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
+import { Button } from 'src/common'
 import { RoutesLinks, SocialLinks } from '..'
 
 import { OctaneLogo } from 'public/svgs'
@@ -21,12 +22,7 @@ function NavLinks({ menuOpen, closeMenu }) {
       <S.NavLinks className={menuOpen && 'open'}>
         <RoutesLinks closeMenu={closeMenu} />
 
-        <Link href="/orcamento" passHref>
-          <S.Button onClick={closeMenu}>
-            <a draggable="false">Orçamento</a>
-          </S.Button>
-        </Link>
-
+        <Button variant="small">Orçamento</Button>
         <SocialLinks />
       </S.NavLinks>
     </>

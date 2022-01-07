@@ -1,14 +1,13 @@
 import Image from 'next/image'
-import Link from 'next/link'
+
+import { Button } from 'src/common'
 
 import { illustration } from './images'
-import { ArrowDown, OctaneGhost } from './svgs'
+import { OctaneGhost } from './svgs'
 
 import * as S from './home.styles'
 
 function Home() {
-  const scrollTo = () => window.scrollTo({ behavior: 'smooth', top: 0 })
-
   return (
     <S.Section>
       <S.Main>
@@ -21,14 +20,8 @@ function Home() {
           Somos um estúdio brasileiro que constrói sites modernos, escaláveis e rápidos.
         </h2>
         <S.Buttons>
-          <Link href="/orcamento" passHref>
-            <S.PrimaryButton>
-              <a draggable="false">Vamos fazer um projeto juntos</a>
-            </S.PrimaryButton>
-          </Link>
-          <S.SecondaryButton onClick={scrollTo}>
-            Descobrir <ArrowDown />
-          </S.SecondaryButton>
+          <Button>Vamos fazer um projeto juntos</Button>
+          <Button secondary>Descobrir</Button>
         </S.Buttons>
       </S.Main>
 

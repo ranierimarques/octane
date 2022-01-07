@@ -65,53 +65,6 @@ export const Buttons = styled.div`
   gap: 24px;
 `
 
-export const PrimaryButton = styled.button`
-  font-weight: 475;
-  font-size: 16px;
-  line-height: 19px;
-  color: #ffffff;
-
-  padding: 20px 32px;
-
-  background: #f93822;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.14902);
-  border-radius: 8px;
-
-  cursor: pointer;
-  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  :hover {
-    opacity: 0.8;
-  }
-
-  :active {
-    opacity: 0.5;
-  }
-`
-
-export const SecondaryButton = styled.button`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 120%;
-  color: #e1e1e6;
-
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  padding: 16px 20px;
-
-  height: 51px;
-  border-radius: 8px;
-
-  cursor: pointer;
-  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  :hover {
-    background: #1d1b1b;
-  }
-`
-
 export const Image1 = styled.div`
   position: relative;
   top: 10px;

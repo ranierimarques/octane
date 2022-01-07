@@ -72,37 +72,3 @@ export const NavLinks = styled.ul`
     position: absolute;
   }
 `
-
-export const Button = styled.button`
-  padding: 12px 24px;
-
-  background: #f93822;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 50px;
-
-  cursor: pointer;
-
-  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  :hover {
-    opacity: 0.8;
-  }
-
-  :active {
-    opacity: 0.5;
-  }
-
-  a {
-    font-weight: 475;
-    font-size: 16px;
-    line-height: 19px;
-    color: #ffffff;
-  }
-
-  @media (max-width: 1120px) {
-    padding: 20px 0;
-
-    width: 100%;
-    border-radius: 8px;
-  }
-`
