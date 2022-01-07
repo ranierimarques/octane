@@ -2,7 +2,8 @@ import Link from 'next/link'
 
 import { RoutesLinks, SocialLinks } from '.'
 
-import { OctaneLogo, HeartIcon, ArrowUp } from 'public/svgs'
+import { OctaneLogo } from 'public/svgs'
+import { HeartIcon, ArrowUp } from './svgs'
 
 import * as S from './footer.styles'
 

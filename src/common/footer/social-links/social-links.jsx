@@ -1,4 +1,4 @@
-import { InstagramIcon, LinkedinIcon, BehanceIcon } from 'public/svgs'
+import { InstagramIcon, LinkedinIcon, BehanceIcon } from '../svgs'
 
 import * as S from './social-links.styles'
 
