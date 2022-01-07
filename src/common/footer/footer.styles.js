@@ -29,7 +29,7 @@ export const Content = styled.div`
   margin: 0 auto;
 `
 
-export const Main = styled.div`
+export const Top = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

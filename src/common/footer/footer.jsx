@@ -13,7 +13,7 @@ function Footer() {
   return (
     <S.Footer>
       <S.Content>
-        <S.Main>
+        <S.Top>
           <S.Octane>
             <Link href="/">
               <a>
@@ -30,7 +30,7 @@ function Footer() {
           </S.Octane>
 
           <RoutesLinks />
-        </S.Main>
+        </S.Top>
 
         <S.Bottom>
           <SocialLinks />
