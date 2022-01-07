@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
-import { Home, WhyChooseOctane, HowWeWork, Faq, LastCall } from 'src/layout/index'
+import { Home, WhyChooseOctane, HowWeWork, Faq } from 'src/layout/index'
+import { LastCall } from 'src/shared'
 
 function Index() {
   return (
