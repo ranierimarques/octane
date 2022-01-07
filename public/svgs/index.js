@@ -1,5 +1,3 @@
-export { default as ArrowDown } from './arrow-down'
-export { default as OctaneGhost } from './octane-ghost'
 export { default as OctaneLogo } from './octane-logo'
 export { default as Shape2d } from './shape-2d'
 export { default as Analytics } from './analytics'

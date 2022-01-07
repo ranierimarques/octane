@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import illustrationImg from 'public/images/home-illustration.webp'
-import ArrowDownSvg from 'public/svgs/arrow-down'
-import OctaneGhostSvg from 'public/svgs/octane-ghost'
+import { illustration } from './images'
+import { ArrowDown, OctaneGhost } from './svgs'
 
 import * as S from './home.styles'
 
@@ -14,7 +13,7 @@ function Home() {
     <S.Section>
       <S.Main>
         <S.Hat>
-          <OctaneGhostSvg />
+          <OctaneGhost />
           <span>Boas vindas à Octane</span>
         </S.Hat>
         <h1>Construindo o futuro por meio do Design e da Programação</h1>
@@ -28,18 +27,13 @@ function Home() {
             </S.PrimaryButton>
           </Link>
           <S.SecondaryButton onClick={scrollTo}>
-            Descobrir <ArrowDownSvg />
+            Descobrir <ArrowDown />
           </S.SecondaryButton>
         </S.Buttons>
       </S.Main>
 
       <S.Image1>
-        <Image
-          src={illustrationImg}
-          alt="Ilustração Inicio Octane"
-          priority
-          unoptimized
-        />
+        <Image src={illustration} alt="Ilustração Inicio Octane" priority unoptimized />
       </S.Image1>
     </S.Section>
   )
