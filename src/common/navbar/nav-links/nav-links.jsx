@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import { RoutesLinks, SocialLinks } from '../index'
+import { RoutesLinks, SocialLinks } from '..'
 
 import { OctaneLogo } from 'public/svgs'
 
