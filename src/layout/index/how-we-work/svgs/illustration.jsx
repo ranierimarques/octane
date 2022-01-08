@@ -153,7 +153,7 @@ export default function Svg({ ...props }) {
         />
       </g>
       <g
-        style="mix-blend-mode:luminosity"
+        style={{ mixBlendMode: 'luminosity' }}
         opacity=".8"
         filter="url(#filter9_f_3261_9551)"
       >
