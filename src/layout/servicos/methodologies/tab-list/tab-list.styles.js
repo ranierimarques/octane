@@ -1,3 +1,8 @@
 import { styled } from 'linaria/react'
+import { css } from 'linaria'
 
-export const Container = styled.div``
+export const TabList = styled.div``
+
+export const Tab = styled.button``
+
+export const Svg = css``
