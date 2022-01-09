@@ -21,7 +21,9 @@ function Home() {
         </S.Description>
         <S.Buttons>
           <Button>Vamos fazer um projeto juntos</Button>
-          <Button secondary>Descobrir</Button>
+          <Button secondary scrollTo={1345}>
+            Descobrir
+          </Button>
         </S.Buttons>
       </S.Main>
 

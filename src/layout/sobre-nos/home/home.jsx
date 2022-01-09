@@ -16,7 +16,9 @@ function Home() {
             seu cliente. Muito mais que criar sites e landing pages, nosso propósito é
             solucionar o seu problema!
           </S.Description>
-          <Button secondary>Clique para descobrir</Button>
+          <Button secondary variant="outlined" scrollTo={559}>
+            Clique para descobrir
+          </Button>
         </S.Main>
 
         <S.Illustration />

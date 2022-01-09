@@ -16,7 +16,9 @@ function Home() {
             precisa, cuidando de cada detalhe conseguimos proporcionar experiências únicas
             para cada usuário.
           </S.Description>
-          <Button secondary>Conheça nossos serviços</Button>
+          <Button secondary variant="outlined">
+            Conheça nossos serviços
+          </Button>
         </S.Main>
 
         <S.Illustration />
