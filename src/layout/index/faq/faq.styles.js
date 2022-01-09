@@ -62,7 +62,7 @@ export const Title = styled.h3`
 export const Shape2d = styled(Shape2dSvg)`
   margin-left: 10px;
 
-  filter: drop-shadow(0px 0px 20px rgba(250, 90, 71, 0.4));
+  filter: drop-shadow(0px 0px 10px rgba(250, 90, 71, 0.4));
 `
 
 export const Texts = styled.p`
