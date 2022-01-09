@@ -5,7 +5,7 @@ import { LastCall } from 'src/shared'
 
 function Servicos() {
   return (
-    <>
+    <main>
       <Head>
         <title>Octane | A inovação começa aqui!</title>
       </Head>
@@ -15,7 +15,7 @@ function Servicos() {
       <OurServices />
       <Methodologies />
       <LastCall />
-    </>
+    </main>
   )
 }
 
