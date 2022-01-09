@@ -29,6 +29,7 @@ export default css.global`
 
   body {
     background: #121212;
+    overflow-x: hidden;
   }
 
   body::-webkit-scrollbar {

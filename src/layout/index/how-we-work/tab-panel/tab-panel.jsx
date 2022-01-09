@@ -7,16 +7,19 @@ const panels = [
     number: '01',
     subtitle: 'Análise do Briefing',
     description: 'Verificamos todos os principais pontos do seu Briefing e Orçamento.',
+    arrow: true,
   },
   {
     number: '02',
     subtitle: 'Pesquisa de Mercado',
     description: 'Organizamos informações relevantes sobre o seu campo de atuação.',
+    arrow: true,
   },
   {
     number: '03',
     subtitle: 'Idealização do Projeto',
     description: 'Idealizamos toda a estrutura do projeto por meio do Design Thinking.',
+    arrow: false,
   },
 ]
 
@@ -27,7 +30,7 @@ function TabPanel() {
         <S.Panel key={panel.number}>
           <S.Localization>
             <S.Number>{panel.number}</S.Number>
-            <StretchedArrow />
+            {panel.arrow ? <StretchedArrow /> : null}
           </S.Localization>
 
           <S.Texts>

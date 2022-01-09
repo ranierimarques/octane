@@ -8,16 +8,16 @@ function HowWeWork() {
   return (
     <S.Section>
       <S.Content>
-        <S.Top>
-          <S.Header>
-            <S.Icon>
-              <OctaneGhost />
-            </S.Icon>
-            <S.Title>Conheça nossas etapas de desenvolvimento</S.Title>
-          </S.Header>
+        <S.Header>
+          <S.Icon>
+            <OctaneGhost />
+          </S.Icon>
+          <S.Title>
+            Conheça nossas etapas <br /> de desenvolvimento
+          </S.Title>
+        </S.Header>
 
-          <TabList />
-        </S.Top>
+        <TabList />
 
         <TabPanel />
       </S.Content>

@@ -13,7 +13,12 @@ function Tablist() {
   return (
     <S.TabList role="tablist">
       {tabs.map(tab => (
-        <S.Tab key={tab.text} role="tab" aria-selected="false">
+        <S.Tab
+          key={tab.text}
+          role="tab"
+          aria-selected="false"
+          className={tab.text === 'Análise' ? 'active' : ''}
+        >
           <S.Text>
             {tab.icon}
             {tab.text}

@@ -1,1 +1,1 @@
-export { default as Questions } from './questions/questions'
+export { default as Question } from './question/question'
