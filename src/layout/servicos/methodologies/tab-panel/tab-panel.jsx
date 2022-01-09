@@ -16,7 +16,7 @@ function TabPanel() {
 
       <S.SvgWrapper>
         <Pad />
-        <References />
+        <References className={S.Svg} />
       </S.SvgWrapper>
     </S.TabPanel>
   )

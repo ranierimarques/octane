@@ -25,9 +25,9 @@ function Cards() {
     <S.Cards>
       {cards.map(card => (
         <S.Card key={card.title} className={card.title === 'Website' && 'emphasis'}>
-          <S.Icon>{card.icon}</S.Icon>
-
+          {card.icon}
           <S.Subtitle>{card.title}</S.Subtitle>
+          <S.Divider />
           <S.Description>{card.description}</S.Description>
           <S.TextButton>Saiba mais</S.TextButton>
         </S.Card>

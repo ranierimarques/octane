@@ -16,7 +16,7 @@ function Home() {
             precisa, cuidando de cada detalhe conseguimos proporcionar experiências únicas
             para cada usuário.
           </S.Description>
-          <Button secondary variant="outlined">
+          <Button secondary variant="outlined" scrollTo={1265}>
             Conheça nossos serviços
           </Button>
         </S.Main>
