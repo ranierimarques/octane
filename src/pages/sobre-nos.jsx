@@ -4,14 +4,14 @@ import { Home, WhatIsOctane } from 'src/layout/sobre-nos'
 
 function SobreNos() {
   return (
-    <>
+    <main>
       <Head>
         <title>Octane | A inovação começa aqui!</title>
       </Head>
 
       <Home />
       <WhatIsOctane />
-    </>
+    </main>
   )
 }
 
