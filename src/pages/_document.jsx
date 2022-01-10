@@ -5,8 +5,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-BR">
         <Head>
-          <meta charSet="UTF-8" />
-          <link rel="icon" href="/favicon.ico" sizes="32x32" />
           <link
             rel="preload"
             href="/fonts/inter-var-latin.woff2"
@@ -14,6 +12,8 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <link rel="icon" href="/favicon.ico" sizes="32x32" />
+          <meta charSet="UTF-8" />
         </Head>
         <body>
           <Main />
