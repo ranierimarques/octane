@@ -12,8 +12,8 @@ export const Section = styled.section`
 
 export const Header = styled.header`
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   gap: 16px;
 
   margin-bottom: 48px;

@@ -7,6 +7,8 @@ export const Section = styled.section`
 
   background: #1d1b1b;
 
+  overflow: hidden;
+
   ::before {
     content: '';
     position: absolute;
