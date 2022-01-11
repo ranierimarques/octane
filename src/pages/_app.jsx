@@ -27,24 +27,6 @@ export const Button = styled.button`
   :active {
     opacity: 0.6;
   }
-
-  &.activeFont div {
-    position: absolute;
-    top: -50px;
-    left: 50%;
-
-    transform: translate(-50%);
-
-    line-height: 16px;
-    font-weight: 700;
-    white-space: nowrap;
-
-    color: #fff;
-
-    background: linear-gradient(to right, red, blue);
-    padding: 12px 24px;
-    border-radius: 4px;
-  }
 `
 
 import { Navbar, Footer } from 'src/common'
@@ -53,7 +35,6 @@ import globalStyles from '../styles/global-styles'
 
 function MyApp({ Component, pageProps }) {
   const [universal, setUniversal] = useState()
-  const [font, setFont] = useState('')
 
   useEffect(() => {
     document.querySelector('head').appendChild(document.createElement('style'))
@@ -71,12 +52,10 @@ function MyApp({ Component, pageProps }) {
 
     if (font == '"Segoe UI"') {
       universal.style.fontFamily = 'Inter'
-      setFont('Inter')
       return
     }
 
     universal.style.fontFamily = 'Segoe UI'
-    setFont('Segoe UI (Reserva)')
   }
 
   return (
@@ -86,11 +65,7 @@ function MyApp({ Component, pageProps }) {
       </style>
       <Navbar />
       <Component {...pageProps} />
-      <Button onClick={changeFont} className="activeFont">
-        Mudar fonte
-        {font ? <div>{font}</div> : null}
-      </Button>
-
+      <Button onClick={changeFont}>Mudar fonte</Button>
       <Footer />
     </>
   )
