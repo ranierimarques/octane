@@ -28,4 +28,5 @@ export const Front = styled.div`
 
 export const OctaneGhost = styled(OctaneGhostSvg)`
   filter: drop-shadow(0px 0px 10px rgba(250, 90, 71, 0.4));
+  transform: rotate(15deg);
 `
