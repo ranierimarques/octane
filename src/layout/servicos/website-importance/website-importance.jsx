@@ -4,7 +4,7 @@ function WebsiteImportance() {
   return (
     <S.Section>
       <S.Wrapper>
-        <S.Illustration type="image/svg+xml" data="/teste.svg" />
+        <S.Illustration type="image/svg+xml" data="/animated/cursors.svg" />
 
         <div>
           <S.Hat>EXCELÊNCIA</S.Hat>

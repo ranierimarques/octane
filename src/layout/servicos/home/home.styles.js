@@ -1,7 +1,6 @@
 import { styled } from 'linaria/react'
 
 import { Wire as WireSvg } from 'public/svgs'
-import { Illustration as IllustrationSvg } from './svgs'
 
 export const Section = styled.section`
   position: relative;
@@ -60,10 +59,10 @@ export const Description = styled.h2`
   margin-bottom: 32px;
 `
 
-export const Illustration = styled(IllustrationSvg)`
+export const Illustration = styled.object`
   position: absolute;
-  top: 140px;
-  right: 0;
+  top: 50px;
+  right: 15px;
 
   pointer-events: none;
   user-select: none;
