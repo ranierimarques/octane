@@ -23,7 +23,8 @@ export const Subtitle = styled.h4`
 `
 
 export const Description = styled.p`
-  font-weight: 300;
+  font-weight: 400;
+  font-variation-settings: 'wght' 300;
   font-size: 16px;
   line-height: 26px;
   color: #e1e1e6;

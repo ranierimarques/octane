@@ -44,7 +44,8 @@ export const Octane = styled.div`
 `
 
 export const Slogan = styled.span`
-  font-weight: 375;
+  font-weight: 400;
+  font-variation-settings: 'wght' 375;
   font-size: 14px;
   line-height: 120%;
   letter-spacing: 0.4px;
@@ -52,7 +53,8 @@ export const Slogan = styled.span`
 `
 
 export const Copy = styled.span`
-  font-weight: 425;
+  font-weight: 500;
+  font-variation-settings: 'wght' 425;
   font-size: 14px;
   line-height: 180%;
   color: #9e9eae;

@@ -83,7 +83,8 @@ export const Title = styled.h3`
 `
 
 export const Description = styled.p`
-  font-weight: 325;
+  font-weight: 400;
+  font-variation-settings: 'wght' 325;
   font-size: 20px;
   line-height: 32px;
   text-align: center;

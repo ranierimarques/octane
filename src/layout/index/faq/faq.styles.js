@@ -66,7 +66,8 @@ export const Shape2d = styled(Shape2dSvg)`
 `
 
 export const Texts = styled.p`
-  font-weight: 450;
+  font-weight: 500;
+  font-variation-settings: 'wght' 450;
   font-size: 16px;
   line-height: 22px;
   color: #b4b4c0;
@@ -79,14 +80,16 @@ export const Texts = styled.p`
 `
 
 export const Strong = styled.strong`
-  font-weight: 600;
+  font-weight: 700;
+  font-variation-settings: 'wght' 600;
   font-size: 20px;
   line-height: 28px;
   color: #e1e1e6;
 `
 
 export const TextButton = styled.button`
-  font-weight: 325;
+  font-weight: 400;
+  font-variation-settings: 'wght' 325;
   font-size: 16px;
   line-height: 22px;
   color: #fa5a47;

@@ -52,7 +52,8 @@ export const Subtitle = styled.h4`
 `
 
 export const Description = styled.p`
-  font-weight: 400;
+  font-weight: 500;
+  font-variation-settings: 'wght' 400;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.06px;
@@ -60,7 +61,8 @@ export const Description = styled.p`
 `
 
 export const TextButton = styled.button`
-  font-weight: 400;
+  font-weight: 500;
+  font-variation-settings: 'wght' 400;
   font-size: 14px;
   line-height: 22px;
   color: #fa5a47;

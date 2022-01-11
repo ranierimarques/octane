@@ -3,7 +3,8 @@ import { styled } from 'linaria/react'
 export const Link = styled.a`
   display: inline-block;
 
-  font-weight: 400;
+  font-weight: 500;
+  font-variation-settings: 'wght' 400;
   font-size: 16px;
   line-height: 19px;
   color: #87879b;
@@ -23,7 +24,8 @@ export const Link = styled.a`
 
   &.active {
     color: #ffffff;
-    font-weight: 575;
+    font-weight: 600;
+    font-variation-settings: 'wght' 575;
     border-bottom: 2px solid #f93822;
   }
 

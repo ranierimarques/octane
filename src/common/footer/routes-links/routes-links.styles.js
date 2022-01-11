@@ -8,7 +8,8 @@ export const Nav = styled.nav`
 export const Title = styled.span`
   display: inline-block;
 
-  font-weight: 525;
+  font-weight: 600;
+  font-variation-settings: 'wght' 525;
   font-size: 16px;
   line-height: 120%;
   color: #e1e1e6;
@@ -27,7 +28,8 @@ export const Link = styled.a`
 
   position: relative;
 
-  font-weight: 465;
+  font-weight: 500;
+  font-variation-settings: 'wght' 465;
   font-size: 16px;
   line-height: 120%;
   color: #9e9eae;

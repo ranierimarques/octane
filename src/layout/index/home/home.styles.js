@@ -14,28 +14,6 @@ export const Main = styled.div`
   margin-top: 80px;
 `
 
-export const Title = styled.h1`
-  font-weight: 850;
-  font-size: 40px;
-  line-height: 120%;
-  color: #ffffff;
-
-  max-width: 422px;
-
-  margin-bottom: 16px;
-`
-
-export const Description = styled.h2`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 180%;
-  color: #b4b4c0;
-
-  max-width: 321px;
-
-  margin-bottom: 32px;
-`
-
 export const Hat = styled.div`
   display: inline-flex;
   align-items: center;
@@ -52,11 +30,36 @@ export const Hat = styled.div`
 `
 
 export const Text = styled.span`
-  font-weight: 425;
+  font-weight: 500;
+  font-variation-settings: 'wght' 425;
   font-size: 14px;
   line-height: 180%;
   letter-spacing: 0.2px;
   color: #f93822;
+`
+
+export const Title = styled.h1`
+  font-weight: 800;
+  font-variation-settings: 'wght' 850;
+  font-size: 40px;
+  line-height: 120%;
+  color: #ffffff;
+
+  max-width: 422px;
+
+  margin-bottom: 16px;
+`
+
+export const Description = styled.h2`
+  font-weight: 500;
+  font-variation-settings: 'wght' 400;
+  font-size: 16px;
+  line-height: 180%;
+  color: #b4b4c0;
+
+  max-width: 321px;
+
+  margin-bottom: 32px;
 `
 
 export const Buttons = styled.div`

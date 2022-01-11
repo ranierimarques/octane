@@ -57,7 +57,8 @@ export const ArrowDown = styled(ArrowDownSvg)``
 export const Answer = styled.p`
   display: none;
 
-  font-weight: 275;
+  font-weight: 400;
+  font-variation-settings: 'wght' 275;
   font-size: 16px;
   line-height: 26px;
   color: #e1e1e6;

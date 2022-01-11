@@ -31,7 +31,8 @@ export const Icon = styled.div`
 `
 
 export const Subtitle = styled.h4`
-  font-weight: 650;
+  font-weight: 700;
+  font-variation-settings: 'wght' 650;
   font-size: 20px;
   line-height: 28px;
   color: #ffffff;
@@ -40,7 +41,8 @@ export const Subtitle = styled.h4`
 `
 
 export const Description = styled.p`
-  font-weight: 325;
+  font-weight: 400;
+  font-variation-settings: 'wght' 325;
   font-size: 16px;
   line-height: 29px;
   color: #cacad3;
@@ -49,7 +51,8 @@ export const Description = styled.p`
 `
 
 export const TextButton = styled.button`
-  font-weight: 400;
+  font-weight: 500;
+  font-variation-settings: 'wght' 400;
   font-size: 14px;
   line-height: 22px;
   color: #fa5a47;

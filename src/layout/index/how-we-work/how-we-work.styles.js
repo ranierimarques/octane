@@ -40,7 +40,8 @@ export const Icon = styled.div`
 `
 
 export const Title = styled.h3`
-  font-weight: 600;
+  font-weight: 700;
+  font-variation-settings: 'wght' 600;
   font-size: 20px;
   line-height: 28px;
   color: #e1e1e6;

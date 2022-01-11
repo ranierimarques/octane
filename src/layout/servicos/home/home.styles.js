@@ -37,7 +37,8 @@ export const Hat = styled.span`
 `
 
 export const Title = styled.h1`
-  font-weight: 625;
+  font-weight: 700;
+  font-variation-settings: 'wght' 625;
   font-size: 32px;
   line-height: 45px;
   color: #e1e1e6;
@@ -48,7 +49,8 @@ export const Title = styled.h1`
 `
 
 export const Description = styled.h2`
-  font-weight: 325;
+  font-weight: 400;
+  font-variation-settings: 'wght' 325;
   font-size: 16px;
   line-height: 29px;
   color: #b4b4c0;

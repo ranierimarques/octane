@@ -37,7 +37,8 @@ export const Primary = styled.button`
 export const Link = styled.a`
   display: inline-block;
 
-  font-weight: 475;
+  font-weight: 500;
+  font-variation-settings: 'wght' 475;
   font-size: 16px;
   line-height: 19px;
   color: #ffffff;

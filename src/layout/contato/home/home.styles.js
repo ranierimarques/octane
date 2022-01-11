@@ -43,7 +43,8 @@ export const Title = styled.h1`
 export const Description = styled.h2`
   position: relative;
 
-  font-weight: 325;
+  font-weight: 400;
+  font-variation-settings: 'wght' 325;
   font-size: 16px;
   line-height: 29px;
   color: #b4b4c0;
