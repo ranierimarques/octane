@@ -12,7 +12,7 @@ function Button({
   children,
   ...props
 }) {
-  const scrollToTop = () => window.scrollTo({ behavior: 'smooth', top: scrollTo })
+  const scrollToTop = () => window.scroll({ behavior: 'smooth', top: scrollTo })
 
   if (secondary) {
     return (
