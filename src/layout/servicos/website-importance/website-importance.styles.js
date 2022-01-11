@@ -1,7 +1,5 @@
 import { styled } from 'linaria/react'
 
-import { Illustration as IllustrationSvg } from './svgs'
-
 export const Section = styled.section`
   position: relative;
 
@@ -52,7 +50,7 @@ export const Wrapper = styled.div`
   margin: 0 auto;
 `
 
-export const Illustration = styled(IllustrationSvg)`
+export const Illustration = styled.object`
   position: absolute;
   top: -175px;
   left: -190px;
