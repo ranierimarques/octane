@@ -1,4 +1,4 @@
-import { CircleShape, OctaneGhost } from '../svgs'
+import { CircleShape } from '../svgs'
 
 import * as S from './details.styles'
 
@@ -6,7 +6,7 @@ function Details() {
   return (
     <S.Details>
       <S.Front>
-        <OctaneGhost />
+        <S.OctaneGhost />
       </S.Front>
 
       <CircleShape />

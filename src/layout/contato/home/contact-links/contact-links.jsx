@@ -25,16 +25,16 @@ const contacts = [
 
 function ContactLinks() {
   return (
-    <ul>
+    <S.ContactLinks>
       {contacts.map(contact => (
         <li key={contact.text}>
-          <a href={contact.href} target={contact.target} rel="noreferrer noopener">
+          <S.Link href={contact.href} target={contact.target} rel="noreferrer noopener">
             <i>{contact.icon}</i>
             {contact.text}
-          </a>
+          </S.Link>
         </li>
       ))}
-    </ul>
+    </S.ContactLinks>
   )
 }
 
