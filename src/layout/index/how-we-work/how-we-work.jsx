@@ -22,7 +22,7 @@ function HowWeWork() {
         <TabPanel />
       </S.Content>
 
-      <S.Illustration />
+      <S.Illustration type="image/svg+xml" data="/animated/towers.svg" />
     </S.Section>
   )
 }

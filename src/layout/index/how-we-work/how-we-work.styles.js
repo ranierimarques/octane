@@ -47,10 +47,10 @@ export const Title = styled.h3`
   color: #e1e1e6;
 `
 
-export const Illustration = styled(IllustrationSvg)`
+export const Illustration = styled.object`
   position: absolute;
   top: 100px;
-  right: -215px;
+  right: -135px;
 
   pointer-events: none;
   z-index: -1;
