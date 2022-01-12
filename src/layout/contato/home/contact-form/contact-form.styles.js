@@ -50,4 +50,6 @@ export const Right = styled.div`
   border-radius: 0px 20px 20px 0px;
 
   width: 396px; /* Remover depois */
+
+  padding: 64px 48px;
 `

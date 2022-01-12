@@ -3,6 +3,7 @@ import { styled } from 'linaria/react'
 export const ContactLinks = styled.ul`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 40px;
 
   margin-bottom: 81px;

@@ -21,7 +21,7 @@ function Home() {
           </Button>
         </S.Main>
 
-        <S.Illustration />
+        <S.Illustration type="image/svg+xml" data="/animated/persons.svg" />
       </S.Wrapper>
 
       <S.Wire />
