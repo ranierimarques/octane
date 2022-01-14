@@ -51,5 +51,5 @@ export const Right = styled.div`
 
   width: 396px; /* Remover depois */
 
-  padding: 64px 48px;
+  padding: 64px 48px 0px;
 `

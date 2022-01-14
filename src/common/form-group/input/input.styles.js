@@ -4,18 +4,6 @@ export const Container = styled.div`
   position: relative;
 `
 
-export const Title = styled.label`
-  display: inline-block;
-
-  font-weight: 600;
-  font-variation-settings: 'wght' 525;
-  font-size: 16px;
-  line-height: 22px;
-  color: #e1e1e6;
-
-  margin-bottom: 12px;
-`
-
 export const Label = styled.label`
   position: absolute;
   top: 15px;
@@ -79,7 +67,6 @@ export const Input = styled.input`
     user-select: none;
   }
 
-  /* Tem texto e está em foco */
   :not(:placeholder-shown):not(:focus) + ${Label} {
     font-weight: 500;
     font-variation-settings: 'wght' 450;
@@ -108,4 +95,28 @@ export const BottomLine = styled.div`
 
   transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
     opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
+`
+
+export const Textarea = styled(Input)`
+  position: sticky;
+  top: 20px;
+  resize: none;
+  overflow: auto;
+  height: 74px;
+
+  line-height: 22px;
+
+  transition: height 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  :focus {
+    height: 95px;
+  }
+
+  :not(:placeholder-shown):not(:focus) {
+    height: 95px;
+  }
 `

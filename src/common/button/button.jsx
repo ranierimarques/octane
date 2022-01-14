@@ -6,9 +6,9 @@ import * as S from './button.styles'
 
 function Button({
   variant,
-  scrollTo = 0,
+  scrollTo,
   href = '/orcamento',
-  secondary = false,
+  secondary,
   children,
   ...props
 }) {
