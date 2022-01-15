@@ -2,6 +2,8 @@ import { styled } from 'linaria/react'
 
 export const Container = styled.div`
   position: relative;
+
+  width: 100%;
 `
 
 export const Label = styled.label`
@@ -18,10 +20,11 @@ export const Label = styled.label`
   transform-origin: left top;
   transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
     color 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform, color;
 
   user-select: none;
   pointer-events: none;
+
+  z-index: 2;
 `
 
 export const Input = styled.input`
@@ -50,14 +53,14 @@ export const Input = styled.input`
   :focus {
     background: #242222;
 
-    + ${Label} {
+    ~ ${Label} {
       color: #fa5a47;
       font-weight: 500;
       font-variation-settings: 'wght' 450;
       transform: translateY(-8px) scale(0.75);
     }
 
-    + ${Label} + ${BottomLine} {
+    ~ ${BottomLine} {
       transform: scaleX(1);
       opacity: 1;
     }
@@ -98,25 +101,71 @@ export const BottomLine = styled.div`
 `
 
 export const Textarea = styled(Input)`
-  position: sticky;
-  top: 20px;
   resize: none;
-  overflow: auto;
+  overflow: overlay;
   height: 74px;
 
   line-height: 22px;
 
-  transition: height 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: height 180ms cubic-bezier(0.4, 0, 0.2, 1);
 
   ::-webkit-scrollbar {
-    width: 0px;
+    width: 4px;
+    display: none;
+
+    will-change: contents;
   }
 
-  :focus {
-    height: 95px;
+  ::-webkit-scrollbar-track {
+    margin-top: 21px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4d4d57;
   }
 
   :not(:placeholder-shown):not(:focus) {
-    height: 95px;
+    height: 96px;
   }
+
+  :hover {
+    ~ ${TopOverflow} {
+      background: #211f1f;
+    }
+
+    ::-webkit-scrollbar {
+      display: block;
+    }
+  }
+
+  :focus {
+    height: 96px;
+
+    ~ ${TopOverflow} {
+      background: #242222;
+    }
+
+    ::-webkit-scrollbar {
+      display: block;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #fa594799;
+    }
+  }
+`
+
+export const TopOverflow = styled.div`
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 21px;
+
+  background: #1d1b1b;
+  border-radius: 4px 4px 0px 0px;
+
+  z-index: 1;
+
+  pointer-events: none;
 `

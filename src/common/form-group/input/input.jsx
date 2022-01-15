@@ -3,10 +3,11 @@ import * as S from './input.styles.js'
 function Input({ textarea }) {
   if (textarea) {
     return (
-      <S.Container>
+      <S.Container style={{ marginTop: '32px' }}>
         <S.Textarea as="textarea" id="nome" type="text" placeholder=" " />
         <S.Label>Mensagem</S.Label>
         <S.BottomLine />
+        <S.TopOverflow />
       </S.Container>
     )
   }

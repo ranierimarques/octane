@@ -22,6 +22,8 @@ export const Button = styled.button`
     transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
     background: #f93822;
 
+    will-change: opacity;
+
     :hover {
       opacity: 0.8;
     }
@@ -30,7 +32,8 @@ export const Button = styled.button`
       opacity: 0.5;
     }
 
-    &[disabled] {
+    :disabled {
+      transition: none;
       cursor: inherit;
       opacity: 0.38;
     }
