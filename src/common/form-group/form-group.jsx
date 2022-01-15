@@ -5,9 +5,12 @@ import * as S from './form-group.styles'
 function FormGroup() {
   return (
     <>
-      <Label />
-      <Input />
-      <Input textarea />
+      <Label id="nome">Qual seu nome?</Label>
+      <Input id="nome" />
+
+      <Label id="message">Sua mensagem</Label>
+      <Input textarea id="message" />
+
       <Button size="large" disabled>
         Enviar mensagem
       </Button>

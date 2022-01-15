@@ -4,6 +4,8 @@ export const Container = styled.div`
   position: relative;
 
   width: 100%;
+
+  margin-bottom: 32px;
 `
 
 export const Label = styled.label`
