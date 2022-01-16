@@ -74,12 +74,14 @@ export const Description = styled.p`
 `
 
 export const TextButton = styled.button`
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 22px;
   color: #fa5a47;
 
   cursor: pointer;
+
+  transform: translateZ(0);
 
   :hover {
     text-decoration: underline;

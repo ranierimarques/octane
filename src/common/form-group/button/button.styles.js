@@ -20,7 +20,7 @@ export const Button = styled.button`
     transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
     background: #f93822;
 
-    will-change: opacity;
+    transform: translateZ(0);
 
     :hover {
       opacity: 0.8;
