@@ -1,6 +1,6 @@
 import { styled } from 'linaria/react'
 
-export const Container = styled.div`
+export const Div = styled.div`
   position: relative;
 
   width: 100%;

@@ -3,21 +3,21 @@ import * as S from './input.styles.js'
 function Input({ textarea, id }) {
   if (textarea) {
     return (
-      <S.Container>
+      <S.Div>
         <S.Textarea as="textarea" id={id} type="text" placeholder=" " />
         <S.Label>Mensagem</S.Label>
         <S.BottomLine />
         <S.TopOverflow />
-      </S.Container>
+      </S.Div>
     )
   }
 
   return (
-    <S.Container>
+    <S.Div>
       <S.Input id={id} type="text" placeholder=" " />
       <S.Label>Nome</S.Label>
       <S.BottomLine />
-    </S.Container>
+    </S.Div>
   )
 }
 

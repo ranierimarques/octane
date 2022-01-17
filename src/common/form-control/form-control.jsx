@@ -1,12 +1,16 @@
-import { Input, Label, Button } from '.'
+import { Input, Label, Button, Radio } from '.'
 
-import * as S from './form-group.styles'
+import * as S from './form-control.styles'
 
-function FormGroup() {
+function FormControl() {
   return (
     <>
       <Label id="nome">Qual seu nome?</Label>
       <Input id="nome" />
+
+      <Label id="none">Como podemos entrar em contato?</Label>
+      <Radio>Primeira opção</Radio>
+      <Radio>Segunda opção</Radio>
 
       <Label id="message">Sua mensagem</Label>
       <Input textarea id="message" />
@@ -18,8 +22,8 @@ function FormGroup() {
   )
 }
 
-export default FormGroup
+export default FormControl
 
-// É responsabilidade do FormGroup dizer quais componentes serão retornados para o
+// É responsabilidade do FormControl dizer quais componentes serão retornados para o
 // formulário, sejam apenas botões (prev) e (next) ou label + input, input + dropdown
 // label + description + input.... slider...

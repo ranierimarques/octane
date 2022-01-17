@@ -1,11 +1,11 @@
-import { FormGroup } from 'src/common'
+import { FormControl } from 'src/common'
 
 import * as S from './form.styles'
 
 function Form() {
   return (
     <form>
-      <FormGroup />
+      <FormControl />
     </form>
   )
 }
