@@ -1,11 +1,11 @@
 import * as S from './input.styles.js'
 
-function Input({ textarea, id }) {
+function Input({ disabled, textarea, id, children }) {
   if (textarea) {
     return (
       <S.Div>
         <S.Textarea as="textarea" id={id} type="text" placeholder=" " />
-        <S.Label>Mensagem</S.Label>
+        <S.Label>{children}</S.Label>
         <S.BottomLine />
         <S.TopOverflow />
       </S.Div>
@@ -14,8 +14,8 @@ function Input({ textarea, id }) {
 
   return (
     <S.Div>
-      <S.Input id={id} type="text" placeholder=" " />
-      <S.Label>Nome</S.Label>
+      <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
+      <S.Label>{children}</S.Label>
       <S.BottomLine />
     </S.Div>
   )

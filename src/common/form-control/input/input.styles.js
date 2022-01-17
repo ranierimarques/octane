@@ -47,7 +47,7 @@ export const Input = styled.input`
 
   border-bottom: 1px solid #87879b;
 
-  :hover {
+  :not(:disabled):hover {
     background: #211f1f;
     border-bottom: 1px solid #9e9eae;
   }
@@ -70,6 +70,15 @@ export const Input = styled.input`
 
   ::placeholder {
     user-select: none;
+  }
+
+  :disabled {
+    opacity: 0.38;
+    cursor: inherit;
+
+    + ${Label} {
+      opacity: 0.38;
+    }
   }
 
   :not(:placeholder-shown):not(:focus) + ${Label} {
@@ -130,7 +139,7 @@ export const Textarea = styled(Input)`
     height: 96px;
   }
 
-  :hover {
+  :not(:disabled):hover {
     ~ ${TopOverflow} {
       background: #211f1f;
     }

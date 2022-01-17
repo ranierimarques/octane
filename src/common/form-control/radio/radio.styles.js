@@ -103,4 +103,6 @@ export const Tooltip = styled.span`
   color: white;
 
   transform: translate(-50%) scale(0);
+
+  z-index: 3;
 `
