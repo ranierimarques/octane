@@ -9,8 +9,10 @@ function FormControl() {
       <Input id="nome" />
 
       <Label id="none">Como podemos entrar em contato?</Label>
-      <Radio>Primeira opção</Radio>
-      <Radio>Segunda opção</Radio>
+      <div style={{ display: 'flex', gap: '20px', marginBottom: '32px' }}>
+        <Radio>E-mail</Radio>
+        <Radio>Whatsapp</Radio>
+      </div>
 
       <Label id="message">Sua mensagem</Label>
       <Input textarea id="message" />
