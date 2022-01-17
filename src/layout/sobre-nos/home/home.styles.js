@@ -61,8 +61,8 @@ export const Description = styled.h2`
 
 export const Illustration = styled.object`
   position: absolute;
-  top: 60px;
-  right: 0px;
+  top: 85px;
+  right: 20px;
 
   pointer-events: none;
   user-select: none;
