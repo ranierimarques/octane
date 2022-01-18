@@ -47,29 +47,37 @@ export const Input = styled.input`
 
   border-bottom: 1px solid #87879b;
 
-  :not(:disabled):hover {
-    background: #211f1f;
-    border-bottom: 1px solid #9e9eae;
-  }
-
-  :focus {
-    background: #242222;
-
-    ~ ${Label} {
-      color: #fa5a47;
-      font-weight: 500;
-      font-variation-settings: 'wght' 450;
-      transform: translateY(-8px) scale(0.75);
-    }
-
-    ~ ${BottomLine} {
-      transform: scaleX(1);
-      opacity: 1;
-    }
-  }
-
   ::placeholder {
     user-select: none;
+  }
+
+  :not(:disabled) {
+    :hover {
+      background: #211f1f;
+      border-bottom: 1px solid #9e9eae;
+    }
+
+    :focus {
+      background: #242222;
+
+      ~ ${Label} {
+        color: #fa5a47;
+        font-weight: 500;
+        font-variation-settings: 'wght' 450;
+        transform: translateY(-8px) scale(0.75);
+      }
+
+      ~ ${BottomLine} {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
+
+    :-webkit-autofill {
+      box-shadow: 0 0 0 60px #1d1b1b inset;
+      background-clip: content-box;
+      -webkit-text-fill-color: #e1e1e6;
+    }
   }
 
   :disabled {
@@ -85,12 +93,6 @@ export const Input = styled.input`
     font-weight: 500;
     font-variation-settings: 'wght' 450;
     transform: translateY(-8px) scale(0.75);
-  }
-
-  :-webkit-autofill {
-    box-shadow: 0 0 0 60px #1d1b1b inset;
-    background-clip: content-box;
-    -webkit-text-fill-color: #e1e1e6;
   }
 `
 
@@ -139,29 +141,31 @@ export const Textarea = styled(Input)`
     height: 96px;
   }
 
-  :not(:disabled):hover {
-    ~ ${TopOverflow} {
-      background: #211f1f;
+  :not(:disabled) {
+    :hover {
+      ~ ${TopOverflow} {
+        background: #211f1f;
+      }
+
+      ::-webkit-scrollbar {
+        display: block;
+      }
     }
 
-    ::-webkit-scrollbar {
-      display: block;
-    }
-  }
+    :focus {
+      height: 96px;
 
-  :focus {
-    height: 96px;
+      ~ ${TopOverflow} {
+        background: #242222;
+      }
 
-    ~ ${TopOverflow} {
-      background: #242222;
-    }
+      ::-webkit-scrollbar {
+        display: block;
+      }
 
-    ::-webkit-scrollbar {
-      display: block;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #fa594799;
+      ::-webkit-scrollbar-thumb {
+        background: #fa594799;
+      }
     }
   }
 `
