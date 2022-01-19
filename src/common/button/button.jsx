@@ -10,6 +10,7 @@ function Button({
   href = '/orcamento',
   secondary,
   children,
+  noLink,
   ...props
 }) {
   const scrollToTop = () => window.scrollTo({ behavior: 'smooth', top: scrollTo })
@@ -19,6 +20,14 @@ function Button({
       <S.Secondary className={variant} onClick={scrollToTop} {...props}>
         {children} <ArrowDown />
       </S.Secondary>
+    )
+  }
+
+  if (noLink) {
+    return (
+      <S.PrimaryNoLink className={variant} {...props}>
+        {children}
+      </S.PrimaryNoLink>
     )
   }
 

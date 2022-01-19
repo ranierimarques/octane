@@ -34,6 +34,16 @@ export const Primary = styled.button`
   }
 `
 
+export const PrimaryNoLink = styled(Primary)`
+  font-weight: 500;
+  font-variation-settings: 'wght' 475;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+
+  padding: 20px 32px;
+`
+
 export const Link = styled.a`
   display: inline-block;
 
