@@ -5,22 +5,28 @@ import * as S from './form-control.styles'
 function FormControl() {
   return (
     <>
-      <Label id="nome">Qual seu nome?</Label>
-      <Input id="nome">Nome</Input>
+      <S.Container>
+        <Label id="nome">Qual seu nome?</Label>
+        <Input id="nome">Nome</Input>
+      </S.Container>
 
-      <Label id="radio">Como podemos entrar em contato?</Label>
-      <div style={{ display: 'flex', gap: '20px', marginBottom: '16px' }}>
-        <Radio>E-mail</Radio>
-        <Radio>Whatsapp</Radio>
-      </div>
-      <Input id="radio" disabled>
-        Selecione uma opção
-      </Input>
+      <S.Container>
+        <Label id="radio">Como podemos entrar em contato?</Label>
+        <S.Radios>
+          <Radio>E-mail</Radio>
+          <Radio>Whatsapp</Radio>
+        </S.Radios>
+        <Input id="radio" disabled>
+          Selecione uma opção
+        </Input>
+      </S.Container>
 
-      <Label id="message">Sua mensagem</Label>
-      <Input textarea id="message">
-        Mensagem
-      </Input>
+      <S.Container>
+        <Label id="message">Sua mensagem</Label>
+        <Input textarea id="message">
+          Mensagem
+        </Input>
+      </S.Container>
 
       <Button size="large" disabled>
         Enviar mensagem

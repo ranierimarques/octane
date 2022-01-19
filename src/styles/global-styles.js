@@ -51,4 +51,8 @@ export default css.global`
   body::-webkit-scrollbar-thumb {
     background-color: #4d4d57;
   }
+
+  br {
+    user-select: none;
+  }
 `

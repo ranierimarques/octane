@@ -4,8 +4,6 @@ export const Div = styled.div`
   position: relative;
 
   width: 100%;
-
-  margin-bottom: 32px;
 `
 
 export const Label = styled.label`
@@ -14,7 +12,7 @@ export const Label = styled.label`
   left: 16px;
 
   font-weight: 400;
-  font-variation-settings: 'wght' 325;
+  font-variation-settings: 'wght' 375;
   font-size: 16px;
   line-height: 19px;
   color: #87879b;

@@ -10,6 +10,8 @@ export const Button = styled.button`
   padding: 16px 48px;
   border-radius: 8px;
 
+  margin-top: 8px;
+
   cursor: pointer;
 
   &.large {
