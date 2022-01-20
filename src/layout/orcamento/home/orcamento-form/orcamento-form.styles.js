@@ -1,6 +1,8 @@
 import { styled } from 'linaria/react'
 
 export const OrcamentoForm = styled.div`
+  position: relative;
+
   background: #1d1b1b;
   border: 1px solid #474343;
   border-radius: 20px;
@@ -36,4 +38,22 @@ export const Description = styled.p`
 
   max-width: 478px;
   margin-bottom: 48px;
+`
+
+export const ImageTop = styled.div`
+  position: absolute;
+  top: -204px;
+  right: -214px;
+
+  pointer-events: none;
+  user-select: none;
+`
+
+export const ImageBottom = styled.div`
+  position: absolute;
+  bottom: -136px;
+  left: -151px;
+
+  pointer-events: none;
+  user-select: none;
 `

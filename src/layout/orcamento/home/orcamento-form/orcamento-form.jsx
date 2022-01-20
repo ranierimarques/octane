@@ -1,4 +1,8 @@
+import Image from 'next/image'
+
 import { Button } from 'src/common'
+
+import { octaneGhostTop, octaneGhostBottom } from '../images'
 
 import * as S from './orcamento-form.styles'
 
@@ -13,6 +17,21 @@ function OrcamentoForm() {
         </S.Description>
         <Button noLink>Iniciar formulário de orçamento</Button>
       </S.Content>
+
+      <S.ImageTop>
+        <Image
+          src={octaneGhostTop}
+          alt="Ilustração Fantasma da Octane parte Superior"
+          priority
+        />
+      </S.ImageTop>
+      <S.ImageBottom>
+        <Image
+          src={octaneGhostBottom}
+          alt="Ilustração Fantasma da Octane parte Inferior"
+          priority
+        />
+      </S.ImageBottom>
     </S.OrcamentoForm>
   )
 }
