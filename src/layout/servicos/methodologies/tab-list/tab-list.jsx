@@ -10,15 +10,16 @@ const tabs = [
   { icon: <Cloud className={S.Svg} />, text: 'Finalização' },
 ]
 
-function Tablist() {
+function Tablist({ state: { tabActive, setTabActive } }) {
   return (
     <S.TabList role="tablist">
       {tabs.map(tab => (
         <S.Tab
           key={tab.text}
           role="tab"
-          aria-selected="false"
-          className={tab.text === 'Referências' ? 'active' : ''}
+          aria-selected={tab.text === tabActive}
+          className={tab.text === tabActive ? 'active' : ''}
+          onClick={() => setTabActive(tab.text)}
         >
           {tab.icon}
           {tab.text}

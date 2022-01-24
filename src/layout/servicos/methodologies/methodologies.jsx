@@ -1,4 +1,4 @@
-import { TabList, TabPanel } from '.'
+import { Navigation } from '.'
 
 import * as S from './methodologies.styles'
 
@@ -15,8 +15,7 @@ function Methodologies() {
         </S.Header>
 
         <S.Tabs>
-          <TabList />
-          <TabPanel />
+          <Navigation />
         </S.Tabs>
       </S.Wrapper>
     </S.Section>

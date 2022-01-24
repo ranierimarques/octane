@@ -29,7 +29,7 @@ export const Description = styled.p`
   line-height: 26px;
   color: #e1e1e6;
 
-  max-width: 295px;
+  max-width: 298px;
 `
 
 export const SvgWrapper = styled.div`
@@ -39,8 +39,30 @@ export const SvgWrapper = styled.div`
   margin-right: 73px;
 `
 
-export const Svg = css`
+export const Briefing = css`
+  position: absolute;
+  top: 31px;
+  right: -37px;
+`
+
+export const References = css`
   position: absolute;
   top: -17px;
   right: -45px;
+`
+
+export const UiUx = css`
+  position: absolute;
+  top: 34px;
+  right: -32px;
+`
+export const Programming = css`
+  position: absolute;
+  top: 25px;
+  right: -55px;
+`
+export const Completion = css`
+  position: absolute;
+  top: 18px;
+  right: -55px;
 `
