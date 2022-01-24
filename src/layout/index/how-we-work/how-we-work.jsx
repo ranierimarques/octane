@@ -1,4 +1,4 @@
-import { TabList, TabPanel } from '.'
+import { Navigation } from '.'
 
 import { OctaneGhost } from './svgs'
 
@@ -17,9 +17,7 @@ function HowWeWork() {
           </S.Title>
         </S.Header>
 
-        <TabList />
-
-        <TabPanel />
+        <Navigation />
       </S.Content>
 
       <S.Illustration type="image/svg+xml" data="/animated/towers.svg" />

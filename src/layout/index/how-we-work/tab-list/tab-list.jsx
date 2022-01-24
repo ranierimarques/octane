@@ -9,15 +9,16 @@ const tabs = [
   { icon: <CheckMark className={S.Svg} />, text: 'Entrega' },
 ]
 
-function Tablist() {
+function Tablist({ state: { tabActive, setTabActive } }) {
   return (
     <S.TabList role="tablist">
       {tabs.map(tab => (
         <S.Tab
           key={tab.text}
           role="tab"
-          aria-selected="false"
-          className={tab.text === 'Análise' ? 'active' : ''}
+          aria-selected={tab.text === tabActive}
+          className={tab.text === tabActive ? 'active' : ''}
+          onClick={() => setTabActive(tab.text)}
         >
           <S.Text>
             {tab.icon}
