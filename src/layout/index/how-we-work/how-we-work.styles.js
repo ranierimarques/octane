@@ -53,6 +53,5 @@ export const Illustration = styled.object`
   pointer-events: none;
   user-select: none;
 
-  will-change: opacity;
   z-index: -1;
 `

@@ -36,6 +36,8 @@ export const Text = styled.span`
   line-height: 180%;
   letter-spacing: 0.2px;
   color: #f93822;
+
+  transform: translateZ(0);
 `
 
 export const Title = styled.h1`
