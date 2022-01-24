@@ -30,8 +30,8 @@ export const Hat = styled.div`
 `
 
 export const Text = styled.span`
-  font-weight: 500;
-  font-variation-settings: 'wght' 425;
+  font-weight: 700;
+  font-variation-settings: 'wght' 650;
   font-size: 14px;
   line-height: 180%;
   letter-spacing: 0.2px;

@@ -10,8 +10,6 @@ export const TextButton = styled.button`
 
   cursor: pointer;
 
-  transform: translateZ(0);
-
   :hover {
     text-decoration: underline;
   }
