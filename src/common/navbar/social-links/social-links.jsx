@@ -11,9 +11,9 @@ function SocialLinks() {
     <S.SocialLinks>
       {social.map(social => (
         <li key={social.name}>
-          <a href={social.href} target="_blank" rel="noreferrer noopener">
+          <S.Link href={social.href} target="_blank" rel="noreferrer noopener">
             {social.name}
-          </a>
+          </S.Link>
         </li>
       ))}
     </S.SocialLinks>
