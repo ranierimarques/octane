@@ -4,12 +4,13 @@ import { CloseMenu as CloseMenuSvg } from 'public/svgs'
 
 export const TextButton = styled.button`
   font-weight: 500;
-  font-variation-settings: 'wght' 400;
   font-size: 14px;
   line-height: 22px;
   color: #fa5a47;
 
   cursor: pointer;
+
+  transform: translateZ(0);
 
   :hover {
     text-decoration: underline;
@@ -58,29 +59,33 @@ export const Modal = styled.div`
   border-radius: 12px;
 
   padding: 64px 64px 56px;
-`
 
-export const Header = styled.header`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-
-  margin-bottom: 32px;
 `
 
-export const Icon = styled.div`
-  background: linear-gradient(180deg, #fa5a47 0%, #f93822 100%);
-  border-radius: 4px;
+export const Number = styled.span`
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #fff;
 
-  padding: 8px;
+  background: -webkit-linear-gradient(left, rgba(250, 90, 71, 0.25) 0%, #fa5a47 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 16px;
 `
 
-export const Title = styled.h5`
+export const Subtitle = styled.h5`
   font-weight: 500;
   font-variation-settings: 'wght' 500;
   font-size: 24px;
   line-height: 34px;
   color: #ffffff;
+
+  margin-bottom: 24px;
 `
 
 export const Description = styled.p`
@@ -102,7 +107,6 @@ export const Button = styled.button`
   line-height: 19px;
   color: #e1e1e6;
 
-  margin: 0 auto;
   padding: 16px 48px;
   border-radius: 8px;
 

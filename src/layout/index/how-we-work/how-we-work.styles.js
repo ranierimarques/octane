@@ -14,8 +14,6 @@ export const Section = styled.section`
 
 export const Content = styled.div`
   margin: 80px 0 100px 0;
-
-  z-index: 5;
 `
 
 export const Header = styled.header`
@@ -54,4 +52,6 @@ export const Illustration = styled.object`
 
   pointer-events: none;
   user-select: none;
+
+  z-index: -1;
 `
