@@ -56,11 +56,13 @@ export const UiUx = css`
   top: 34px;
   right: -32px;
 `
+
 export const Programming = css`
   position: absolute;
   top: 25px;
   right: -55px;
 `
+
 export const Completion = css`
   position: absolute;
   top: 18px;
