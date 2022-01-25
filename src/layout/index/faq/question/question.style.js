@@ -6,10 +6,6 @@ export const Item = styled.div`
   &.open ${ArrowDown} {
     transform: rotate(-180deg);
   }
-
-  &.open ${Answer} {
-    display: block;
-  }
 `
 
 export const Button = styled.button`
@@ -52,11 +48,11 @@ export const Question = styled.strong`
   flex: 1;
 `
 
-export const ArrowDown = styled(ArrowDownSvg)``
+export const ArrowDown = styled(ArrowDownSvg)`
+  transition: transform 0.25s ease-in-out;
+`
 
 export const Answer = styled.p`
-  display: none;
-
   font-weight: 400;
   font-variation-settings: 'wght' 275;
   font-size: 16px;
@@ -71,4 +67,10 @@ export const Answer = styled.p`
   border-radius: 0px 0px 4px 4px;
 
   padding: 24px 82px 24px 87px;
+`
+
+export const Wrapper = styled.div`
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.25s ease-in-out;
 `

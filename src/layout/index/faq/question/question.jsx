@@ -4,9 +4,22 @@ import * as S from './question.style'
 
 function Question({ question }) {
   const itemRef = useRef(null)
+  const answerRef = useRef(null)
+  const wrapperRef = useRef(null)
 
   function showAnswer() {
-    itemRef.current.classList.toggle('open')
+    const item = itemRef.current
+    const wrapper = wrapperRef.current
+    const answer = answerRef.current
+
+    item.classList.toggle('open')
+    const answerIsOpen = item.classList.contains('open')
+
+    if (answerIsOpen) {
+      wrapper.style.maxHeight = `${answer.scrollHeight}px`
+      return
+    }
+    wrapper.style.maxHeight = '0px'
   }
 
   return (
@@ -18,7 +31,9 @@ function Question({ question }) {
         <S.ArrowDown />
       </S.Button>
 
-      <S.Answer>{question.answer}</S.Answer>
+      <S.Wrapper ref={wrapperRef}>
+        <S.Answer ref={answerRef}>{question.answer}</S.Answer>
+      </S.Wrapper>
     </S.Item>
   )
 }

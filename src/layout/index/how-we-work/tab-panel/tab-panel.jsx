@@ -12,6 +12,7 @@ const panelsList = {
       description: 'Verificamos todos os principais pontos do seu Briefing e Orçamento.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '100',
     },
     {
       number: '02',
@@ -19,6 +20,7 @@ const panelsList = {
       description: 'Organizamos informações relevantes sobre o seu campo de atuação.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '200',
     },
     {
       number: '03',
@@ -26,6 +28,7 @@ const panelsList = {
       description: 'Idealizamos toda a estrutura do projeto por meio do Design Thinking.',
       arrow: false,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '300',
     },
   ],
   Design: [
@@ -35,6 +38,7 @@ const panelsList = {
       description: 'Verificamos todos os principais pontos do seu Briefing e Orçamento.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '100',
     },
     {
       number: '05',
@@ -42,6 +46,7 @@ const panelsList = {
       description: 'Organizamos informações relevantes sobre o seu campo de atuação.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '200',
     },
     {
       number: '06',
@@ -49,6 +54,7 @@ const panelsList = {
       description: 'Idealizamos toda a estrutura do projeto por meio do Design Thinking.',
       arrow: false,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '300',
     },
   ],
   Coding: [
@@ -58,6 +64,7 @@ const panelsList = {
       description: 'Verificamos todos os principais pontos do seu Briefing e Orçamento.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '100',
     },
     {
       number: '08',
@@ -65,6 +72,7 @@ const panelsList = {
       description: 'Organizamos informações relevantes sobre o seu campo de atuação.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '200',
     },
     {
       number: '09',
@@ -72,6 +80,7 @@ const panelsList = {
       description: 'Idealizamos toda a estrutura do projeto por meio do Design Thinking.',
       arrow: false,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '300',
     },
   ],
   Entrega: [
@@ -81,6 +90,7 @@ const panelsList = {
       description: 'Verificamos todos os principais pontos do seu Briefing e Orçamento.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '100',
     },
     {
       number: '11',
@@ -88,6 +98,7 @@ const panelsList = {
       description: 'Organizamos informações relevantes sobre o seu campo de atuação.',
       arrow: true,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '200',
     },
     {
       number: '12',
@@ -95,6 +106,7 @@ const panelsList = {
       description: 'Idealizamos toda a estrutura do projeto por meio do Design Thinking.',
       arrow: false,
       showMore: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in quam sem arcu sem. Sodales massa at vivamus orci, vitae proin. Aliquam eget consequat eget interdum donec a. Dolor in mattis facilisi fermentum. Elit dictumst interdum tincidunt molestie ornare adipiscing neque. Nisl, sapien diam purus scelerisque. `,
+      delay: '300',
     },
   ],
 }
@@ -105,7 +117,7 @@ function TabPanel({ tabActive }) {
   return (
     <S.TabPanel role="tabpanel" data-aos="fade-right">
       {panels.map(panel => (
-        <S.Panel key={panel.number}>
+        <S.Panel key={panel.number} data-aos="fade-right" data-aos-delay={panel.delay}>
           <S.Localization>
             <S.Number>{panel.number}</S.Number>
             {panel.arrow ? <StretchedArrow /> : null}

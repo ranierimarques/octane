@@ -9,6 +9,8 @@ export const TabPanel = styled.ul`
   padding: 11px;
 
   display: flex;
+
+  overflow: hidden;
 `
 
 export const Panel = styled.li`

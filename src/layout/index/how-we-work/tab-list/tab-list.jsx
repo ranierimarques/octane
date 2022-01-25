@@ -3,10 +3,10 @@ import { Analytics, CheckMark, CodeSlash, PenTool } from '../svgs'
 import * as S from './tab-list.styles'
 
 const tabs = [
-  { icon: <Analytics className={S.Svg} />, text: 'Análise', delay: '100' },
-  { icon: <PenTool className={S.Svg} />, text: 'Design', delay: '200' },
-  { icon: <CodeSlash className={S.Svg} />, text: 'Coding', delay: '300' },
-  { icon: <CheckMark className={S.Svg} />, text: 'Entrega', delay: '400' },
+  { icon: <Analytics className={S.Svg} />, text: 'Análise', delay: '0' },
+  { icon: <PenTool className={S.Svg} />, text: 'Design', delay: '100' },
+  { icon: <CodeSlash className={S.Svg} />, text: 'Coding', delay: '200' },
+  { icon: <CheckMark className={S.Svg} />, text: 'Entrega', delay: '300' },
 ]
 
 function Tablist({ state: { tabActive, setTabActive } }) {
