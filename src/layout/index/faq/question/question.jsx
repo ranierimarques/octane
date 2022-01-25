@@ -10,7 +10,7 @@ function Question({ question }) {
   }
 
   return (
-    <S.Item key={question.number} ref={itemRef}>
+    <S.Item key={question.number} ref={itemRef} data-aos="fade-up">
       <S.Button className={question.number === '1' ? 'first' : ''} onClick={showAnswer}>
         <S.Number>{question.number}</S.Number>
         <S.Question>{question.question}</S.Question>

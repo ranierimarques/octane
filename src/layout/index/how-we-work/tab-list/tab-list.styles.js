@@ -10,33 +10,25 @@ export const TabList = styled.div`
 
 export const Tab = styled.button`
   padding: 4px 8px 6px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid ${props => (props.isActive ? '#fa5a47' : 'transparent')};
 
   cursor: pointer;
 
   :hover ${Text} {
-    color: #fff;
+    color: ${props => (props.isActive ? '#e1e1e6' : '#fff')};
   }
 
   :hover ${Svg} {
-    fill: #fff;
+    fill: ${props => (props.isActive ? '#fa5a47' : '#fff')};
   }
 
-  &.active {
-    border-bottom: 2px solid #fa5a47;
+  ${Text} {
+    font-weight: ${props => (props.isActive ? '600' : '400')};
+    color: ${props => (props.isActive ? '#fff' : '#b4b4c0')};
+  }
 
-    ${Text} {
-      font-weight: 600;
-      color: #fff;
-
-      :hover {
-        color: #e1e1e6;
-      }
-    }
-
-    ${Svg} {
-      fill: #fa5a47;
-    }
+  ${Svg} {
+    fill: ${props => (props.isActive ? '#fa5a47' : '#b4b4c0')};
   }
 `
 
@@ -45,16 +37,12 @@ export const Text = styled.span`
   align-items: center;
   gap: 8px;
 
-  font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-  color: #b4b4c0;
 
   transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 `
 
 export const Svg = css`
-  fill: #b4b4c0;
-
   transition: fill 150ms cubic-bezier(0.4, 0, 0.2, 1);
 `

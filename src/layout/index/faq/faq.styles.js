@@ -88,8 +88,8 @@ export const Strong = styled.strong`
 `
 
 export const TextButton = styled.button`
-  font-weight: 400;
-  font-variation-settings: 'wght' 325;
+  font-weight: 500;
+  font-variation-settings: 'wght' 450;
   font-size: 16px;
   line-height: 22px;
   color: #fa5a47;

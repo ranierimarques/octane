@@ -8,7 +8,7 @@ function HowWeWork() {
   return (
     <S.Section>
       <S.Content>
-        <S.Header>
+        <S.Header data-aos="fade-right">
           <S.Icon>
             <OctaneGhost />
           </S.Icon>
@@ -20,7 +20,11 @@ function HowWeWork() {
         <Navigation />
       </S.Content>
 
-      <S.Illustration type="image/svg+xml" data="/animated/towers.svg" />
+      <S.Illustration
+        type="image/svg+xml"
+        data="/animated/towers.svg"
+        data-aos="fade-in"
+      />
     </S.Section>
   )
 }

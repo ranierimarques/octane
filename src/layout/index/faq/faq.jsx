@@ -35,11 +35,11 @@ function Faq() {
     <S.Section>
       <S.Wrapper>
         <S.Header>
-          <S.Title>
+          <S.Title data-aos="fade-right">
             Perguntas mais <br /> frequentes <S.Shape2d />
           </S.Title>
 
-          <S.Texts>
+          <S.Texts data-aos="fade-left">
             <S.Strong>Restou alguma dúvida?</S.Strong>
             Entre em contato com nosso time
             <S.TextButton>Entrar em contato</S.TextButton>

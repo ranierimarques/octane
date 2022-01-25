@@ -10,8 +10,8 @@ function WhyChooseOctane() {
       <S.Wrapper>
         <S.Content>
           <S.Header>
-            <S.Title>Porque escolher a Octane?</S.Title>
-            <S.Description>
+            <S.Title data-aos="fade-up">Porque escolher a Octane?</S.Title>
+            <S.Description data-aos="fade-left" data-aos-delay="100">
               Desenvolvemos projetos, com base em estratégias focadas em evoluir o seu
               negócio, criando valor significativo por meio do design e da programação.
             </S.Description>

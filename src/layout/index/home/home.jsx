@@ -10,7 +10,7 @@ import * as S from './home.styles'
 function Home() {
   return (
     <S.Section>
-      <S.Main>
+      <S.Main data-aos="fade-right">
         <S.Hat>
           <OctaneGhost />
           <S.Text>Boas vindas à Octane</S.Text>
@@ -27,7 +27,7 @@ function Home() {
         </S.Buttons>
       </S.Main>
 
-      <S.Image1>
+      <S.Image1 data-aos="fade-left">
         <Image src={illustration} alt="Ilustração Inicio Octane" priority unoptimized />
       </S.Image1>
     </S.Section>

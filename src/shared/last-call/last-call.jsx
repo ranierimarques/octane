@@ -7,13 +7,15 @@ function LastCall() {
     <S.Section>
       <S.Header>
         <S.OctaneGhost />
-        <S.Title>Pronto para começar?</S.Title>
-        <S.Description>
+        <S.Title data-aos="fade-up">Pronto para começar?</S.Title>
+        <S.Description data-aos="fade-up">
           Preencha nosso formulário e comece um projeto agora mesmo.
         </S.Description>
       </S.Header>
 
-      <Button>Solicitar Orçamento</Button>
+      <Button data-aos="fade-in" data-aos-delay="100">
+        Solicitar Orçamento
+      </Button>
     </S.Section>
   )
 }

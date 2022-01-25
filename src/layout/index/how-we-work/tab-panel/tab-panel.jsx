@@ -103,7 +103,7 @@ function TabPanel({ tabActive }) {
   const panels = panelsList[tabActive]
 
   return (
-    <S.TabPanel role="tabpanel">
+    <S.TabPanel role="tabpanel" data-aos="fade-right">
       {panels.map(panel => (
         <S.Panel key={panel.number}>
           <S.Localization>
