@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ClientOnlyPortal } from 'src/common'
 
 import * as S from './modal.styles'
 
@@ -19,22 +20,21 @@ function Modal({ infos: { icon, title, showMore } }) {
     <>
       <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
 
-      <S.Wrapper isOpen={modalOpen}>
-        <S.Overlay onClick={handleCloseModal} />
+      <ClientOnlyPortal selector="modal">
+        <S.Wrapper isOpen={modalOpen}>
+          <S.Overlay onClick={handleCloseModal} />
 
-        <S.Modal>
-          <S.Header>
-            <S.Icon>{icon}</S.Icon>
-            <S.Title>{title}</S.Title>
-          </S.Header>
-
-          <S.Description>{showMore}</S.Description>
-
-          <S.Button onClick={handleCloseModal}>Ok</S.Button>
-
-          <S.CloseMenu onClick={handleCloseModal} />
-        </S.Modal>
-      </S.Wrapper>
+          <S.Modal>
+            <S.Header>
+              <S.Icon>{icon}</S.Icon>
+              <S.Title>{title}</S.Title>
+            </S.Header>
+            <S.Description>{showMore}</S.Description>
+            <S.Button onClick={handleCloseModal}>Ok</S.Button>
+            <S.CloseMenu onClick={handleCloseModal} />
+          </S.Modal>
+        </S.Wrapper>
+      </ClientOnlyPortal>
     </>
   )
 }
