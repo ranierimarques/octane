@@ -16,27 +16,12 @@ export const TextButton = styled.button`
   }
 `
 
-export const Wrapper = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
 
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  z-index: 15;
-
-  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-`
-
-export const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  z-index: 10;
 
   width: 100%;
   height: 100%;
@@ -44,12 +29,26 @@ export const Overlay = styled.div`
   cursor: pointer;
 
   background: rgba(0, 0, 0, 0.8);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.2s ease-in 0.2s;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+
+    transition: all 0.3s ease;
+  }
 `
 
 export const Modal = styled.div`
-  z-index: 1;
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
 
-  position: relative;
+  z-index: 10;
 
   width: 635px;
 
@@ -58,6 +57,21 @@ export const Modal = styled.div`
   border-radius: 12px;
 
   padding: 64px 64px 56px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) translateY(20px);
+
+  transition: transform 0.2s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateY(0px);
+
+    transition: transform 0.3s ease-out 0.2s, opacity 0.3s ease-out 0.2s,
+      visibility 0.3s ease-out 0.2s;
+  }
 `
 
 export const Header = styled.header`

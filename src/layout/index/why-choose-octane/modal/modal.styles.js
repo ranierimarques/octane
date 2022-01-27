@@ -21,12 +21,12 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
 
+  z-index: 10;
+
   width: 100%;
   height: 100%;
 
   cursor: pointer;
-
-  z-index: 10;
 
   background: rgba(0, 0, 0, 0.8);
 
@@ -47,9 +47,8 @@ export const Modal = styled.div`
   position: fixed;
   left: 50vw;
   top: 50vh;
-  transform: translate(-50%, -50%) translateY(20px);
 
-  z-index: 15;
+  z-index: 10;
 
   width: 635px;
 
@@ -61,6 +60,7 @@ export const Modal = styled.div`
 
   opacity: 0;
   visibility: hidden;
+  transform: translate(-50%, -50%) translateY(20px);
 
   transition: transform 0.2s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in;
 
