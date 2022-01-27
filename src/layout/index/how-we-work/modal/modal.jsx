@@ -1,5 +1,3 @@
-import { AnimatePresence } from 'framer-motion'
-
 import { ClientOnlyPortal } from 'src/common'
 import { useModal } from 'src/resources/hooks'
 
@@ -13,30 +11,17 @@ function Modal({ infos: { number, subtitle, showMore } }) {
       <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
 
       <ClientOnlyPortal selector="modal">
-        <AnimatePresence>
-          {modalOpen && (
-            <S.Wrapper>
-              <S.Overlay
-                onClick={handleCloseModal}
-                initial={{ opacity: 0.5 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0.5 }}
-              />
+        <S.Wrapper isOpen={modalOpen}>
+          <S.Overlay onClick={handleCloseModal} />
 
-              <S.Modal
-                initial={{ scale: 0.5 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.8 }}
-              >
-                <S.Number>{number}</S.Number>
-                <S.Subtitle>{subtitle}</S.Subtitle>
-                <S.Description>{showMore}</S.Description>
-                <S.Button onClick={handleCloseModal}>Ok</S.Button>
-                <S.CloseMenu onClick={handleCloseModal} />
-              </S.Modal>
-            </S.Wrapper>
-          )}
-        </AnimatePresence>
+          <S.Modal>
+            <S.Number>{number}</S.Number>
+            <S.Subtitle>{subtitle}</S.Subtitle>
+            <S.Description>{showMore}</S.Description>
+            <S.Button onClick={handleCloseModal}>Ok</S.Button>
+            <S.CloseMenu onClick={handleCloseModal} />
+          </S.Modal>
+        </S.Wrapper>
       </ClientOnlyPortal>
     </>
   )

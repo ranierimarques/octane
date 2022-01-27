@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react'
-import { motion } from 'framer-motion'
 
 import { CloseMenu as CloseMenuSvg } from 'public/svgs'
 
@@ -17,23 +16,8 @@ export const TextButton = styled.button`
   }
 `
 
-export const Wrapper = styled.div`
+export const Overlay = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  z-index: 15;
-`
-
-export const Overlay = styled(motion.div)`
-  position: absolute;
   top: 0;
   left: 0;
 
@@ -42,13 +26,30 @@ export const Overlay = styled(motion.div)`
 
   cursor: pointer;
 
+  z-index: 10;
+
   background: rgba(0, 0, 0, 0.8);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.2s ease-in 0.2s;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+
+    transition: all 0.3s ease;
+  }
 `
 
-export const Modal = styled(motion.div)`
-  z-index: 1;
+export const Modal = styled.div`
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%) translateY(20px);
 
-  position: relative;
+  z-index: 15;
 
   width: 635px;
 
@@ -57,6 +58,20 @@ export const Modal = styled(motion.div)`
   border-radius: 12px;
 
   padding: 64px 64px 56px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: transform 0.2s ease-in, opacity 0.2s ease-in, visibility 0.2s ease-in;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) translateY(0px);
+
+    transition: transform 0.3s ease-out 0.2s, opacity 0.3s ease-out 0.2s,
+      visibility 0.3s ease-out 0.2s;
+  }
 `
 
 export const Header = styled.header`

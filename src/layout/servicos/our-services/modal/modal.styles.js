@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react'
-import { motion } from 'framer-motion'
 
 import { CloseMenu as CloseMenuSvg } from 'public/svgs'
 
@@ -34,7 +33,7 @@ export const Wrapper = styled.div`
   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
 `
 
-export const Overlay = styled(motion.div)`
+export const Overlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -47,7 +46,7 @@ export const Overlay = styled(motion.div)`
   background: rgba(0, 0, 0, 0.8);
 `
 
-export const Modal = styled(motion.div)`
+export const Modal = styled.div`
   z-index: 1;
 
   position: relative;
