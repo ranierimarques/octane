@@ -18,6 +18,8 @@ export const Left = styled.div`
   border-width: 1px 0px 1px 1px;
 
   width: 509px; /* Remover depois */
+
+  overflow: hidden;
 `
 
 export const Header = styled.header`

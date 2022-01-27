@@ -49,7 +49,7 @@ export const Question = styled.strong`
 `
 
 export const ArrowDown = styled(ArrowDownSvg)`
-  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-out;
 `
 
 export const Answer = styled.p`
@@ -72,5 +72,5 @@ export const Answer = styled.p`
 export const Wrapper = styled.div`
   max-height: 0px;
   overflow: hidden;
-  transition: max-height 0.25s ease-in-out;
+  transition: max-height 0.25s ease-out;
 `

@@ -7,8 +7,8 @@ function OurServices() {
     <S.Section>
       <S.Content>
         <S.Header>
-          <S.Title>Conheça nossos serviços</S.Title>
-          <S.Description>
+          <S.Title data-aos="fade-up">Conheça nossos serviços</S.Title>
+          <S.Description data-aos="fade-left" data-aos-delay="100">
             Cada projeto tem o seu diferencial, por esse motivo precisamos estudar as
             necessidades do seu negócio para aplicar a melhor solução!
           </S.Description>

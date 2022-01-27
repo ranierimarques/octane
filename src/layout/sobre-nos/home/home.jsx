@@ -6,7 +6,7 @@ function Home() {
   return (
     <S.Section>
       <S.Wrapper>
-        <S.Main>
+        <S.Main data-aos="fade-right">
           <S.Hat>SOBRE NÓS</S.Hat>
           <S.Title>
             Somos uma equipe apaixonada por desenvolver projetos de alto nível
@@ -21,7 +21,11 @@ function Home() {
           </Button>
         </S.Main>
 
-        <S.Illustration type="image/svg+xml" data="/animated/persons.svg" />
+        <S.Illustration
+          type="image/svg+xml"
+          data="/animated/persons.svg"
+          data-aos="fade-left"
+        />
       </S.Wrapper>
 
       <S.Wire />

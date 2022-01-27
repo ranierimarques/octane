@@ -6,9 +6,11 @@ function WhatIsOctane() {
   return (
     <S.Section>
       <S.Wrapper>
-        <Illustration />
+        <div data-aos="fade-right">
+          <Illustration />
+        </div>
 
-        <div>
+        <div data-aos="fade-left">
           <S.Hat>SOBRE NÓS</S.Hat>
           <S.Title>Mas afinal, o que é Octane?</S.Title>
           <S.Description>

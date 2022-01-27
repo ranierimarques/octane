@@ -5,12 +5,12 @@ import * as S from './form-control.styles'
 function FormControl() {
   return (
     <>
-      <S.Container>
+      <S.Container data-aos="fade-up" data-aos-offset="-200" data-aos-delay="100">
         <Label id="nome">Qual seu nome?</Label>
         <Input id="nome">Nome</Input>
       </S.Container>
 
-      <S.Container>
+      <S.Container data-aos="fade-up" data-aos-offset="-200" data-aos-delay="200">
         <Label id="radio">Como podemos entrar em contato?</Label>
         <S.Radios>
           <Radio>E-mail</Radio>
@@ -21,16 +21,18 @@ function FormControl() {
         </Input>
       </S.Container>
 
-      <S.Container>
+      <S.Container data-aos="fade-up" data-aos-offset="-200" data-aos-delay="300">
         <Label id="message">Sua mensagem</Label>
         <Input textarea id="message">
           Mensagem
         </Input>
       </S.Container>
 
-      <Button size="large" disabled>
-        Enviar mensagem
-      </Button>
+      <div data-aos="fade-up" data-aos-offset="-200" data-aos-delay="400">
+        <Button size="large" disabled>
+          Enviar mensagem
+        </Button>
+      </div>
     </>
   )
 }

@@ -5,7 +5,7 @@ import * as S from './home.styles'
 function Home() {
   return (
     <S.Section>
-      <S.Header>
+      <S.Header data-aos="fade-up">
         <S.Hat>ORÇAMENTO</S.Hat>
         <S.Title>Estamos esperando por você!</S.Title>
         <S.Description>

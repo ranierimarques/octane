@@ -8,24 +8,28 @@ import * as S from './orcamento-form.styles'
 
 function OrcamentoForm() {
   return (
-    <S.OrcamentoForm>
+    <S.OrcamentoForm data-aos="zoom-in">
       <S.Content>
-        <S.Subtitle>Formulário de Orçamento</S.Subtitle>
-        <S.Description>
+        <S.Subtitle data-aos="fade-down" data-aos-offset="-200" data-aos-delay="250">
+          Formulário de Orçamento
+        </S.Subtitle>
+        <S.Description data-aos="fade-left" data-aos-offset="-200" data-aos-delay="350">
           Esse formulário foi feito especialmente para você entrar em contato conosco,
           perguntas diretas e sem enrolação.
         </S.Description>
-        <Button noLink>Iniciar formulário de orçamento</Button>
+        <div data-aos="fade-up" data-aos-offset="-200" data-aos-delay="450">
+          <Button noLink>Iniciar formulário de orçamento</Button>
+        </div>
       </S.Content>
 
-      <S.ImageTop>
+      <S.ImageTop data-aos="fade-down-left" data-aos-offset="-200" data-aos-delay="250">
         <Image
           src={octaneGhostTop}
           alt="Ilustração Fantasma da Octane parte Superior"
           priority
         />
       </S.ImageTop>
-      <S.ImageBottom>
+      <S.ImageBottom data-aos="fade-up-right" data-aos-offset="-200" data-aos-delay="250">
         <Image
           src={octaneGhostBottom}
           alt="Ilustração Fantasma da Octane parte Inferior"

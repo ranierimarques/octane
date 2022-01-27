@@ -4,9 +4,14 @@ function WebsiteImportance() {
   return (
     <S.Section>
       <S.Wrapper>
-        <S.Illustration type="image/svg+xml" data="/animated/cursors.svg" />
+        <S.Illustration
+          type="image/svg+xml"
+          data="/animated/cursors.svg"
+          data-aos="fade-right"
+          data-aos-offset="350"
+        />
 
-        <div>
+        <div data-aos="fade-left">
           <S.Hat>EXCELÊNCIA</S.Hat>
           <S.Title>Porque um site é importante para minha empresa?</S.Title>
           <S.Description>

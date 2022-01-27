@@ -4,9 +4,9 @@ import * as S from './contact-form.styles'
 
 function ContactForm() {
   return (
-    <S.ContactForm>
+    <S.ContactForm data-aos="zoom-in">
       <S.Left>
-        <S.Header>
+        <S.Header data-aos="fade-right" data-aos-delay="100">
           <S.Subtitle>Formulário de contato</S.Subtitle>
           <S.Description>
             Preencha o formulário e nossa equipe entrará em contato com você em até 24

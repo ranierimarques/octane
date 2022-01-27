@@ -3,11 +3,11 @@ import { Clipboard, Template, QrCode, Code, Cloud } from '../svgs'
 import * as S from './tab-list.styles'
 
 const tabs = [
-  { icon: <Clipboard className={S.Svg} />, text: 'Briefing' },
-  { icon: <Template className={S.Svg} />, text: 'Referências' },
-  { icon: <QrCode className={S.Svg} />, text: 'Ux/Ui' },
-  { icon: <Code className={S.Svg} />, text: 'Programação' },
-  { icon: <Cloud className={S.Svg} />, text: 'Finalização' },
+  { icon: <Clipboard className={S.Svg} />, text: 'Briefing', delay: '0' },
+  { icon: <Template className={S.Svg} />, text: 'Referências', delay: '100' },
+  { icon: <QrCode className={S.Svg} />, text: 'Ux/Ui', delay: '200' },
+  { icon: <Code className={S.Svg} />, text: 'Programação', delay: '300' },
+  { icon: <Cloud className={S.Svg} />, text: 'Finalização', delay: '400' },
 ]
 
 function Tablist({ state: { tabActive, setTabActive } }) {
@@ -18,11 +18,15 @@ function Tablist({ state: { tabActive, setTabActive } }) {
           key={tab.text}
           role="tab"
           aria-selected={tab.text === tabActive}
-          className={tab.text === tabActive ? 'active' : ''}
+          isActive={tab.text === tabActive}
           onClick={() => setTabActive(tab.text)}
+          data-aos="fade-right"
+          data-aos-delay={tab.delay}
         >
-          {tab.icon}
-          {tab.text}
+          <S.Text>
+            {tab.icon}
+            {tab.text}
+          </S.Text>
         </S.Tab>
       ))}
     </S.TabList>

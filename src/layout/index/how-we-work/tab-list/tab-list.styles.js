@@ -29,6 +29,7 @@ export const Tab = styled.button`
 
   ${Svg} {
     fill: ${props => (props.isActive ? '#fa5a47' : '#b4b4c0')};
+    transition-duration: ${props => (props.isActive ? '0ms' : '150ms')};
   }
 `
 
