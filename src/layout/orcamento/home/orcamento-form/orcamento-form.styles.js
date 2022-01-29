@@ -7,9 +7,11 @@ export const OrcamentoForm = styled.div`
   border: 1px solid #474343;
   border-radius: 20px;
 
-  margin-bottom: 120px;
+  margin: 0 auto 120px auto;
 
   padding: 80px 160px;
+
+  width: fit-content;
 `
 
 export const Content = styled.div`

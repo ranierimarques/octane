@@ -1,10 +1,6 @@
 import { styled } from 'linaria/react'
 
 export const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   max-width: 1168px;
 
   padding: 0 24px;

@@ -1,5 +1,11 @@
 import { styled } from 'linaria/react'
 
+export const Container = styled.div`
+  margin: 0 auto;
+
+  width: fit-content;
+`
+
 export const Wrapper = styled.div`
   display: flex;
   gap: 16px;
