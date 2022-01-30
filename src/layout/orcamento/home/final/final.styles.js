@@ -21,8 +21,6 @@ export const Final = styled.div`
   overflow: hidden;
 `
 
-export const Main = styled.div``
-
 export const Hat = styled.div`
   display: inline-flex;
   align-items: center;

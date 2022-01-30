@@ -1,22 +1,16 @@
 import { styled } from 'linaria/react'
 
-export const Container = styled.div`
+export const Background = styled.div`
   margin: 0 auto;
 
   width: fit-content;
 `
 
-export const Wrapper = styled.div`
+export const FormBackground = styled.div``
+
+export const Buttons = styled.div`
   display: flex;
   gap: 16px;
-`
-
-export const Title = styled.div`
-  font-weight: 800;
-  font-variation-settings: 'wght' 850;
-  font-size: 40px;
-  line-height: 48px;
-  color: #ffffff;
 `
 
 export const NextButton = styled.button`

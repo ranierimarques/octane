@@ -4,17 +4,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="pt-BR">
-        <Head>
-          <link
-            rel="preload"
-            href="/fonts/inter-var-latin.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link rel="icon" href="/favicon.ico" sizes="32x32" />
-          <meta charSet="UTF-8" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <div id="modal" />

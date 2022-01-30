@@ -5,7 +5,7 @@ import * as S from './final.styles'
 function Final({ nextStep, prevStep }) {
   return (
     <S.Final>
-      <S.Main>
+      <div>
         <S.Hat>
           <HeartIcon />
           <S.Text>Você chegou ao fim</S.Text>
@@ -15,7 +15,7 @@ function Final({ nextStep, prevStep }) {
           Fique atento, nossa equipe entrará em contato nas próximas 24 horas.
         </S.Description>
         <S.NextButton onClick={nextStep}>Concluir</S.NextButton>
-      </S.Main>
+      </div>
 
       <S.Wire />
       <S.Illustration type="image/svg+xml" data="/animated/boxs.svg" />
