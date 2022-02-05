@@ -2,7 +2,7 @@ import { HeartIcon } from '../svgs'
 
 import * as S from './final.styles'
 
-function Final({ nextStep, prevStep }) {
+function Final({ backToStart }) {
   return (
     <S.Final>
       <div>
@@ -14,7 +14,7 @@ function Final({ nextStep, prevStep }) {
         <S.Description>
           Fique atento, nossa equipe entrará em contato nas próximas 24 horas.
         </S.Description>
-        <S.NextButton onClick={nextStep}>Concluir</S.NextButton>
+        <S.NextButton onClick={backToStart}>Concluir</S.NextButton>
       </div>
 
       <S.Wire />

@@ -59,3 +59,54 @@ export const ImageBottom = styled.div`
   pointer-events: none;
   user-select: none;
 `
+
+// Steps
+
+export const Background = styled.div`
+  margin: 0 auto;
+
+  width: fit-content;
+
+  background: #1d1b1b;
+  border: 1px solid #322f2f;
+  border-radius: 20px;
+`
+
+export const FormBackground = styled.div`
+  background: #29292e;
+  border: 1px solid #322f2f;
+  border-width: 1px 0px 1px;
+
+  padding: 32px 80px;
+`
+
+export const Buttons = styled.div`
+  display: flex;
+  gap: 16px;
+
+  margin: 32px 80px 40px 0;
+`
+
+export const NextButton = styled.button`
+  font-weight: 800;
+  font-variation-settings: 'wght' 850;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
+
+  padding: 16px 24px;
+
+  background: red;
+`
+
+export const PrevButton = styled.button`
+  font-weight: 800;
+  font-variation-settings: 'wght' 850;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
+
+  padding: 16px 24px;
+
+  background: blue;
+`
