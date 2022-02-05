@@ -1,7 +1,7 @@
 import * as S from './step-one.styles'
 
 function StepOne() {
-  return <div></div>
+  return <div>One</div>
 }
 
 export default StepOne
