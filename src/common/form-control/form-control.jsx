@@ -3,7 +3,9 @@ import { Input, Label, Button, Radio } from '.'
 import * as S from './form-control.styles'
 
 function FormControl({ config, children, ...props }) {
-  if (config.element === 'input') {
+  const element = config?.element || ''
+
+  if (element === 'input') {
     return (
       <S.Container>
         <Label config={config} />
@@ -12,11 +14,22 @@ function FormControl({ config, children, ...props }) {
     )
   }
 
-  // if (element === 'radio') {
-  //   return null
-  // }
+  if (element === 'radio') {
+    return (
+      <S.Container>
+        <Label config={config} />
 
-  if (config.element === 'double-input') {
+        <S.Radios>
+          {config.options.map(option => (
+            <Radio key={option} option={option} />
+          ))}
+        </S.Radios>
+        <Input config={config} />
+      </S.Container>
+    )
+  }
+
+  if (element === 'double-input') {
     return (
       <S.Container>
         <Label config={config} />
@@ -29,42 +42,11 @@ function FormControl({ config, children, ...props }) {
     )
   }
 
-  if (config.element === 'button') {
+  if (element === 'button') {
     return <Button config={config} {...props} />
   }
 
-  return (
-    <>
-      <S.Container data-aos="fade-up" data-aos-offset="-200" data-aos-delay="100">
-        <Label id="nome">Qual seu nome?</Label>
-        <Input id="nome">Nome</Input>
-      </S.Container>
-
-      <S.Container data-aos="fade-up" data-aos-offset="-200" data-aos-delay="200">
-        <Label id="radio">Como podemos entrar em contato?</Label>
-        <S.Radios>
-          <Radio>E-mail</Radio>
-          <Radio>Whatsapp</Radio>
-        </S.Radios>
-        <Input id="radio" disabled>
-          Selecione uma opção
-        </Input>
-      </S.Container>
-
-      <S.Container data-aos="fade-up" data-aos-offset="-200" data-aos-delay="300">
-        <Label id="mensagem">Sua mensagem</Label>
-        <Input textarea id="mensagem">
-          Mensagem
-        </Input>
-      </S.Container>
-
-      <div data-aos="fade-up" data-aos-offset="-200" data-aos-delay="400">
-        <Button size="large" disabled>
-          Enviar mensagem
-        </Button>
-      </div>
-    </>
-  )
+  return <S.Warning>Você precisa especificar um elemento para ser retornado!</S.Warning>
 }
 
 export default FormControl

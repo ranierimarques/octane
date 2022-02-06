@@ -3,16 +3,16 @@ import * as S from './input.styles.js'
 function Input({ config, secondInput }) {
   const hasSecondInput = secondInput
 
-  // if (textarea) {
-  //   return (
-  //     <S.Div>
-  //       <S.Textarea as="textarea" id={id} type="text" placeholder=" " />
-  //       <S.Label>{children}</S.Label>
-  //       <S.BottomLine />
-  //       <S.TopOverflow />
-  //     </S.Div>
-  //   )
-  // }
+  if (config.variant === 'textarea') {
+    return (
+      <S.Div>
+        <S.Textarea as="textarea" id={config.id} type="text" placeholder=" " />
+        <S.Label>{config.title}</S.Label>
+        <S.BottomLine />
+        <S.TopOverflow />
+      </S.Div>
+    )
+  }
 
   return (
     <S.Div>

@@ -1,13 +1,13 @@
 import * as S from './radio.styles'
 
-function Radio({ children }) {
+function Radio({ option }) {
   return (
     <S.Label>
       <S.Wrapper>
         <S.Input type="radio" name="radio" />
-        <S.Tooltip>{children}</S.Tooltip>
+        <S.Tooltip>{option}</S.Tooltip>
       </S.Wrapper>
-      {children}
+      {option}
     </S.Label>
   )
 }

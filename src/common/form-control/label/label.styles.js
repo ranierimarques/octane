@@ -4,7 +4,7 @@ export const Title = styled.label`
   display: inline-block;
 
   font-weight: 600;
-  font-variation-settings: 'wght' 425;
+  font-variation-settings: 'wght' 475;
   font-size: 16px;
   line-height: 22px;
   color: #e1e1e6;
