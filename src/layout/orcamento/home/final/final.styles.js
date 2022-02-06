@@ -68,19 +68,7 @@ export const Description = styled.p`
 
   max-width: 321px;
 
-  margin-bottom: 48px;
-`
-
-export const NextButton = styled.button`
-  font-weight: 800;
-  font-variation-settings: 'wght' 850;
-  font-size: 16px;
-  line-height: 19px;
-  color: #e1e1e6;
-
-  padding: 16px 48px;
-
-  background: red;
+  margin-bottom: 40px;
 `
 
 export const Illustration = styled.object`

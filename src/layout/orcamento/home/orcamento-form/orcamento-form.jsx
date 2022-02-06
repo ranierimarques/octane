@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 import { Navigation, StepOne, StepTwo, StepThree, Final } from '..'
-import { Button } from 'src/common'
+import { Button, FormControl } from 'src/common'
 
 import { octaneGhostTop, octaneGhostBottom } from '../images'
 
@@ -11,18 +11,18 @@ import * as S from './orcamento-form.styles'
 function OrcamentoForm() {
   const [step, setStep] = useState(0)
 
-  const isOnSteps = step >= 1
-  const isOnLastStep = step === 4
-
   const prevStep = () => setStep(oldStep => oldStep - 1)
   const nextStep = () => setStep(oldStep => oldStep + 1)
   const backToStart = () => setStep(0)
 
-  const stepsComponent = {
+  const formSection = {
     1: <StepOne />,
     2: <StepTwo />,
     3: <StepThree />,
   }
+
+  const isOnSteps = step >= 1
+  const isOnLastStep = step === 4
 
   if (isOnLastStep) {
     return <Final backToStart={backToStart} />
@@ -33,11 +33,15 @@ function OrcamentoForm() {
       <S.Background>
         <Navigation step={step} setStep={setStep} />
 
-        <S.FormBackground>{stepsComponent[step]}</S.FormBackground>
+        <S.FormBackground>{formSection[step]}</S.FormBackground>
 
         <S.Buttons>
-          <S.PrevButton onClick={prevStep}>Voltar</S.PrevButton>
-          <S.NextButton onClick={nextStep}>Próximo</S.NextButton>
+          <FormControl element="button" onClick={prevStep} config={{ variant: 'text' }}>
+            Voltar
+          </FormControl>
+          <FormControl element="button" onClick={nextStep}>
+            Continuar
+          </FormControl>
         </S.Buttons>
       </S.Background>
     )

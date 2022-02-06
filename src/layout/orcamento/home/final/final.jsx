@@ -1,3 +1,5 @@
+import { FormControl } from 'src/common'
+
 import { HeartIcon } from '../svgs'
 
 import * as S from './final.styles'
@@ -14,7 +16,9 @@ function Final({ backToStart }) {
         <S.Description>
           Fique atento, nossa equipe entrará em contato nas próximas 24 horas.
         </S.Description>
-        <S.NextButton onClick={backToStart}>Concluir</S.NextButton>
+        <FormControl element="button" onClick={backToStart}>
+          Concluir
+        </FormControl>
       </div>
 
       <S.Wire />
