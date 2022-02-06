@@ -9,3 +9,8 @@ export const Radios = styled.div`
   gap: 20px;
   margin: 4px 0 16px;
 `
+
+export const DoubleInput = styled.div`
+  display: flex;
+  gap: 8px;
+`

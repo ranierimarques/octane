@@ -4,6 +4,13 @@ import { HeartIcon } from '../svgs'
 
 import * as S from './final.styles'
 
+const configs = {
+  1: {
+    element: 'button',
+    text: 'Concluir',
+  },
+}
+
 function Final({ backToStart }) {
   return (
     <S.Final>
@@ -16,9 +23,7 @@ function Final({ backToStart }) {
         <S.Description>
           Fique atento, nossa equipe entrará em contato nas próximas 24 horas.
         </S.Description>
-        <FormControl element="button" onClick={backToStart}>
-          Concluir
-        </FormControl>
+        <FormControl onClick={backToStart} config={configs[1]} />
       </div>
 
       <S.Wire />
