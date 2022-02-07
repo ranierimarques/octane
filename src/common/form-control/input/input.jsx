@@ -7,7 +7,7 @@ function Input({ config, secondInput }) {
     return (
       <S.Div>
         <S.Textarea as="textarea" id={config.id} type="text" placeholder=" " />
-        <S.Label>{config.title}</S.Label>
+        <S.Label>{config.label}</S.Label>
         <S.BottomLine />
         <S.TopOverflow />
       </S.Div>
@@ -15,7 +15,7 @@ function Input({ config, secondInput }) {
   }
 
   return (
-    <S.Div>
+    <S.Div isHidden={config.hidden}>
       <S.Input id={config.id} type="text" placeholder=" " disabled={config.disabled} />
       <S.Label>{hasSecondInput ? config.secondLabel : config.label}</S.Label>
       <S.BottomLine />

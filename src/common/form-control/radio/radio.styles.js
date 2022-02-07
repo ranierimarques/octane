@@ -1,5 +1,12 @@
 import { styled } from 'linaria/react'
 
+export const Radios = styled.div`
+  display: flex;
+  flex-direction: ${props => (props.isVertical ? 'column' : 'row')};
+  gap: ${props => (props.isVertical ? '12px' : '20px')};
+  margin: 4px 0 16px;
+`
+
 export const Label = styled.label`
   display: flex;
   align-items: center;

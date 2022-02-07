@@ -4,6 +4,8 @@ export const Div = styled.div`
   position: relative;
 
   width: 100%;
+
+  display: ${props => (props.isHidden ? 'none' : 'block')};
 `
 
 export const Label = styled.label`

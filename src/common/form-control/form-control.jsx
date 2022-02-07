@@ -18,12 +18,7 @@ function FormControl({ config, children, ...props }) {
     return (
       <S.Container>
         <Label config={config} />
-
-        <S.Radios>
-          {config.options.map(option => (
-            <Radio key={option} option={option} />
-          ))}
-        </S.Radios>
+        <Radio config={config} />
         <Input config={config} />
       </S.Container>
     )
@@ -54,3 +49,8 @@ export default FormControl
 // É responsabilidade do FormControl dizer quais componentes serão retornados para o
 // formulário, sejam apenas botões (prev) e (next) ou label + input, input + dropdown
 // label + description + input.... slider...
+
+// Não é responsabilidade do FormControl controlar COMO os componentes devem ser retornados
+// Ex: Condicionais, estilização, lógica
+
+// Não é responsabilidade do FormControl gerenciar e manipular os dados dos componentes

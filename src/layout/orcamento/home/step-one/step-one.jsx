@@ -1,6 +1,6 @@
 import { FormControl } from 'src/common'
 
-// import * as S from './step-one.styles'
+import * as S from './step-one.styles'
 
 const configs = {
   1: {
@@ -18,16 +18,36 @@ const configs = {
     label: 'Nome da empresa',
     secondLabel: 'Cargo',
   },
-  3: {},
+  3: {
+    element: 'radio',
+    id: 'como-chegou-aqui',
+    title: 'Como você chegou à Octane?',
+    description: 'Conte-nós como conheceu a nossa equipe.',
+    label: 'Digite aqui',
+    options: ['Redes sociais', 'Indicação', 'Google', 'Outro'],
+    disabled: true,
+    vertical: true,
+    hidden: true,
+  },
+  4: {
+    element: 'radio',
+    id: 'forma-de-contato',
+    title: 'Como você gostaria que entrássemos em contato?',
+    description: 'Selecione a melhor forma de entrarmos em contato.',
+    label: 'Selecione uma opção',
+    options: ['E-mail', 'Whatsapp'],
+    disabled: true,
+  },
 }
 
 function StepOne() {
   return (
-    <div>
+    <S.Form>
       <FormControl config={configs[1]} />
       <FormControl config={configs[2]} />
-      {/* <FormControl element="radio" config={configs.input3} /> */}
-    </div>
+      <FormControl config={configs[3]} />
+      <FormControl config={configs[4]} />
+    </S.Form>
   )
 }
 
