@@ -1,23 +1,41 @@
 import * as S from './input.styles.js'
 
-function Input({ config, secondInput }) {
-  const hasSecondInput = secondInput
+function Input({ config }) {
+  const { disabled, id, label, secondLabel, hidden, variant } = config
+  const hasSecondInput = secondLabel
 
-  if (config.variant === 'textarea') {
+  if (variant === 'textarea') {
     return (
       <S.Div>
-        <S.Textarea as="textarea" id={config.id} type="text" placeholder=" " />
-        <S.Label>{config.label}</S.Label>
+        <S.Textarea as="textarea" id={id} type="text" placeholder=" " />
+        <S.Label>{label}</S.Label>
         <S.BottomLine />
         <S.TopOverflow />
       </S.Div>
     )
   }
 
+  if (hasSecondInput) {
+    return (
+      <S.DoubleInput>
+        <S.Div>
+          <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
+          <S.Label>{label}</S.Label>
+          <S.BottomLine />
+        </S.Div>
+        <S.Div>
+          <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
+          <S.Label>{secondLabel}</S.Label>
+          <S.BottomLine />
+        </S.Div>
+      </S.DoubleInput>
+    )
+  }
+
   return (
-    <S.Div isHidden={config.hidden}>
-      <S.Input id={config.id} type="text" placeholder=" " disabled={config.disabled} />
-      <S.Label>{hasSecondInput ? config.secondLabel : config.label}</S.Label>
+    <S.Div isHidden={hidden}>
+      <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
+      <S.Label>{label}</S.Label>
       <S.BottomLine />
     </S.Div>
   )

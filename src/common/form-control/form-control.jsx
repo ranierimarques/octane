@@ -24,19 +24,6 @@ function FormControl({ config, children, ...props }) {
     )
   }
 
-  if (element === 'double-input') {
-    return (
-      <S.Container>
-        <Label config={config} />
-
-        <S.DoubleInput>
-          <Input config={config} />
-          <Input config={config} secondInput />
-        </S.DoubleInput>
-      </S.Container>
-    )
-  }
-
   if (element === 'button') {
     return <Button config={config} {...props} />
   }

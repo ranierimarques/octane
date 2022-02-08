@@ -21,6 +21,8 @@ export const Label = styled.label`
   user-select: none;
   white-space: nowrap;
 
+  width: fit-content;
+
   cursor: pointer;
 `
 

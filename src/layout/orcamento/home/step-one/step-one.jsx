@@ -11,7 +11,7 @@ const configs = {
     label: 'Seu nome',
   },
   2: {
-    element: 'double-input',
+    element: 'input',
     id: 'nome-da-empresa',
     title: 'Qual é o nome da empresa que você representa?',
     description: 'Se possível também informe o cargo que ocupa.',

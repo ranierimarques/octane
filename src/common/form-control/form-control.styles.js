@@ -6,11 +6,6 @@ export const Container = styled.div`
   flex-basis: 368px;
 `
 
-export const DoubleInput = styled.div`
-  display: flex;
-  gap: 8px;
-`
-
 export const Warning = styled.div`
   font-weight: 600;
   font-size: 16px;

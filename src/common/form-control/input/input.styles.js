@@ -1,5 +1,10 @@
 import { styled } from 'linaria/react'
 
+export const DoubleInput = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
 export const Div = styled.div`
   position: relative;
 
