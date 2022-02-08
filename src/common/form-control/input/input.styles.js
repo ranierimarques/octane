@@ -1,10 +1,5 @@
 import { styled } from 'linaria/react'
 
-export const DoubleInput = styled.div`
-  display: flex;
-  gap: 8px;
-`
-
 export const Div = styled.div`
   position: relative;
 
@@ -54,6 +49,10 @@ export const Input = styled.input`
 
   ::placeholder {
     user-select: none;
+
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    opacity: 0;
   }
 
   :not(:disabled) {
@@ -74,6 +73,12 @@ export const Input = styled.input`
 
       ~ ${BottomLine} {
         transform: scaleX(1);
+        opacity: 1;
+      }
+
+      ::placeholder {
+        color: #87879b;
+
         opacity: 1;
       }
     }
@@ -117,6 +122,15 @@ export const BottomLine = styled.div`
   transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
     opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
 `
+
+// Double Input
+
+export const DoubleInput = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
+// Textarea
 
 export const Textarea = styled(Input)`
   resize: none;
@@ -188,4 +202,33 @@ export const TopOverflow = styled.div`
   z-index: 1;
 
   pointer-events: none;
+`
+
+// Website
+
+export const Wrapper = styled.div`
+  display: ${props => (props.isHidden ? 'none' : 'flex')};
+
+  border-radius: 4px 0px 0px 0px;
+`
+
+export const Http = styled.span`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #87879b;
+
+  border: solid #87879b;
+  border-width: 0 1px 1px 0;
+
+  padding: 15px 11px 0;
+
+  background: #322f2f;
+
+  &.disabled {
+    opacity: 0.38;
+    cursor: inherit;
+
+    user-select: none;
+  }
 `

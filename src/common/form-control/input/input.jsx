@@ -15,6 +15,25 @@ function Input({ config }) {
     )
   }
 
+  if (variant === 'website') {
+    return (
+      <S.Wrapper isHidden={hidden}>
+        <S.Http className={disabled ? 'disabled' : ''}>http://</S.Http>
+
+        <S.Div>
+          <S.Input
+            id={id}
+            type="text"
+            placeholder="www.exemplo.com"
+            disabled={disabled}
+          />
+          <S.Label>{label}</S.Label>
+          <S.BottomLine />
+        </S.Div>
+      </S.Wrapper>
+    )
+  }
+
   if (hasSecondInput) {
     return (
       <S.DoubleInput>

@@ -3,7 +3,7 @@ import { Input, Label, Button, Radio } from '.'
 import * as S from './form-control.styles'
 
 function FormControl({ config, children, ...props }) {
-  const element = config?.element || ''
+  const element = config.element || ''
 
   if (element === 'input') {
     return (
