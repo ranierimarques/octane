@@ -1,4 +1,4 @@
-import { Input, Label, Button, Radio } from '.'
+import { Input, Label, Button, Radio, Dropdown } from '.'
 
 import * as S from './form-control.styles'
 
@@ -26,6 +26,15 @@ function FormControl({ config, children, ...props }) {
 
   if (element === 'button') {
     return <Button config={config} {...props} />
+  }
+
+  if (element === 'dropdown') {
+    return (
+      <S.Container>
+        <Label config={config} />
+        <Dropdown config={config} />
+      </S.Container>
+    )
   }
 
   return <S.Warning>Você precisa especificar um elemento para ser retornado!</S.Warning>

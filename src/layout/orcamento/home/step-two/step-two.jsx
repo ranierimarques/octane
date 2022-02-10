@@ -4,17 +4,25 @@ import * as S from './step-two.styles'
 
 const configs = {
   1: {
-    element: 'input',
+    element: 'dropdown',
     id: 'empresa-categoria',
     title: 'Em qual categoria a empresa se enquadra?',
     description: 'Escolha a opção correspondente a realidade da sua empresa.',
+    options: [
+      'Profissional Liberal',
+      'Micro (2-10 Funcionários)',
+      'Pequena (10-50 Funcionários)',
+      'Média (50-100 Funcionários)',
+      'Grande (Mais de 100 Funcionários)',
+    ],
     label: 'Selecione uma opção',
   },
   2: {
-    element: 'input',
+    element: 'dropdown',
     id: 'serviço',
     title: 'Qual dos serviços você está interessado(a)?',
     description: 'Escolha um dos serviços que oferecemos.',
+    options: ['Website', 'Design UX/UI', 'Front-end'],
     label: 'Selecione uma opção',
   },
   3: {
