@@ -37,6 +37,14 @@ function FormControl({ config, children, ...props }) {
     )
   }
 
+  if (element === 'slider') {
+    return (
+      <S.Container>
+        <Label config={config} />
+      </S.Container>
+    )
+  }
+
   return <S.Warning>Você precisa especificar um elemento para ser retornado!</S.Warning>
 }
 

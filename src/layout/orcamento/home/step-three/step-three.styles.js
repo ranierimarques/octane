@@ -1,44 +1,23 @@
 import { styled } from 'linaria/react'
 
-export const Container = styled.div`
-  margin: 0 auto;
+export const Form = styled.form`
+  display: flex;
+  flex-wrap: wrap;
 
-  width: fit-content;
+  gap: 8px 32px;
+
+  > :nth-child(1) {
+    flex-basis: 453px;
+  }
+
+  > :nth-child(2) {
+    flex-basis: 400px;
+  }
 `
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 16px;
-`
+  justify-content: space-between;
 
-export const Title = styled.div`
-  font-weight: 800;
-  font-variation-settings: 'wght' 850;
-  font-size: 40px;
-  line-height: 48px;
-  color: #ffffff;
-`
-
-export const NextButton = styled.button`
-  font-weight: 800;
-  font-variation-settings: 'wght' 850;
-  font-size: 40px;
-  line-height: 48px;
-  color: #ffffff;
-
-  padding: 16px 24px;
-
-  background: red;
-`
-
-export const PrevButton = styled.button`
-  font-weight: 800;
-  font-variation-settings: 'wght' 850;
-  font-size: 40px;
-  line-height: 48px;
-  color: #ffffff;
-
-  padding: 16px 24px;
-
-  background: blue;
+  max-width: 800px;
 `

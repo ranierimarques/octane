@@ -51,6 +51,8 @@ export const Input = styled.input`
 
   border-bottom: 1px solid #87879b;
 
+  cursor: pointer;
+
   ::placeholder {
     user-select: none;
 
