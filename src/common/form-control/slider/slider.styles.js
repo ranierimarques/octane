@@ -26,7 +26,7 @@ export const Tooltip = styled.span`
   border-radius: 2px;
 
   background: #5c5656;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.14902);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
 
   :after {
     content: '';

@@ -9,14 +9,6 @@ function Dropdown({ config }) {
   const [isVisible, setIsVisible] = useState(false)
   const [dropdownValue, setDropdownValue] = useState('')
 
-  function handleDropdownOpen() {
-    setIsVisible(true)
-
-    inputRef.current.classList.add('focus')
-
-    document.addEventListener('click', dropdownClose, true)
-  }
-
   function dropdownClose(event) {
     document.removeEventListener('click', dropdownClose, true)
     inputRef.current.classList.remove('focus')
@@ -30,6 +22,14 @@ function Dropdown({ config }) {
     }
 
     setIsVisible(false)
+  }
+
+  function handleDropdownOpen() {
+    setIsVisible(true)
+
+    inputRef.current.classList.add('focus')
+
+    document.addEventListener('click', dropdownClose, true)
   }
 
   function handleDropdownValueChange(event) {

@@ -94,12 +94,6 @@ export const Input = styled.input`
         opacity: 1;
       }
     }
-
-    :-webkit-autofill {
-      box-shadow: 0 0 0 60px #1d1b1b inset;
-      background-clip: content-box;
-      -webkit-text-fill-color: #e1e1e6;
-    }
   }
 
   :disabled {

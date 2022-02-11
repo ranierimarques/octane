@@ -10,18 +10,34 @@ function Slider({ config }) {
   const [budget, setBudget] = useState('4500')
   const [step, setStep] = useState('100')
 
-  function handleSliderChange(event) {
-    const value = event.target.value
+  const sliderMin = '3000'
+  const sliderMax = '24000'
 
-    const valueInPercentage = ((value - 3000) / (24000 - 3000)) * 100
-    progressRef.current.style.width = `${valueInPercentage}%`
-    tooltipRef.current.style.left = `${valueInPercentage}%`
+  function setElementsPosition(sliderValue) {
+    const sliderThumbWidth = 12
+    const tooltipParentWidth = tooltipRef.current.offsetParent.offsetWidth // 453
 
-    setBudget(value)
+    const maxWidth = tooltipParentWidth - sliderThumbWidth
 
+    const widthInPercentage = (sliderValue - sliderMin) / (sliderMax - sliderMin)
+    const positionInPixels = widthInPercentage * maxWidth + sliderThumbWidth / 2
+
+    progressRef.current.style.width = `${positionInPixels}px`
+    tooltipRef.current.style.left = `${positionInPixels}px`
+  }
+
+  function revalidateStep(value) {
     // if (value >= 6000) {
     //   setStep('1000')
     // }
+  }
+
+  function handleSliderChange(event) {
+    const value = event.target.value
+
+    setBudget(value)
+    setElementsPosition(value)
+    revalidateStep(value)
   }
 
   return (
