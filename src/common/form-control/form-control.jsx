@@ -1,4 +1,4 @@
-import { Input, Label, Button, Radio, Dropdown } from '.'
+import { Input, Label, Button, Radio, Dropdown, Slider } from '.'
 
 import * as S from './form-control.styles'
 
@@ -41,6 +41,7 @@ function FormControl({ config, children, ...props }) {
     return (
       <S.Container>
         <Label config={config} />
+        <Slider config={config} />
       </S.Container>
     )
   }

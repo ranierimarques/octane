@@ -6,7 +6,6 @@ import * as S from './step-three.styles'
 const configs = {
   1: {
     element: 'slider',
-    id: 'orçamento',
     title: 'Quanto você está disposto a investir nesse projeto?',
     description: 'Utilize o slider para determinar o quanto você pretende investir.',
   },

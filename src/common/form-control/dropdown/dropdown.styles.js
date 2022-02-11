@@ -155,7 +155,7 @@ export const Options = styled.div`
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
   border-radius: 0px 0px 4px 4px;
 
-  z-index: 10;
+  z-index: 5;
 
   display: ${props => (props.isVisible ? 'block' : 'none')};
 `

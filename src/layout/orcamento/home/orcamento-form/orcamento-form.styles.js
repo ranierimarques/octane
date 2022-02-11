@@ -23,5 +23,5 @@ export const Buttons = styled.div`
   gap: 16px;
   justify-content: flex-end;
 
-  margin: 32px 80px 40px 0;
+  margin: 24px 80px 40px 0;
 `

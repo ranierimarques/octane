@@ -4,8 +4,6 @@ export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
 
-  gap: 8px 32px;
-
   > :nth-child(1) {
     flex-basis: 453px;
   }
