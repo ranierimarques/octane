@@ -5,15 +5,13 @@ import { formatterBudgetValue } from 'src/resources/utils'
 import * as S from './slider.styles'
 
 function Slider({ config }) {
+  const { min, max } = config
   const sliderRef = useRef(null)
   const [budget, setBudget] = useState('4500')
   const [step, setStep] = useState('100')
   const [position, setPosition] = useState('')
 
-  const sliderMin = '3000'
-  const sliderMax = '24000'
-
-  function setElementsPosition(sliderValue) {
+  function setElementsPosition(sliderValue, sliderMin, sliderMax) {
     const sliderThumbWidth = 12
     const sliderWidth = sliderRef.current.offsetWidth // 453
 
@@ -35,13 +33,13 @@ function Slider({ config }) {
     const value = event.target.value
 
     setBudget(value)
-    setElementsPosition(value)
+    setElementsPosition(value, min, max)
     revalidateStep(value)
   }
 
   useLayoutEffect(() => {
-    setElementsPosition('4500')
-  }, [])
+    setElementsPosition('4500', min, max)
+  }, [min, max])
 
   return (
     <S.Slider>
