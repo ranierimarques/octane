@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
 
 import { formatterBudgetValue } from 'src/resources/utils'
 
@@ -39,6 +39,10 @@ function Slider({ config }) {
     setElementsPosition(value)
     revalidateStep(value)
   }
+
+  useLayoutEffect(() => {
+    setElementsPosition('4500')
+  }, [])
 
   return (
     <S.Slider>
