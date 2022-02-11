@@ -11,6 +11,7 @@ export const Slider = styled.div`
 export const Tooltip = styled.span`
   position: relative;
   transform: translate(-50%);
+  left: ${props => props.left}px;
 
   font-weight: 700;
   font-variation-settings: 'wght' 525;
@@ -87,6 +88,7 @@ export const Progress = styled.div`
   border-radius: 8px;
 
   height: 6px;
+  width: ${props => props.width}px;
 
   pointer-events: none;
 `

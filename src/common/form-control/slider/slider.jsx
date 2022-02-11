@@ -5,25 +5,24 @@ import { formatterBudgetValue } from 'src/resources/utils'
 import * as S from './slider.styles'
 
 function Slider({ config }) {
-  const progressRef = useRef(null)
-  const tooltipRef = useRef(null)
+  const sliderRef = useRef(null)
   const [budget, setBudget] = useState('4500')
   const [step, setStep] = useState('100')
+  const [position, setPosition] = useState('')
 
   const sliderMin = '3000'
   const sliderMax = '24000'
 
   function setElementsPosition(sliderValue) {
     const sliderThumbWidth = 12
-    const tooltipParentWidth = tooltipRef.current.offsetParent.offsetWidth // 453
+    const sliderWidth = sliderRef.current.offsetWidth // 453
 
-    const maxWidth = tooltipParentWidth - sliderThumbWidth
+    const maxWidth = sliderWidth - sliderThumbWidth
 
     const widthInPercentage = (sliderValue - sliderMin) / (sliderMax - sliderMin)
     const positionInPixels = widthInPercentage * maxWidth + sliderThumbWidth / 2
 
-    progressRef.current.style.width = `${positionInPixels}px`
-    tooltipRef.current.style.left = `${positionInPixels}px`
+    setPosition(positionInPixels)
   }
 
   function revalidateStep(value) {
@@ -46,7 +45,7 @@ function Slider({ config }) {
 
   return (
     <S.Slider>
-      <S.Tooltip ref={tooltipRef}>R$ {formatterBudgetValue(budget)}+</S.Tooltip>
+      <S.Tooltip left={position}>R$ {formatterBudgetValue(budget)}+</S.Tooltip>
       <S.Input
         type="range"
         min="3000"
@@ -54,8 +53,9 @@ function Slider({ config }) {
         value={budget}
         onChange={handleSliderChange}
         step={step}
+        ref={sliderRef}
       />
-      <S.Progress ref={progressRef} />
+      <S.Progress width={position} />
     </S.Slider>
   )
 }
