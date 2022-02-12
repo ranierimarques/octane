@@ -54,6 +54,42 @@ function Slider({ config }) {
         ref={sliderRef}
       />
       <S.Progress width={position} />
+
+      <S.Markers>
+        <S.Line>
+          <S.Text>3.000</S.Text>
+        </S.Line>
+
+        <S.Line />
+        <S.Line />
+        <S.Line />
+        <S.Line />
+        <S.Line />
+
+        <S.Line>
+          <S.Text className="center">6.000</S.Text>
+        </S.Line>
+
+        <S.Line />
+        <S.Line />
+        <S.Line />
+        <S.Line />
+        <S.Line />
+
+        <S.Line>
+          <S.Text className="center">12.000</S.Text>
+        </S.Line>
+
+        <S.Line />
+        <S.Line />
+        <S.Line />
+        <S.Line />
+        <S.Line />
+
+        <S.Line>
+          <S.Text className="end">24.000</S.Text>
+        </S.Line>
+      </S.Markers>
     </S.Slider>
   )
 }

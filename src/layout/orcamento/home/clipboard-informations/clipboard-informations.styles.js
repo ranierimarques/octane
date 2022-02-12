@@ -7,6 +7,7 @@ export const ClipboardInformation = styled.div`
   border-radius: 0px 10px 10px 10px;
 
   min-width: 280px;
+  height: fit-content;
 
   :after {
     content: 'CHECKOUT DE INFORMAÇÕES';

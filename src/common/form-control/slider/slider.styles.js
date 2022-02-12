@@ -3,17 +3,17 @@ import { styled } from 'linaria/react'
 export const Slider = styled.div`
   position: relative;
 
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  margin-bottom: 49px;
 `
 
 export const Tooltip = styled.span`
+  display: inline-block;
   position: relative;
+
   transform: translate(-50%);
   left: ${props => props.left}px;
 
-  font-weight: 700;
+  font-weight: 600;
   font-variation-settings: 'wght' 525;
   font-size: 12px;
   line-height: 14px;
@@ -22,6 +22,7 @@ export const Tooltip = styled.span`
   width: fit-content;
 
   padding: 7px 9px;
+  margin-bottom: 14px;
 
   border: 1px solid #848489;
   border-radius: 2px;
@@ -91,4 +92,42 @@ export const Progress = styled.div`
   width: ${props => props.width}px;
 
   pointer-events: none;
+`
+
+// Markers
+
+export const Markers = styled.div`
+  position: absolute;
+  bottom: -22px;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+`
+
+export const Line = styled.div`
+  width: 2px;
+  height: 14px;
+
+  background: #474343;
+`
+
+export const Text = styled.span`
+  position: absolute;
+  bottom: -27px;
+
+  &.center {
+    transform: translate(-50%);
+  }
+
+  &.end {
+    transform: translate(-100%);
+  }
+
+  font-weight: 400;
+  font-variation-settings: 'wght' 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #cacad3;
 `
