@@ -22,8 +22,8 @@ export const ClipboardInformation = styled.div`
 
     padding: 3px 13px;
 
-    font-weight: 700;
-    font-variation-settings: 'wght' 625;
+    font-weight: 600;
+    font-variation-settings: 'wght' 575;
     font-size: 12px;
     line-height: 17px;
     color: #e1e1e6;
@@ -50,7 +50,7 @@ export const AuxTexts = styled.div`
 `
 
 export const AuxTitle = styled.span`
-  font-weight: 700;
+  font-weight: 600;
   font-variation-settings: 'wght' 625;
   font-size: 14px;
   line-height: 20px;
@@ -89,7 +89,7 @@ export const Title = styled.span`
 `
 
 export const Description = styled.span`
-  font-weight: 500;
+  font-weight: 400;
   font-variation-settings: 'wght' 325;
   font-size: 14px;
   line-height: 17px;

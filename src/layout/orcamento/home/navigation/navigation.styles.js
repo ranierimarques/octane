@@ -9,6 +9,11 @@ export const Container = styled.div`
 `
 
 export const Tab = styled.div`
+  display: flex;
+  align-items: center;
+
+  height: 64px;
+
   border: 1px solid #726a6a;
 
   cursor: pointer;
@@ -66,7 +71,7 @@ export const Content = styled.div`
   gap: 16px;
   align-items: center;
 
-  padding: 14px 0 14px 16px;
+  padding-left: 16px;
 `
 
 export const Indicator = styled.span`
@@ -118,15 +123,15 @@ export const Texts = styled.div`
 `
 
 export const Title = styled.span`
-  font-weight: 700;
-  font-variation-settings: 'wght' 625;
+  font-weight: 600;
+  font-variation-settings: 'wght' 575;
   font-size: 12px;
   line-height: 17px;
-  color: #b4b4c0;
+  color: ${props => (props.isFinished ? '#E1E1E6' : '#b4b4c0')};
 `
 
 export const Subtitle = styled.span`
-  font-weight: 500;
+  font-weight: 400;
   font-variation-settings: 'wght' 425;
   font-size: 12px;
   line-height: 17px;

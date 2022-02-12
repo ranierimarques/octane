@@ -47,8 +47,8 @@ function Navigation({ step, setStep }) {
               </S.Indicator>
 
               <S.Texts>
-                <S.Title>{tab.title}</S.Title>
-                <S.Subtitle>{tab.subtitle}</S.Subtitle>
+                <S.Title isFinished={finishedStep}>{tab.title}</S.Title>
+                {!finishedStep && <S.Subtitle>{tab.subtitle}</S.Subtitle>}
               </S.Texts>
             </S.Content>
           </S.Tab>
