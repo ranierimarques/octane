@@ -1,6 +1,6 @@
 import { FormControl } from 'src/common'
 
-// import * as S from './form.styles'
+import * as S from './form.styles'
 
 const configs = {
   1: {
@@ -34,12 +34,12 @@ const configs = {
 
 function Form() {
   return (
-    <form>
+    <S.Form>
       <FormControl config={configs[1]} />
       <FormControl config={configs[2]} />
       <FormControl config={configs[3]} />
       <FormControl config={configs[4]} />
-    </form>
+    </S.Form>
   )
 }
 

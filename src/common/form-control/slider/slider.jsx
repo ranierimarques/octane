@@ -13,7 +13,7 @@ function Slider({ config }) {
 
   function setElementsPosition(sliderValue, sliderMin, sliderMax) {
     const sliderThumbWidth = 12
-    const sliderWidth = sliderRef.current.offsetWidth // 453
+    const sliderWidth = sliderRef.current.offsetWidth // 452
 
     const maxWidth = sliderWidth - sliderThumbWidth
 
@@ -46,8 +46,8 @@ function Slider({ config }) {
       <S.Tooltip left={position}>R$ {formatterBudgetValue(budget)}+</S.Tooltip>
       <S.Input
         type="range"
-        min="3000"
-        max="24000"
+        min={min}
+        max={max}
         value={budget}
         onChange={handleSliderChange}
         step={step}

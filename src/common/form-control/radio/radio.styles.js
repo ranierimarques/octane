@@ -4,7 +4,7 @@ export const Radios = styled.div`
   display: flex;
   flex-direction: ${props => (props.isVertical ? 'column' : 'row')};
   gap: ${props => (props.isVertical ? '12px' : '20px')};
-  margin: 4px 0 16px;
+  margin: ${props => (props.isVertical ? '4px 0 0' : '4px 0 16px')};
 `
 
 export const Label = styled.label`
@@ -12,8 +12,8 @@ export const Label = styled.label`
   align-items: center;
   gap: 8px;
 
-  font-weight: 500;
-  font-variation-settings: 'wght' 425;
+  font-weight: 400;
+  font-variation-settings: 'wght' 375;
   font-size: 16px;
   line-height: 19px;
   color: #e1e1e6;

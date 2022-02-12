@@ -35,7 +35,7 @@ const configs = {
     title: 'Como você gostaria que entrássemos em contato?',
     description: 'Selecione a melhor forma de entrarmos em contato.',
     label: 'Selecione uma opção',
-    options: ['E-mail', 'Whatsapp'],
+    options: ['E-mail', 'WhatsApp'],
     disabled: true,
   },
 }

@@ -1,8 +1,6 @@
 import { styled } from 'linaria/react'
 
 export const Container = styled.div`
-  margin-bottom: 32px;
-
   flex-basis: 368px;
 `
 

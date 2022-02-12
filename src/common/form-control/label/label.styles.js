@@ -13,7 +13,7 @@ export const Title = styled.label`
 `
 
 export const Description = styled.label`
-  display: block;
+  display: inline-block;
 
   width: fit-content;
 

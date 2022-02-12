@@ -4,7 +4,7 @@ export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
 
-  gap: 8px 32px;
+  gap: 40px 32px;
 
   max-width: 800px;
 
