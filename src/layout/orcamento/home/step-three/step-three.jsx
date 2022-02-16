@@ -3,15 +3,16 @@ import { FormControl } from 'src/common'
 
 import * as S from './step-three.styles'
 
-const configs = {
-  1: {
+const configs = [
+  {
     element: 'slider',
     title: 'Quanto você está disposto a investir nesse projeto?',
     description: 'Utilize o slider para determinar o quanto você pretende investir.',
     min: 12000,
     max: 90000,
+    initial: 14000,
   },
-  2: {
+  {
     element: 'dropdown',
     id: 'prazo',
     title: 'Qual o prazo que temos para entregar o projeto?',
@@ -26,14 +27,15 @@ const configs = {
     ],
     label: 'Selecione uma opção',
   },
-}
+]
 
 function StepThree() {
   return (
     <S.Wrapper>
       <S.Form>
-        <FormControl config={configs[1]} />
-        <FormControl config={configs[2]} />
+        {configs.map((config, index) => (
+          <FormControl key={index} config={config} />
+        ))}
       </S.Form>
       <ClipboardInformations />
     </S.Wrapper>

@@ -1,2 +1,2 @@
-export { formatterBudgetValue } from './formatter-budget-value'
-export { calculateEquidistantValue } from './calculate-equidistant-value'
+export { formatterBudget } from './formatter-budget'
+export { calculateEquidistant } from './calculate-equidistant-budget'
