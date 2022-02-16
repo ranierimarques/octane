@@ -5,21 +5,21 @@ import * as S from './navigation.styles'
 const tabs = [
   {
     id: 1,
-    indicator: '01',
+    number: '01',
     title: 'DADOS PESSOAIS',
     subtitle: 'Informações de contato.',
     variant: 'first',
   },
   {
     id: 2,
-    indicator: '02',
+    number: '02',
     title: 'PROJETO',
     subtitle: 'Informações do projeto.',
     variant: 'second',
   },
   {
     id: 3,
-    indicator: '03',
+    number: '03',
     title: 'CONCLUSÃO',
     subtitle: 'Informações do investimento.',
     variant: 'third',
@@ -43,7 +43,7 @@ function Navigation({ step, setStep }) {
           >
             <S.Content>
               <S.Indicator className={`${tab.variant} ${finishedStep ? 'finished' : ''}`}>
-                {finishedStep ? <CheckMark /> : tab.indicator}
+                {finishedStep ? <CheckMark /> : tab.number}
               </S.Indicator>
 
               <S.Texts>

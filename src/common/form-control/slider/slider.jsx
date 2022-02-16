@@ -1,14 +1,25 @@
 import { useState, useRef, useLayoutEffect } from 'react'
 
-import { formatterBudgetValue } from 'src/resources/utils'
+import { formatterBudgetValue, calculateEquidistantValue } from '../utils'
 
 import * as S from './slider.styles'
+
+function Lines() {
+  return (
+    <>
+      <S.Line />
+      <S.Line />
+      <S.Line />
+      <S.Line />
+      <S.Line />
+    </>
+  )
+}
 
 function Slider({ config }) {
   const { min, max } = config
   const sliderRef = useRef(null)
-  const [budget, setBudget] = useState('4500')
-  const [step, setStep] = useState('100')
+  const [budget, setBudget] = useState(14000)
   const [position, setPosition] = useState('')
 
   function setElementsPosition(sliderValue, sliderMin, sliderMax) {
@@ -41,6 +52,11 @@ function Slider({ config }) {
     setElementsPosition('4500', min, max)
   }, [min, max])
 
+  function getEquidistantBudgetValue(min, max, approximation) {
+    const budget = calculateEquidistantValue(min, max, approximation)
+    return formatterBudgetValue(budget)
+  }
+
   return (
     <S.Slider>
       <S.Tooltip left={position}>R$ {formatterBudgetValue(budget)}+</S.Tooltip>
@@ -50,44 +66,32 @@ function Slider({ config }) {
         max={max}
         value={budget}
         onChange={handleSliderChange}
-        step={step}
+        step="50"
         ref={sliderRef}
       />
       <S.Progress width={position} />
 
       <S.Markers>
         <S.Line>
-          <S.Text>3.000</S.Text>
+          <S.Text>{formatterBudgetValue(min)}</S.Text>
         </S.Line>
 
-        <S.Line />
-        <S.Line />
-        <S.Line />
-        <S.Line />
-        <S.Line />
+        <Lines />
 
         <S.Line>
-          <S.Text className="center">6.000</S.Text>
+          <S.Text className="center">{getEquidistantBudgetValue(min, max, min)}</S.Text>
         </S.Line>
 
-        <S.Line />
-        <S.Line />
-        <S.Line />
-        <S.Line />
-        <S.Line />
+        <Lines />
 
         <S.Line>
-          <S.Text className="center">12.000</S.Text>
+          <S.Text className="center">{getEquidistantBudgetValue(min, max, max)}</S.Text>
         </S.Line>
 
-        <S.Line />
-        <S.Line />
-        <S.Line />
-        <S.Line />
-        <S.Line />
+        <Lines />
 
         <S.Line>
-          <S.Text className="end">24.000</S.Text>
+          <S.Text className="end">{formatterBudgetValue(max)}</S.Text>
         </S.Line>
       </S.Markers>
     </S.Slider>
