@@ -8,9 +8,9 @@ const configs = [
     element: 'slider',
     title: 'Quanto você está disposto a investir nesse projeto?',
     description: 'Utilize o slider para determinar o quanto você pretende investir.',
-    min: 12000,
-    max: 90000,
-    initial: 14000,
+    min: 3000,
+    max: 24000,
+    initial: 4500,
   },
   {
     element: 'dropdown',
