@@ -1,6 +1,7 @@
-export function calculateEquidistant(min, max, approximation) {
+export function calculateEquidistant(min, max) {
   const average = (min + max) / 2
-  const result = (average + approximation) / 2
+  const equidistantMin = (average + min) / 2
+  const equidistantMax = (average + max) / 2
 
-  return result
+  return [min, equidistantMin, equidistantMax, max]
 }

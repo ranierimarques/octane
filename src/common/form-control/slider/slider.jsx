@@ -16,16 +16,50 @@ function Lines() {
   )
 }
 
+function getMarkerIndex(sliderValue, markers) {
+  function isBetweenTheMarkers(marker, index) {
+    const value = sliderValue
+    const atualMarker = marker
+    const nextMarker = markers[index + 1]
+
+    const valueIsBetweenTheMarkers = atualMarker <= value && nextMarker >= value
+
+    return valueIsBetweenTheMarkers
+  }
+
+  const markerValue = markers.filter(isBetweenTheMarkers)
+  const markerIndex = markers.indexOf(markerValue[0])
+
+  return markerIndex
+}
+
+function setMinAndMax(sliderValue, setMinMax, markers) {
+  const markerIndex = getMarkerIndex(sliderValue, markers)
+
+  const totalLines = 18
+  const linesBetweenMarkers = 6
+
+  const atualMarker = markers[markerIndex]
+  const nextMarker = markers[markerIndex + 1]
+
+  const difference = nextMarker - atualMarker
+  const multiplier = difference / linesBetweenMarkers
+
+  const positionFromLeftLines = markerIndex * linesBetweenMarkers
+
+  const minValue = atualMarker - multiplier * positionFromLeftLines
+  const maxValue = multiplier * totalLines + minValue
+
+  setMinMax({ min: minValue, max: maxValue })
+}
+
 function Slider({ config }) {
-  const { min: firstBudget, max: lastBudget, initial } = config
+  const { firstBudget, lastBudget, initial, range } = config
   const sliderRef = useRef(null)
   const [budget, setBudget] = useState(0)
   const [position, setPosition] = useState('')
-  const [min, setMin] = useState(firstBudget)
-  const [max, setMax] = useState(lastBudget)
-
-  // TODO: Gerar esses valores dinamicamente
-  const markers = [3000, 8250, 18750, 24000]
+  const [minMax, setMinMax] = useState({ min: firstBudget, max: lastBudget })
+  const [markers, setMarkers] = useState(range)
 
   function setElementsPosition(sliderValue, sliderMin, sliderMax) {
     const sliderThumbWidth = 12
@@ -39,68 +73,48 @@ function Slider({ config }) {
     setPosition(positionInPixels)
   }
 
-  function getMarkerIndex(sliderValue) {
-    function isBetweenTheMarkers(marker, index) {
-      const value = sliderValue
-      const atualMarker = marker
-      const nextMarker = markers[index + 1]
-
-      const valueIsBetweenTheMarkers = atualMarker <= value && nextMarker >= value
-
-      return valueIsBetweenTheMarkers
-    }
-
-    const markerValue = markers.filter(isBetweenTheMarkers)
-    const markerIndex = markers.indexOf(markerValue[0])
-
-    return markerIndex
-  }
-
-  function setMinAndMax(markerIndex) {
-    const totalLines = 18
-    const linesBetweenMarkers = 6
-
-    const atualMarker = markers[markerIndex]
-    const nextMarker = markers[markerIndex + 1]
-
-    const difference = nextMarker - atualMarker
-    const multiplier = difference / linesBetweenMarkers
-
-    const positionFromLeftLines = markerIndex * linesBetweenMarkers
-
-    const minValue = atualMarker - multiplier * positionFromLeftLines
-    const maxValue = multiplier * totalLines + minValue
-
-    setMin(minValue)
-    setMax(maxValue)
-  }
-
+  // FIXME: Revalidar de acordo com o Width
   function revalidateStep(sliderValue) {
-    setMinAndMax(getMarkerIndex(sliderValue))
+    setMinAndMax(sliderValue, setMinMax, markers)
   }
 
   function handleSliderChange(event) {
     const value = Number(event.target.value)
 
-    setBudget(value)
-    setElementsPosition(value, min, max)
     revalidateStep(value)
+    setBudget(value)
+    setElementsPosition(value, minMax.min, minMax.max)
+  }
+
+  function teste(event) {
+    // const value = Number(event.target.value)
+
+    console.log(event.nativeEvent.offsetX)
+
+    // revalidateStep(value)
   }
 
   useLayoutEffect(() => {
     setElementsPosition(initial, firstBudget, lastBudget)
     setBudget(initial)
-  }, [firstBudget, lastBudget, initial])
+
+    if (!range) {
+      const dynamicMarkers = calculateEquidistant(firstBudget, lastBudget)
+
+      setMarkers(dynamicMarkers)
+    }
+  }, [firstBudget, lastBudget, initial, range])
 
   return (
     <S.Slider>
       <S.Tooltip left={position}>R$ {formatterBudget(budget)}+</S.Tooltip>
       <S.Input
         type="range"
-        min={min}
-        max={max}
+        min={minMax.min}
+        max={minMax.max}
         value={budget}
         onChange={handleSliderChange}
+        onMouseMove={teste}
         step="50"
         ref={sliderRef}
       />
