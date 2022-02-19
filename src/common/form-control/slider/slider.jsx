@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, Fragment } from 'react'
+import { useState, useRef, useLayoutEffect, Fragment, useEffect } from 'react'
 
 import { formatterBudget, calculateEquidistant } from '../utils'
 
@@ -16,25 +16,25 @@ function Lines() {
   )
 }
 
-function getMarkerIndex(sliderValue, markers) {
-  function isBetweenTheMarkers(marker, index) {
-    const value = sliderValue
-    const atualMarker = marker
-    const nextMarker = markers[index + 1]
+// function getMarkerIndex(sliderValue, markers) {
+//   function isBetweenTheMarkers(marker, index) {
+//     const value = sliderValue
+//     const atualMarker = marker
+//     const nextMarker = markers[index + 1]
 
-    const valueIsBetweenTheMarkers = atualMarker <= value && nextMarker >= value
+//     const valueIsBetweenTheMarkers = atualMarker <= value && nextMarker >= value
 
-    return valueIsBetweenTheMarkers
-  }
+//     return valueIsBetweenTheMarkers
+//   }
 
-  const markerValue = markers.filter(isBetweenTheMarkers)
-  const markerIndex = markers.indexOf(markerValue[0])
+//   const markerValue = markers.filter(isBetweenTheMarkers)
+//   const markerIndex = markers.indexOf(markerValue[0])
 
-  return markerIndex
-}
+//   return markerIndex
+// }
 
-function setMinAndMax(sliderValue, setMinMax, markers) {
-  const markerIndex = getMarkerIndex(sliderValue, markers)
+function setMinAndMax(sliderValue, setMinMax, markers, markerIndex) {
+  console.log('Marcador1:', markers[markerIndex], 'Marcador2:', markers[markerIndex + 1])
 
   const totalLines = 18
   const linesBetweenMarkers = 6
@@ -51,6 +51,8 @@ function setMinAndMax(sliderValue, setMinMax, markers) {
   const maxValue = multiplier * totalLines + minValue
 
   setMinMax({ min: minValue, max: maxValue })
+
+  return { min: minValue, max: maxValue }
 }
 
 function Slider({ config }) {
@@ -71,27 +73,37 @@ function Slider({ config }) {
     const positionInPixels = widthInPercentage * maxWidth + sliderThumbWidth / 2
 
     setPosition(positionInPixels)
+
+    return widthInPercentage
   }
 
-  // FIXME: Revalidar de acordo com o Width
-  function revalidateStep(sliderValue) {
-    setMinAndMax(sliderValue, setMinMax, markers)
+  function revalidateStep(sliderValue, index) {
+    return setMinAndMax(sliderValue, setMinMax, markers, index)
   }
 
   function handleSliderChange(event) {
     const value = Number(event.target.value)
 
-    revalidateStep(value)
-    setBudget(value)
-    setElementsPosition(value, minMax.min, minMax.max)
-  }
+    const widthInPercentage = setElementsPosition(value, minMax.min, minMax.max)
 
-  function teste(event) {
-    // const value = Number(event.target.value)
+    const index = widthInPercentage === 1 ? 2 : Math.floor(widthInPercentage / (1 / 3))
 
-    console.log(event.nativeEvent.offsetX)
+    const step = revalidateStep(value, index)
 
-    // revalidateStep(value)
+    console.log(step)
+    console.log(widthInPercentage)
+    console.log(markers[index])
+
+    const calc1 = widthInPercentage !== 1 ? widthInPercentage % (1 / 3) : 1 / 3
+    const calc2 = calc1 / (1 / 3)
+    const calc3 = calc2 * markers[index]
+    const calc4 = calc3 + markers[index]
+
+    console.log(calc1)
+    console.log(calc2)
+    console.log(calc3)
+    console.log(calc4)
+    setBudget(calc4)
   }
 
   useLayoutEffect(() => {
@@ -114,7 +126,6 @@ function Slider({ config }) {
         max={minMax.max}
         value={budget}
         onChange={handleSliderChange}
-        onMouseMove={teste}
         step="50"
         ref={sliderRef}
       />
