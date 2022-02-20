@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, Fragment, useEffect } from 'react'
+import { useState, useRef, useLayoutEffect, Fragment } from 'react'
 
 import { formatterBudget, calculateEquidistant } from '../utils'
 
@@ -60,7 +60,7 @@ function Slider({ config }) {
   const sliderRef = useRef(null)
   const [budget, setBudget] = useState(0)
   const [position, setPosition] = useState('')
-  const [minMax, setMinMax] = useState({ min: firstBudget, max: lastBudget })
+  const [minMax, setMinMax] = useState({ min: 3000, max: 12000 })
   const [markers, setMarkers] = useState(range)
 
   function setElementsPosition(sliderValue, sliderMin, sliderMax) {
@@ -96,18 +96,19 @@ function Slider({ config }) {
 
     const calc1 = widthInPercentage !== 1 ? widthInPercentage % (1 / 3) : 1 / 3
     const calc2 = calc1 / (1 / 3)
-    const calc3 = calc2 * markers[index]
+    const calc3 = Math.floor((calc2 * markers[index] + 1) / 50) * 50
     const calc4 = calc3 + markers[index]
 
     console.log(calc1)
     console.log(calc2)
     console.log(calc3)
+    console.log(calc2 * markers[index])
     console.log(calc4)
     setBudget(calc4)
   }
 
   useLayoutEffect(() => {
-    setElementsPosition(initial, firstBudget, lastBudget)
+    setElementsPosition(initial, 3000, 12000)
     setBudget(initial)
 
     if (!range) {
