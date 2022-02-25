@@ -14,7 +14,7 @@ function createLines() {
 
 const lines = createLines()
 
-function Markers({ markers, setStates, sliderRef, onMarkersChangeValue }) {
+function Markers({ markers, onMarkersChangeValue }) {
   return (
     <S.Markers>
       {markers.map(marker => {
@@ -23,7 +23,7 @@ function Markers({ markers, setStates, sliderRef, onMarkersChangeValue }) {
         const formattedMarker = formatterBudget(marker)
 
         function handleSliderChange() {
-          onMarkersChangeValue(marker, markers, sliderRef, setStates)
+          onMarkersChangeValue(marker)
         }
 
         if (isFirstMarker) {

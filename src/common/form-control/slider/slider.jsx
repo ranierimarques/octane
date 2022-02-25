@@ -178,10 +178,10 @@ function Slider({ config }) {
   }
 
   const handleMarkersChangeValue = useCallback(
-    (marker, markers, sliderRef, setStates) => {
+    marker => {
       sliderChangeUsingValue(marker, markers, sliderRef, setStates, lastBudgetRef)
     },
-    []
+    [markers, setStates]
   )
 
   useLayoutEffect(() => {
@@ -202,12 +202,7 @@ function Slider({ config }) {
       />
       <S.Progress width={position} />
 
-      <Markers
-        markers={markers}
-        setStates={setStates}
-        sliderRef={sliderRef}
-        onMarkersChangeValue={handleMarkersChangeValue}
-      />
+      <Markers markers={markers} onMarkersChangeValue={handleMarkersChangeValue} />
     </S.Slider>
   )
 }

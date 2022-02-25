@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 import { Modal } from '..'
 
 import { QrCode, DesktopComputer, Code } from '../svgs'
@@ -31,22 +33,35 @@ const cards = [
   },
 ]
 
+function Card({ card }) {
+  const modalRef = useRef(null)
+
+  function handleOpenModal() {
+    modalRef.current.openModal()
+  }
+
+  return (
+    <S.Card
+      key={card.title}
+      className={card.title === 'Website' && 'emphasis'}
+      data-aos={card.animation}
+      data-aos-delay={card.delay}
+    >
+      {card.icon}
+      <S.Subtitle>{card.title}</S.Subtitle>
+      <S.Divider />
+      <S.Description>{card.description}</S.Description>
+      <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
+      <Modal infos={card} ref={modalRef} />
+    </S.Card>
+  )
+}
+
 function Cards() {
   return (
     <S.Cards>
       {cards.map(card => (
-        <S.Card
-          key={card.title}
-          className={card.title === 'Website' && 'emphasis'}
-          data-aos={card.animation}
-          data-aos-delay={card.delay}
-        >
-          {card.icon}
-          <S.Subtitle>{card.title}</S.Subtitle>
-          <S.Divider />
-          <S.Description>{card.description}</S.Description>
-          <Modal infos={card} />
-        </S.Card>
+        <Card key={card.title} card={card} />
       ))}
     </S.Cards>
   )

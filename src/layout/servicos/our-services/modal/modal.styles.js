@@ -2,20 +2,6 @@ import { styled } from 'linaria/react'
 
 import { CloseMenu as CloseMenuSvg } from 'public/svgs'
 
-export const TextButton = styled.button`
-  font-weight: 500;
-  font-variation-settings: 'wght' 400;
-  font-size: 14px;
-  line-height: 22px;
-  color: #fa5a47;
-
-  cursor: pointer;
-
-  :hover {
-    text-decoration: underline;
-  }
-`
-
 export const Overlay = styled.div`
   position: fixed;
   top: 0;

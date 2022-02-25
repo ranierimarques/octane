@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 import { Modal } from '..'
 
 import { ApproveUser, PenTool, Bolt } from '../svgs'
@@ -28,18 +30,31 @@ const cards = [
   },
 ]
 
+function Card({ card }) {
+  const modalRef = useRef(null)
+
+  function handleOpenModal() {
+    modalRef.current.openModal()
+  }
+
+  return (
+    <S.Card data-aos="fade-up" data-aos-delay={card.delay}>
+      <S.Icon>{card.icon}</S.Icon>
+
+      <S.Subtitle>{card.title}</S.Subtitle>
+      <S.Description>{card.description}</S.Description>
+      <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
+      <Modal infos={card} ref={modalRef} />
+    </S.Card>
+  )
+}
+
 function Cards() {
   return (
     <S.Cards>
-      {cards.map(card => (
-        <S.Card key={card.title} data-aos="fade-up" data-aos-delay={card.delay}>
-          <S.Icon>{card.icon}</S.Icon>
-
-          <S.Subtitle>{card.title}</S.Subtitle>
-          <S.Description>{card.description}</S.Description>
-          <Modal infos={card} />
-        </S.Card>
-      ))}
+      {cards.map(card => {
+        return <Card key={card.title} card={card} />
+      })}
     </S.Cards>
   )
 }

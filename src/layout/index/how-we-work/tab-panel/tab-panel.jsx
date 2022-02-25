@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 import { Modal } from '..'
 
 import { StretchedArrow } from '../svgs'
@@ -111,24 +113,37 @@ const panelsList = {
   ],
 }
 
+function Panel({ panel }) {
+  const modalRef = useRef(null)
+
+  function handleOpenModal() {
+    modalRef.current.openModal()
+  }
+
+  return (
+    <S.Panel key={panel.number} data-aos="fade-right" data-aos-delay={panel.delay}>
+      <S.Localization>
+        <S.Number>{panel.number}</S.Number>
+        {panel.arrow ? <StretchedArrow /> : null}
+      </S.Localization>
+
+      <S.Texts>
+        <S.Subtitle>{panel.subtitle}</S.Subtitle>
+        <S.Description>{panel.description}</S.Description>
+        <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
+        <Modal infos={panel} ref={modalRef} />
+      </S.Texts>
+    </S.Panel>
+  )
+}
+
 function TabPanel({ tabActive }) {
   const panels = panelsList[tabActive]
 
   return (
     <S.TabPanel role="tabpanel" data-aos="fade-right">
       {panels.map(panel => (
-        <S.Panel key={panel.number} data-aos="fade-right" data-aos-delay={panel.delay}>
-          <S.Localization>
-            <S.Number>{panel.number}</S.Number>
-            {panel.arrow ? <StretchedArrow /> : null}
-          </S.Localization>
-
-          <S.Texts>
-            <S.Subtitle>{panel.subtitle}</S.Subtitle>
-            <S.Description>{panel.description}</S.Description>
-            <Modal infos={panel} />
-          </S.Texts>
-        </S.Panel>
+        <Panel key={panel.number} panel={panel} />
       ))}
     </S.TabPanel>
   )

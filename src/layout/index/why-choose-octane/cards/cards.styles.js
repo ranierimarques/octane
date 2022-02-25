@@ -49,3 +49,17 @@ export const Description = styled.p`
 
   margin-bottom: 16px;
 `
+
+export const TextButton = styled.button`
+  font-weight: 500;
+  font-variation-settings: 'wght' 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #fa5a47;
+
+  cursor: pointer;
+
+  :hover {
+    text-decoration: underline;
+  }
+`
