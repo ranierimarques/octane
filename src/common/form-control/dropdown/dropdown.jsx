@@ -11,7 +11,6 @@ function Dropdown({ config }) {
 
   function dropdownClose(event) {
     document.removeEventListener('click', dropdownClose, true)
-    inputRef.current.classList.remove('focus')
 
     const ref = dropdownRef.current
     const clickedOnDropdown = ref.contains(event.target)
@@ -27,12 +26,10 @@ function Dropdown({ config }) {
   function handleDropdownOpen() {
     setIsVisible(true)
 
-    inputRef.current.classList.add('focus')
-
     document.addEventListener('click', dropdownClose, true)
   }
 
-  function handleDropdownValueChange(event) {
+  function handleDropdownChange(event) {
     const optionText = event.target.innerText
 
     if (optionText === dropdownValue) {
@@ -52,6 +49,7 @@ function Dropdown({ config }) {
           placeholder=" "
           disabled={disabled}
           ref={inputRef}
+          className={isVisible ? 'focus' : ''}
           value={dropdownValue}
           readOnly
         />
@@ -64,7 +62,7 @@ function Dropdown({ config }) {
         {options.map(option => (
           <S.Option
             key={option}
-            onClick={handleDropdownValueChange}
+            onClick={handleDropdownChange}
             className={dropdownValue === option ? 'active' : ''}
           >
             {option}

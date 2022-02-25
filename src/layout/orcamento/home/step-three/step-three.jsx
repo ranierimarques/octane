@@ -9,9 +9,8 @@ const configs = [
     title: 'Quanto você está disposto a investir nesse projeto?',
     description: 'Utilize o slider para determinar o quanto você pretende investir.',
     range: [3000, 6000, 12000, 24000],
-    firstBudget: 3000,
-    lastBudget: 24000,
     initial: 4500,
+    step: 50,
   },
   {
     element: 'dropdown',
