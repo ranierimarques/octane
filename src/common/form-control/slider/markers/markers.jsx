@@ -23,7 +23,7 @@ function Markers({ markers, onMarkersChangeValue }) {
         const formattedMarker = formatterBudget(marker)
 
         function handleSliderChange() {
-          onMarkersChangeValue(marker, markers)
+          onMarkersChangeValue(marker)
         }
 
         if (isFirstMarker) {

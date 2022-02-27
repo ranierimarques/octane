@@ -40,10 +40,10 @@ function Card({ card }) {
   return (
     <S.Card data-aos="fade-up" data-aos-delay={card.delay}>
       <S.Icon>{card.icon}</S.Icon>
-
       <S.Subtitle>{card.title}</S.Subtitle>
       <S.Description>{card.description}</S.Description>
       <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
+
       <Modal infos={card} ref={modalRef} />
     </S.Card>
   )

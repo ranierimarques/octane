@@ -131,6 +131,7 @@ function Panel({ panel }) {
         <S.Subtitle>{panel.subtitle}</S.Subtitle>
         <S.Description>{panel.description}</S.Description>
         <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
+
         <Modal infos={panel} ref={modalRef} />
       </S.Texts>
     </S.Panel>

@@ -52,6 +52,7 @@ function Card({ card }) {
       <S.Divider />
       <S.Description>{card.description}</S.Description>
       <S.TextButton onClick={handleOpenModal}>Saiba mais</S.TextButton>
+
       <Modal infos={card} ref={modalRef} />
     </S.Card>
   )
