@@ -6,6 +6,8 @@ export const Markers = styled.div`
 
   width: 100%;
 
+  padding: 0 5px;
+
   display: flex;
   justify-content: space-between;
 `

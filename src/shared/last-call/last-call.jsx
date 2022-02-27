@@ -13,9 +13,9 @@ function LastCall() {
         </S.Description>
       </S.Header>
 
-      <Button data-aos="fade-in" data-aos-delay="100">
-        Solicitar Orçamento
-      </Button>
+      <div data-aos="fade-in" data-aos-delay="100">
+        <Button>Solicitar Orçamento</Button>
+      </div>
     </S.Section>
   )
 }

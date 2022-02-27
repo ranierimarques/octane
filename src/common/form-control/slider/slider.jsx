@@ -1,7 +1,7 @@
-import { useState, useRef, useLayoutEffect, useMemo, useCallback } from 'react'
+import { useRef, useLayoutEffect, useMemo, useCallback, useReducer } from 'react'
 
 import { Markers } from '.'
-import { formatterBudget, calculateEquidistant } from '../utils'
+import { formatterBudget, calculateEquidistant } from './utils'
 
 import * as S from './slider.styles'
 
@@ -20,11 +20,11 @@ function getPosition(sliderValue, sliderMin, sliderMax, sliderRef) {
 function getMarkerIndex(markers) {
   function usingWidth(widthInPercentage) {
     const maxWidthDivisions = markers.length - 1
+    const oneWidthDivision = 1 / maxWidthDivisions
     const divisionLimit = maxWidthDivisions - 1
     const isDivisionLimit = widthInPercentage === 1
-    const oneDivisionOfWidth = 1 / maxWidthDivisions
 
-    const index = Math.floor(widthInPercentage / oneDivisionOfWidth) // 0,5 / 0,33 => 1,5151 => 1
+    const index = Math.floor(widthInPercentage / oneWidthDivision) // 0,5 / 0,33 => 1,5151 => 1
     const markerIndex = isDivisionLimit ? divisionLimit : index
 
     return markerIndex
@@ -72,25 +72,27 @@ function getMinAndMax(markers, markerIndex) {
   return { min, max }
 }
 
-// FIXME: Melhorar o código
 function getBudget(widthInPercentage, markers, markerIndex, step) {
   const maxWidthDivisions = markers.length - 1
-  const oneDivisionOfWidth = 1 / maxWidthDivisions
+  const oneWidthDivision = 1 / maxWidthDivisions
+  const isDivisionLimit = widthInPercentage === 1
 
-  const calc1 =
-    widthInPercentage !== 1 ? widthInPercentage % oneDivisionOfWidth : oneDivisionOfWidth
-  const calc2 = calc1 / oneDivisionOfWidth
-  const calc3 =
-    Math.floor((calc2 * (markers[markerIndex + 1] - markers[markerIndex]) + 1) / step) *
-    step
-  const budget = calc3 + markers[markerIndex]
+  const atualMarker = markers[markerIndex]
+  const nextMarker = markers[markerIndex + 1]
 
-  console.log(widthInPercentage)
-  console.log('calc1', calc1)
-  console.log('calc2', calc2)
-  console.log('calc3', calc3)
-  console.log(calc2 * markers[markerIndex])
-  console.log(budget)
+  const getWidthBetweenMarkers = widthInPercentage % oneWidthDivision
+
+  const widthBetweenMarkers = isDivisionLimit ? oneWidthDivision : getWidthBetweenMarkers
+  const relativeWidthBetweenMarkers = widthBetweenMarkers / oneWidthDivision // 0% - 100%
+
+  const maxBudgetBetweenMarkers = nextMarker - atualMarker
+
+  // This calculation might return 0.999... instead of 1
+  // Adding +0.1 to the formula solves the problem
+  const budgetBetweenMarkers = relativeWidthBetweenMarkers * maxBudgetBetweenMarkers + 0.1
+  const budgetBetweenMarkersRoundedToStep = Math.floor(budgetBetweenMarkers / step) * step
+
+  const budget = budgetBetweenMarkersRoundedToStep + atualMarker
 
   return budget
 }
@@ -109,14 +111,14 @@ function getMarkers(range) {
 
 function sliderChangeUsingPosition(
   value,
-  minMax,
+  state,
   markers,
   sliderRef,
-  setStates,
+  dispatch,
   step,
   lastBudgetRef
 ) {
-  const { widthInPercentage } = getPosition(value, minMax.min, minMax.max, sliderRef)
+  const { widthInPercentage } = getPosition(value, state.min, state.max, sliderRef)
 
   const markerIndex = getMarkerIndex(markers).usingWidth(widthInPercentage)
   const { min, max } = getMinAndMax(markers, markerIndex)
@@ -126,75 +128,80 @@ function sliderChangeUsingPosition(
 
   lastBudgetRef.current = budget
 
-  setStates({ position: positionInPixels, min, max, budget })
+  dispatch({
+    type: 'slider_change',
+    payload: { position: positionInPixels, min, max, budget },
+  })
 }
 
-export function sliderChangeUsingValue(
-  value,
-  markers,
-  sliderRef,
-  setStates,
-  lastBudgetRef
-) {
+function sliderChangeUsingValue(value, markers, sliderRef, dispatch, lastBudgetRef) {
   if (lastBudgetRef.current === value) return
+
+  lastBudgetRef.current = value
 
   const markerIndex = getMarkerIndex(markers).usingValue(value)
   const { min, max } = getMinAndMax(markers, markerIndex)
   const { positionInPixels } = getPosition(value, min, max, sliderRef)
 
-  lastBudgetRef.current = value
+  dispatch({
+    type: 'slider_change',
+    payload: { position: positionInPixels, min, max, budget: value },
+  })
+}
 
-  setStates({ position: positionInPixels, min, max, budget: value })
+const initialState = { budget: 0, position: 0, min: 0, max: 0 }
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'slider_change':
+      return {
+        budget: action.payload.budget,
+        position: action.payload.position,
+        min: action.payload.min,
+        max: action.payload.max,
+      }
+    default:
+      throw new Error()
+  }
 }
 
 function Slider({ config }) {
   const { initial, range, step } = config
   const sliderRef = useRef(null)
   const lastBudgetRef = useRef(null)
-  const [budget, setBudget] = useState(0)
-  const [position, setPosition] = useState(0)
-  const [minMax, setMinMax] = useState({})
-
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const { budget, position, min, max } = state
   const markers = useMemo(() => getMarkers(range), [range])
-
-  const setStates = useCallback(({ position, min, max, budget }) => {
-    setPosition(position)
-    setMinMax({ min, max })
-    setBudget(budget)
-  }, [])
 
   function handleSliderChange(event) {
     const value = Number(event.target.value)
 
     sliderChangeUsingPosition(
       value,
-      minMax,
+      state,
       markers,
       sliderRef,
-      setStates,
+      dispatch,
       step,
       lastBudgetRef
     )
   }
 
-  const handleMarkersChangeValue = useCallback(
-    marker => {
-      sliderChangeUsingValue(marker, markers, sliderRef, setStates, lastBudgetRef)
-    },
-    [markers, setStates]
-  )
+  const handleMarkersChangeValue = useCallback((marker, markers) => {
+    sliderChangeUsingValue(marker, markers, sliderRef, dispatch, lastBudgetRef)
+  }, [])
 
   useLayoutEffect(() => {
-    sliderChangeUsingValue(initial, markers, sliderRef, setStates, lastBudgetRef)
-  }, [initial, markers, step, setStates])
+    sliderChangeUsingValue(initial, markers, sliderRef, dispatch, lastBudgetRef)
+  }, [initial, markers])
 
   return (
     <S.Slider>
       <S.Tooltip left={position}>R$ {formatterBudget(budget)}+</S.Tooltip>
       <S.Input
         type="range"
-        min={minMax.min}
-        max={minMax.max}
+        min={min}
+        max={max}
         value={budget}
         onChange={handleSliderChange}
         step={step}

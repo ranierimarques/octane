@@ -1,6 +1,6 @@
 import { Fragment, memo } from 'react'
 
-import { formatterBudget } from '../../utils'
+import { formatterBudget } from '../utils'
 
 import * as S from './markers.styles'
 
@@ -23,7 +23,7 @@ function Markers({ markers, onMarkersChangeValue }) {
         const formattedMarker = formatterBudget(marker)
 
         function handleSliderChange() {
-          onMarkersChangeValue(marker)
+          onMarkersChangeValue(marker, markers)
         }
 
         if (isFirstMarker) {
