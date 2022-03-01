@@ -6,7 +6,7 @@ import { octaneGhostTop, octaneGhostBottom } from '../images'
 
 import * as S from './introduction-form.styles'
 
-function IntroductionForm({ handleNextStep }) {
+function IntroductionForm({ onNextStep }) {
   return (
     <S.OrcamentoForm data-aos="zoom-in">
       <S.Content>
@@ -18,7 +18,7 @@ function IntroductionForm({ handleNextStep }) {
           perguntas diretas e sem enrolação.
         </S.Description>
         <div data-aos="fade-up" data-aos-offset="-200" data-aos-delay="450">
-          <Button noLink onClick={handleNextStep}>
+          <Button noLink onClick={onNextStep}>
             Iniciar formulário de orçamento
           </Button>
         </div>

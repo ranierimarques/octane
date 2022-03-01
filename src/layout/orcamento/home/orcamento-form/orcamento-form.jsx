@@ -1,6 +1,14 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
-import { IntroductionForm, Navigation, StepOne, StepTwo, StepThree, Final } from '..'
+import {
+  IntroductionForm,
+  Navigation,
+  StepOne,
+  StepTwo,
+  StepThree,
+  Final,
+  Modal,
+} from '..'
 import { FormControl } from 'src/common'
 
 import * as S from './orcamento-form.styles'
@@ -18,17 +26,26 @@ const configs = {
 }
 
 function OrcamentoForm() {
+  const modalRef = useRef(null)
   const [step, setStep] = useState(0)
 
-  const prevStep = () => setStep(oldStep => oldStep - 1)
-  const nextStep = () => setStep(oldStep => oldStep + 1)
-  const backToStart = () => setStep(0)
-
-  const formSection = {
-    1: <StepOne />,
-    2: <StepTwo />,
-    3: <StepThree />,
+  function handlePrevStep() {
+    setStep(oldStep => oldStep - 1)
   }
+
+  function handleNextStep() {
+    if (step === 3) {
+      handleOpenModal()
+      return
+    }
+    setStep(oldStep => oldStep + 1)
+  }
+
+  function backToStart() {
+    setStep(0)
+  }
+
+  const formSteps = [<StepOne key={1} />, <StepTwo key={2} />, <StepThree key={3} />]
 
   const isOnSteps = step >= 1
   const isOnLastStep = step === 4
@@ -37,22 +54,28 @@ function OrcamentoForm() {
     return <Final backToStart={backToStart} />
   }
 
+  function handleOpenModal() {
+    modalRef.current.openModal()
+  }
+
   if (isOnSteps) {
     return (
       <S.Background>
         <Navigation step={step} setStep={setStep} />
 
-        <S.FormBackground>{formSection[step]}</S.FormBackground>
+        <S.FormBackground>{formSteps[step - 1]}</S.FormBackground>
 
         <S.Buttons>
-          <FormControl onClick={prevStep} config={configs[1]} />
-          <FormControl onClick={nextStep} config={configs[2]} />
+          <FormControl onClick={handlePrevStep} config={configs[1]} />
+          <FormControl onClick={handleNextStep} config={configs[2]} />
         </S.Buttons>
+
+        <Modal ref={modalRef} />
       </S.Background>
     )
   }
 
-  return <IntroductionForm handleNextStep={nextStep} />
+  return <IntroductionForm onNextStep={handleNextStep} />
 }
 
 export default OrcamentoForm
