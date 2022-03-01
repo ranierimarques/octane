@@ -64,7 +64,7 @@ export const Modal = styled.div`
 export const Title = styled.h3`
   max-width: 365px;
 
-  font-weight: 600;
+  font-weight: 500;
   font-variation-settings: 'wght' 475;
   font-size: 24px;
   line-height: 34px;

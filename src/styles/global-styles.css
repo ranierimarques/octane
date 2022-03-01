@@ -6,6 +6,10 @@
   src: url('/fonts/inter-var-latin.woff2') format('woff2');
 }
 
+:root {
+  color-scheme: dark;
+}
+
 * {
   margin: 0;
   padding: 0;

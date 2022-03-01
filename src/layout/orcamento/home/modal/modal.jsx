@@ -2,6 +2,7 @@ import { forwardRef, useImperativeHandle } from 'react'
 
 import { ClientOnlyPortal, FormControl } from 'src/common'
 import { useModal } from 'src/resources/hooks'
+import { InformationsModal, SuccessfulModal } from '..'
 
 import * as S from './modal.styles'
 
@@ -28,9 +29,13 @@ function Modal(_, ref) {
 
   return (
     <ClientOnlyPortal selector="modal">
-      <S.Overlay className={isModalOpen ? 'open' : ''} onClick={handleCloseModal} />
+      <S.Overlay className={!isModalOpen ? 'open' : ''} onClick={handleCloseModal} />
 
-      <S.Modal className={isModalOpen ? 'open' : ''}>
+      {/* <SuccessfulModal /> */}
+
+      <InformationsModal />
+
+      {/* <S.Modal className={isModalOpen ? 'open' : ''}>
         <S.Title>Deseja verificar as informações preenchidas antes de enviar?</S.Title>
         <S.Warning>
           Ao clicar em Enviar formulário, você confirma que leu e reconhece os{' '}
@@ -58,7 +63,7 @@ function Modal(_, ref) {
         </S.Buttons>
 
         <S.CloseMenu onClick={handleCloseModal} />
-      </S.Modal>
+      </S.Modal> */}
     </ClientOnlyPortal>
   )
 }
