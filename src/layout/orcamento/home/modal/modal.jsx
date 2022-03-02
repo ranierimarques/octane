@@ -29,13 +29,13 @@ function Modal(_, ref) {
 
   return (
     <ClientOnlyPortal selector="modal">
-      <S.Overlay className={!isModalOpen ? 'open' : ''} onClick={handleCloseModal} />
+      <S.Overlay className={isModalOpen ? 'open' : ''} onClick={handleCloseModal} />
 
       {/* <SuccessfulModal /> */}
 
-      <InformationsModal />
+      {/* <InformationsModal /> */}
 
-      {/* <S.Modal className={isModalOpen ? 'open' : ''}>
+      <S.Modal className={isModalOpen ? 'open' : ''}>
         <S.Title>Deseja verificar as informações preenchidas antes de enviar?</S.Title>
         <S.Warning>
           Ao clicar em Enviar formulário, você confirma que leu e reconhece os{' '}
@@ -63,7 +63,7 @@ function Modal(_, ref) {
         </S.Buttons>
 
         <S.CloseMenu onClick={handleCloseModal} />
-      </S.Modal> */}
+      </S.Modal>
     </ClientOnlyPortal>
   )
 }

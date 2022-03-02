@@ -1,17 +1,13 @@
 import * as S from './label.styles'
 
-function Label({ config }) {
-  const hasDescription = config.description
-
+function Label({ description, id, title }) {
   return (
     <>
-      <S.Title htmlFor={config.id} hasDescription={hasDescription}>
-        {config.title}
+      <S.Title htmlFor={id} hasDescription={description}>
+        {title}
       </S.Title>
 
-      {hasDescription && (
-        <S.Description htmlFor={config.id}>{config.description}</S.Description>
-      )}
+      {description && <S.Description htmlFor={id}>{description}</S.Description>}
     </>
   )
 }

@@ -45,6 +45,10 @@ function OrcamentoForm() {
     setStep(0)
   }
 
+  function handleOpenModal() {
+    modalRef.current.openModal()
+  }
+
   const formSteps = [<StepOne key={1} />, <StepTwo key={2} />, <StepThree key={3} />]
 
   const isOnSteps = step >= 1
@@ -52,10 +56,6 @@ function OrcamentoForm() {
 
   if (isOnLastStep) {
     return <Final backToStart={backToStart} />
-  }
-
-  function handleOpenModal() {
-    modalRef.current.openModal()
   }
 
   if (isOnSteps) {

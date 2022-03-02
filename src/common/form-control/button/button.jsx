@@ -1,12 +1,9 @@
 import * as S from './button.styles'
 
-function Button({ config, ...props }) {
-  const variant = config.variant || 'contained'
-  const size = config.size || ''
-
+function Button({ variant = 'contained', size = '', text, disabled, ...props }) {
   return (
-    <S.Button className={`${variant} ${size}`} disabled={config.disabled} {...props}>
-      {config.text}
+    <S.Button className={`${variant} ${size}`} disabled={disabled} {...props}>
+      {text}
     </S.Button>
   )
 }

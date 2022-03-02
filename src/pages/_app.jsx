@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import AOS from 'aos'
 
-import { Navbar, Footer, DevelopmentOptions } from 'src/common'
+import { Navbar, Footer } from 'src/common'
 
 import 'aos/dist/aos.css'
 import '../styles/global-styles.css'
@@ -33,7 +33,6 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Navbar />
       <Component {...pageProps} />
-      <DevelopmentOptions />
       <Footer />
     </>
   )

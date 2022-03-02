@@ -1,13 +1,22 @@
 import * as S from './input.styles.js'
 
-function Input({ config }) {
-  const { disabled, id, label, secondLabel, hidden, variant } = config
-  const hasSecondInput = secondLabel
+function Input({ disabled, id, label, secondLabel, hidden, variant, onChangeData }) {
+  function handleInputChange(event) {
+    const value = event.target.value
+
+    onChangeData(value, id)
+  }
 
   if (variant === 'textarea') {
     return (
       <S.Div>
-        <S.Textarea as="textarea" id={id} type="text" placeholder=" " />
+        <S.Textarea
+          as="textarea"
+          id={id}
+          type="text"
+          placeholder=" "
+          onChange={handleInputChange}
+        />
         <S.Label>{label}</S.Label>
         <S.BottomLine />
         <S.TopOverflow />
@@ -34,7 +43,7 @@ function Input({ config }) {
     )
   }
 
-  if (hasSecondInput) {
+  if (secondLabel) {
     return (
       <S.DoubleInput>
         <S.Div>
@@ -53,7 +62,13 @@ function Input({ config }) {
 
   return (
     <S.Div isHidden={hidden}>
-      <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
+      <S.Input
+        id={id}
+        type="text"
+        placeholder=" "
+        disabled={disabled}
+        onChange={handleInputChange}
+      />
       <S.Label>{label}</S.Label>
       <S.BottomLine />
     </S.Div>
