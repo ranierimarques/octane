@@ -1,88 +1,61 @@
-import { useEffect, useReducer } from 'react'
-
 import { Input, Label, Radio, Button } from 'src/common/form-control'
+import { FormContext } from 'src/resources/contexts'
+import { useFormData } from '../hooks'
 
 import * as S from './form.styles'
 
-const initialState = {
-  data: {
-    name: '',
-    contact: '',
-    message: '',
-  },
-  optionSelected: '',
-  radioDisabled: true,
-  submitDisabled: true,
-}
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'change_data':
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [action.data]: action.payload,
-        },
-      }
-    case 'select_option':
-      return { ...state, radioDisabled: false, optionSelected: action.payload }
-    case 'active_button':
-      return { ...state, submitDisabled: action.payload }
-    default:
-      throw new Error()
-  }
-}
-
 function Form() {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const { data, radioDisabled, submitDisabled, optionSelected } = state
+  const value = useFormData()
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    console.log(data)
+
+    const data = { ...value.state.data, contactOption: value.state.optionSelected }
+    const JSONdata = JSON.stringify(data)
+
+    const endpoint = '/api/form'
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    }
+
+    const response = await fetch(endpoint, options)
+    const result = await response.json()
+
+    console.log(result)
+
+    value.dispatch({ type: 'reset' })
   }
-
-  function handleChangeData(value, id) {
-    dispatch({ type: 'change_data', data: id, payload: value })
-  }
-
-  useEffect(() => {
-    const inputsFilled = Object.values(data).every(value => value !== '')
-
-    dispatch({ type: 'active_button', payload: !inputsFilled })
-  }, [data])
 
   return (
-    <S.Form onSubmit={handleSubmit}>
-      <S.Container>
-        <Label id="name" title="Qual seu nome?" />
-        <Input id="name" label="Nome" onChangeData={handleChangeData} />
-      </S.Container>
+    <FormContext.Provider value={value}>
+      <S.Form onSubmit={handleSubmit}>
+        <S.Container>
+          <Label htmlFor="name">Qual seu nome?</Label>
+          <Input id="name" type="text" autoComplete="name">
+            Nome
+          </Input>
+        </S.Container>
 
-      <S.Container>
-        <Label id="contact" title="Como podemos entrar em contato?" />
-        <Radio name="contact" options={['E-mail', 'Whatsapp']} dispatch={dispatch} />
-        <Input
-          id="contact"
-          label={optionSelected || 'Selecione uma opção'}
-          disabled={radioDisabled}
-          onChangeData={handleChangeData}
-        />
-      </S.Container>
+        <S.Container>
+          <Label htmlFor="contact">Como podemos entrar em contato?</Label>
+          <Radio name="contact" options={['E-mail', 'Whatsapp']} />
+          <Input id="contact">Selecione uma opção</Input>
+        </S.Container>
 
-      <S.Container>
-        <Label id="message" title="Sua mensagem" />
-        <Input
-          id="message"
-          label="Mensagem"
-          variant="textarea"
-          onChangeData={handleChangeData}
-        />
-      </S.Container>
+        <S.Container>
+          <Label htmlFor="message">Sua mensagem</Label>
+          <Input id="message" type="text" variant="textarea">
+            Mensagem
+          </Input>
+        </S.Container>
 
-      <Button text="Enviar mensagem" size="large" disabled={submitDisabled} />
-    </S.Form>
+        <Button size="large">Enviar mensagem</Button>
+      </S.Form>
+    </FormContext.Provider>
   )
 }
 

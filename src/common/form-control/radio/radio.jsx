@@ -1,9 +1,9 @@
+import { useForm } from 'src/resources/contexts'
+
 import * as S from './radio.styles'
 
-function Radio({ vertical, options, name, dispatch }) {
-  function handleOptionChange(option) {
-    dispatch({ type: 'select_option', payload: option })
-  }
+function Radio({ vertical, options, name }) {
+  const { handleOptionUnChecked, handleOptionChange, state } = useForm()
 
   return (
     <S.Radios isVertical={vertical}>
@@ -13,6 +13,8 @@ function Radio({ vertical, options, name, dispatch }) {
             <S.Input
               type="radio"
               name={name}
+              checked={state.optionSelected === option}
+              onClick={() => handleOptionUnChecked(option)}
               onChange={() => handleOptionChange(option)}
             />
             <S.Tooltip>{option}</S.Tooltip>

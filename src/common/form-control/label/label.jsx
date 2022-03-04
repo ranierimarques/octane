@@ -1,13 +1,13 @@
 import * as S from './label.styles'
 
-function Label({ description, id, title }) {
+function Label({ description, children, ...props }) {
   return (
     <>
-      <S.Title htmlFor={id} hasDescription={description}>
-        {title}
+      <S.Title hasDescription={description} {...props}>
+        {children}
       </S.Title>
 
-      {description && <S.Description htmlFor={id}>{description}</S.Description>}
+      {description && <S.Description {...props}>{description}</S.Description>}
     </>
   )
 }

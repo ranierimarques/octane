@@ -87,6 +87,12 @@ export const Input = styled.input`
       box-shadow: 0 0 0 60px #1d1b1b inset;
       background-clip: content-box;
       -webkit-text-fill-color: #e1e1e6;
+
+      + ${Label} {
+        font-weight: 500;
+        font-variation-settings: 'wght' 450;
+        transform: translateY(-8px) scale(0.75);
+      }
     }
   }
 

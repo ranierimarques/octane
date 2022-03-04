@@ -1,10 +1,23 @@
+import { useForm } from 'src/resources/contexts'
+
 import * as S from './input.styles.js'
 
-function Input({ disabled, id, label, secondLabel, hidden, variant, onChangeData }) {
+function Input({
+  disabled,
+  type,
+  autoComplete,
+  id,
+  children,
+  secondLabel,
+  hidden,
+  variant,
+}) {
+  const { handleChangeData, state } = useForm()
+
   function handleInputChange(event) {
     const value = event.target.value
 
-    onChangeData(value, id)
+    handleChangeData(value, id)
   }
 
   if (variant === 'textarea') {
@@ -16,8 +29,10 @@ function Input({ disabled, id, label, secondLabel, hidden, variant, onChangeData
           type="text"
           placeholder=" "
           onChange={handleInputChange}
+          value={state.data[id]}
+          maxLength="20"
         />
-        <S.Label>{label}</S.Label>
+        <S.Label>{children}</S.Label>
         <S.BottomLine />
         <S.TopOverflow />
       </S.Div>
@@ -36,7 +51,7 @@ function Input({ disabled, id, label, secondLabel, hidden, variant, onChangeData
             placeholder="www.exemplo.com"
             disabled={disabled}
           />
-          <S.Label>{label}</S.Label>
+          <S.Label>{children}</S.Label>
           <S.BottomLine />
         </S.Div>
       </S.Wrapper>
@@ -48,7 +63,7 @@ function Input({ disabled, id, label, secondLabel, hidden, variant, onChangeData
       <S.DoubleInput>
         <S.Div>
           <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
-          <S.Label>{label}</S.Label>
+          <S.Label>{children}</S.Label>
           <S.BottomLine />
         </S.Div>
         <S.Div>
@@ -64,12 +79,14 @@ function Input({ disabled, id, label, secondLabel, hidden, variant, onChangeData
     <S.Div isHidden={hidden}>
       <S.Input
         id={id}
-        type="text"
-        placeholder=" "
-        disabled={disabled}
+        type={state[id]?.type || type}
+        autoComplete={state[id]?.autoComplete || autoComplete}
+        disabled={state[id]?.disabled}
         onChange={handleInputChange}
+        value={state.data[id]}
+        placeholder=" "
       />
-      <S.Label>{label}</S.Label>
+      <S.Label>{state[id]?.children || children}</S.Label>
       <S.BottomLine />
     </S.Div>
   )
