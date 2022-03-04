@@ -8,4 +8,3 @@ export { default as IntroductionForm } from './introduction-form/introduction-fo
 export { default as ClipboardInformations } from './clipboard-informations/clipboard-informations'
 export { default as Modal } from './modal/modal'
 export { default as InformationsModal } from './informations-modal/informations-modal'
-export { default as SuccessfulModal } from './successful-modal/successful-modal'

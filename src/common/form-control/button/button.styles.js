@@ -1,7 +1,7 @@
 import { styled } from 'linaria/react'
 
 export const Button = styled.button`
-  font-weight: 600;
+  font-weight: 500;
   font-variation-settings: 'wght' 475;
   font-size: 16px;
   line-height: 19px;

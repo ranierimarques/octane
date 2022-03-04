@@ -2,7 +2,8 @@ import { forwardRef, useImperativeHandle } from 'react'
 
 import { ClientOnlyPortal, FormControl } from 'src/common'
 import { useModal } from 'src/resources/hooks'
-import { InformationsModal, SuccessfulModal } from '..'
+import { SuccessfulModal } from 'src/shared'
+import { InformationsModal } from '..'
 
 import * as S from './modal.styles'
 

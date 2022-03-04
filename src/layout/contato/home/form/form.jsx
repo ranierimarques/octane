@@ -1,11 +1,19 @@
+import { useRef } from 'react'
+
 import { Input, Label, Radio, Button } from 'src/common/form-control'
 import { FormContext } from 'src/resources/contexts'
+import { Modal } from '..'
 import { useFormData } from '../hooks'
 
 import * as S from './form.styles'
 
 function Form() {
+  const modalRef = useRef(null)
   const value = useFormData()
+
+  function handleOpenModal() {
+    modalRef.current.openModal()
+  }
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -24,6 +32,8 @@ function Form() {
 
     const response = await fetch(endpoint, options)
     const result = await response.json()
+
+    handleOpenModal()
 
     value.dispatch({ type: 'reset' })
 
@@ -54,6 +64,8 @@ function Form() {
         </S.Container>
 
         <Button size="large">Enviar mensagem</Button>
+
+        <Modal ref={modalRef} />
       </S.Form>
     </FormContext.Provider>
   )
