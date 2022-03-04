@@ -10,24 +10,24 @@ function Form() {
   async function handleSubmit(event) {
     event.preventDefault()
 
+    value.dispatch({ type: 'submit' })
+
     const data = { ...value.state.data, contactOption: value.state.optionSelected }
     const JSONdata = JSON.stringify(data)
 
     const endpoint = '/api/form'
     const options = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSONdata,
     }
 
     const response = await fetch(endpoint, options)
     const result = await response.json()
 
-    console.log(result)
-
     value.dispatch({ type: 'reset' })
+
+    console.log(result)
   }
 
   return (

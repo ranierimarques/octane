@@ -8,6 +8,7 @@ const initialState = {
   },
   optionSelected: '',
   isSubmitDisabled: true,
+  isLoading: false,
   contact: {
     autoComplete: '',
     type: '',
@@ -79,6 +80,9 @@ function reducer(state, action) {
     }
     case 'reset': {
       return initialState
+    }
+    case 'submit': {
+      return { ...state, isLoading: true, isSubmitDisabled: true }
     }
     default:
       throw new Error()

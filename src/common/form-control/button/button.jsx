@@ -1,4 +1,5 @@
 import { useForm } from 'src/resources/contexts'
+import { Loader } from 'src/common'
 
 import * as S from './button.styles'
 
@@ -11,7 +12,7 @@ function Button({ variant = 'contained', size = '', children, disabled, ...props
       disabled={state.isSubmitDisabled}
       {...props}
     >
-      {children}
+      {state.isLoading ? <Loader /> : children}
     </S.Button>
   )
 }
