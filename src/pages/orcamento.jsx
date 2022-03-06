@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { Home } from 'src/layout/orcamento'
+import { Home } from '@/layout/orcamento'
 
 function Orcamento() {
   return (
