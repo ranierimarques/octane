@@ -1,3 +1,4 @@
+import { useForm } from '@/resources/contexts'
 import { CheckMark } from '../svgs'
 
 import * as S from './navigation.styles'
@@ -26,14 +27,14 @@ const tabs = [
   },
 ]
 
-function Navigation({ step, setStep }) {
-  const handleChangeStep = tabId => setStep(tabId)
+function Navigation() {
+  const { state, handleChangeStep } = useForm()
 
   return (
     <S.Container>
       {tabs.map(tab => {
-        const activeStep = step === tab.id
-        const finishedStep = step > tab.id
+        const activeStep = state.step === tab.id
+        const finishedStep = state.step > tab.id
 
         return (
           <S.Tab

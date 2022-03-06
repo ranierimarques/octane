@@ -11,7 +11,6 @@ export default async function handler(req, res) {
 
   try {
     const date = getDate()
-
     const databaseRef = ref(database, 'contacts')
     const databaseData = { name, contactOption, contact, message, date }
 

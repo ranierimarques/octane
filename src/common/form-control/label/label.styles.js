@@ -9,7 +9,7 @@ export const Title = styled.label`
   line-height: 22px;
   color: #e1e1e6;
 
-  margin-bottom: ${props => (props.hasDescription ? '3px' : '12px')};
+  margin-bottom: ${props => (props.smallMargin ? '3px' : '12px')};
 `
 
 export const Description = styled.label`

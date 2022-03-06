@@ -2,16 +2,7 @@ import { useForm } from 'src/resources/contexts'
 
 import * as S from './input.styles.js'
 
-function Input({
-  disabled,
-  type,
-  autoComplete,
-  id,
-  children,
-  secondLabel,
-  hidden,
-  variant,
-}) {
+function Input({ disabled, type, autoComplete, id, children, hidden, variant }) {
   const { handleChangeData, state } = useForm()
 
   function handleInputChange(event) {
@@ -58,23 +49,6 @@ function Input({
     )
   }
 
-  if (secondLabel) {
-    return (
-      <S.DoubleInput>
-        <S.Div>
-          <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
-          <S.Label>{children}</S.Label>
-          <S.BottomLine />
-        </S.Div>
-        <S.Div>
-          <S.Input id={id} type="text" placeholder=" " disabled={disabled} />
-          <S.Label>{secondLabel}</S.Label>
-          <S.BottomLine />
-        </S.Div>
-      </S.DoubleInput>
-    )
-  }
-
   return (
     <S.Div isHidden={hidden}>
       <S.Input
@@ -82,8 +56,8 @@ function Input({
         type={state[id]?.type || type}
         autoComplete={state[id]?.autoComplete || autoComplete}
         disabled={state[id]?.disabled}
-        onChange={handleInputChange}
         value={state.data[id]}
+        onChange={handleInputChange}
         placeholder=" "
       />
       <S.Label>{state[id]?.children || children}</S.Label>

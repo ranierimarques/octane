@@ -17,7 +17,7 @@ function Modal(_, ref) {
 
   return (
     <ClientOnlyPortal selector="modal">
-      <S.Overlay className={isModalOpen ? 'open' : ''} onClick={handleCloseModal} />
+      <S.Overlay className={isModalOpen ? 'open' : ''} />
 
       <SuccessfulModal isModalOpen={isModalOpen} onCloseModal={handleCloseModal} />
     </ClientOnlyPortal>

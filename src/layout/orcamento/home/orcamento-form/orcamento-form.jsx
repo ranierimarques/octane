@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 
 import {
   IntroductionForm,
@@ -9,41 +9,14 @@ import {
   Final,
   Modal,
 } from '..'
-import { FormControl } from 'src/common'
+import { Button } from 'src/common/form-control'
+import { useForm } from '@/resources/contexts'
 
 import * as S from './orcamento-form.styles'
 
-const configs = {
-  1: {
-    element: 'button',
-    text: 'Voltar',
-    variant: 'text',
-  },
-  2: {
-    element: 'button',
-    text: 'Continuar',
-  },
-}
-
 function OrcamentoForm() {
+  const { state, handlePrevStep, handleNextStep } = useForm()
   const modalRef = useRef(null)
-  const [step, setStep] = useState(0)
-
-  function handlePrevStep() {
-    setStep(oldStep => oldStep - 1)
-  }
-
-  function handleNextStep() {
-    if (step === 3) {
-      handleOpenModal()
-      return
-    }
-    setStep(oldStep => oldStep + 1)
-  }
-
-  function backToStart() {
-    setStep(0)
-  }
 
   function handleOpenModal() {
     modalRef.current.openModal()
@@ -51,23 +24,26 @@ function OrcamentoForm() {
 
   const formSteps = [<StepOne key={1} />, <StepTwo key={2} />, <StepThree key={3} />]
 
-  const isOnSteps = step >= 1
-  const isOnLastStep = step === 4
+  const isOnSteps = state.step >= 1
+  const isOnLastStep = state.step === formSteps.length + 1
+  const currentStep = formSteps[state.step - 1]
 
   if (isOnLastStep) {
-    return <Final backToStart={backToStart} />
+    return <Final />
   }
 
   if (isOnSteps) {
     return (
       <S.Background>
-        <Navigation step={step} setStep={setStep} />
+        <Navigation />
 
-        <S.FormBackground>{formSteps[step - 1]}</S.FormBackground>
+        <S.FormBackground>{currentStep}</S.FormBackground>
 
         <S.Buttons>
-          <FormControl onClick={handlePrevStep} config={configs[1]} />
-          <FormControl onClick={handleNextStep} config={configs[2]} />
+          <Button onClick={handlePrevStep} variant="text">
+            Voltar
+          </Button>
+          <Button onClick={handleNextStep}>Continuar</Button>
         </S.Buttons>
 
         <Modal ref={modalRef} />
@@ -75,7 +51,7 @@ function OrcamentoForm() {
     )
   }
 
-  return <IntroductionForm onNextStep={handleNextStep} />
+  return <IntroductionForm />
 }
 
 export default OrcamentoForm

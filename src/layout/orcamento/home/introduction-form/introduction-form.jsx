@@ -1,12 +1,15 @@
 import Image from 'next/image'
 
 import { Button } from 'src/common'
+import { useForm } from '@/resources/contexts'
 
 import { octaneGhostTop, octaneGhostBottom } from '../images'
 
 import * as S from './introduction-form.styles'
 
-function IntroductionForm({ onNextStep }) {
+function IntroductionForm() {
+  const { handleNextStep } = useForm()
+
   return (
     <S.OrcamentoForm data-aos="zoom-in">
       <S.Content>
@@ -18,7 +21,7 @@ function IntroductionForm({ onNextStep }) {
           perguntas diretas e sem enrolação.
         </S.Description>
         <div data-aos="fade-up" data-aos-offset="-200" data-aos-delay="450">
-          <Button noLink onClick={onNextStep}>
+          <Button noLink onClick={handleNextStep}>
             Iniciar formulário de orçamento
           </Button>
         </div>

@@ -12,3 +12,12 @@ export const Form = styled.form`
     flex-basis: 400px;
   }
 `
+
+export const Container = styled.div`
+  flex-basis: 368px;
+`
+
+export const DoubleInput = styled.div`
+  display: flex;
+  gap: 8px;
+`

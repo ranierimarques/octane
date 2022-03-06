@@ -1,14 +1,14 @@
 import * as S from './label.styles'
 
-function Label({ description, children, ...props }) {
-  return (
-    <>
-      <S.Title hasDescription={description} {...props}>
-        {children}
-      </S.Title>
+function Label({ description, smallMargin, children, ...props }) {
+  if (description) {
+    return <S.Description {...props}>{children}</S.Description>
+  }
 
-      {description && <S.Description {...props}>{description}</S.Description>}
-    </>
+  return (
+    <S.Title smallMargin={smallMargin} {...props}>
+      {children}
+    </S.Title>
   )
 }
 

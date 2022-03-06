@@ -1,52 +1,68 @@
-import { FormControl } from 'src/common'
+import { Input, Label, Radio } from 'src/common/form-control'
 
 import * as S from './step-one.styles'
-
-const configs = {
-  1: {
-    element: 'input',
-    id: 'nome',
-    title: 'Como podemos te chamar?',
-    description: 'Pode ser seu nome ou algum apelido.',
-    label: 'Seu nome',
-  },
-  2: {
-    element: 'input',
-    id: 'nome-da-empresa',
-    title: 'Qual é o nome da empresa que você representa?',
-    description: 'Se possível também informe o cargo que ocupa.',
-    label: 'Nome da empresa',
-    secondLabel: 'Cargo',
-  },
-  3: {
-    element: 'radio',
-    id: 'como-chegou-aqui',
-    title: 'Como você chegou à Octane?',
-    description: 'Conte-nós como conheceu a nossa equipe.',
-    label: 'Digite aqui',
-    options: ['Redes sociais', 'Indicação', 'Google', 'Outro'],
-    disabled: true,
-    vertical: true,
-    hidden: true,
-  },
-  4: {
-    element: 'radio',
-    id: 'forma-de-contato',
-    title: 'Como você gostaria que entrássemos em contato?',
-    description: 'Selecione a melhor forma de entrarmos em contato.',
-    label: 'Selecione uma opção',
-    options: ['E-mail', 'WhatsApp'],
-    disabled: true,
-  },
-}
 
 function StepOne() {
   return (
     <S.Form>
-      <FormControl config={configs[1]} />
-      <FormControl config={configs[2]} />
-      <FormControl config={configs[3]} />
-      <FormControl config={configs[4]} />
+      <S.Container>
+        <Label htmlFor="name" smallMargin>
+          Como podemos te chamar?
+        </Label>
+        <Label htmlFor="name" description>
+          Pode ser seu nome ou algum apelido.
+        </Label>
+        <Input id="name" type="text" autoComplete="name">
+          Seu nome
+        </Input>
+      </S.Container>
+
+      <S.Container>
+        <Label htmlFor="companyName" smallMargin>
+          Qual é o nome da empresa que você representa?
+        </Label>
+        <Label htmlFor="companyName" description>
+          Se possível também informe o cargo que ocupa.
+        </Label>
+        <S.DoubleInput>
+          <Input id="companyName" type="text" autoComplete="organization">
+            Nome da empresa
+          </Input>
+          <Input id="companyTitle" type="text" autoComplete="organization-title">
+            Cargo
+          </Input>
+        </S.DoubleInput>
+      </S.Container>
+
+      <S.Container>
+        <Label htmlFor="howGotHere" smallMargin>
+          Como você chegou à Octane?
+        </Label>
+        <Label htmlFor="howGotHere" description>
+          Conte-nós como conheceu a nossa equipe.
+        </Label>
+        <Radio
+          name="howGotHere"
+          options={['Redes sociais', 'Indicação', 'Google', 'Outro']}
+          vertical
+        />
+        <Input id="howGotHere" hidden disabled>
+          Digite aqui
+        </Input>
+      </S.Container>
+
+      <S.Container>
+        <Label htmlFor="contactForm" smallMargin>
+          Como você gostaria que entrássemos em contato?
+        </Label>
+        <Label htmlFor="contactForm" description>
+          Selecione a melhor forma de entrarmos em contato.
+        </Label>
+        <Radio name="contactForm" options={['E-mail', 'WhatsApp']} />
+        <Input id="contactForm" disabled>
+          Selecione uma opção
+        </Input>
+      </S.Container>
     </S.Form>
   )
 }

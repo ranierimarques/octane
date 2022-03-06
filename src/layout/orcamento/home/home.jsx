@@ -1,8 +1,12 @@
 import { OrcamentoForm } from '.'
+import { useFormData } from './hooks'
+import { FormContext } from '@/resources/contexts'
 
 import * as S from './home.styles'
 
 function Home() {
+  const value = useFormData()
+
   return (
     <S.Section>
       <S.Header data-aos="fade-up">
@@ -14,7 +18,9 @@ function Home() {
         </S.Description>
       </S.Header>
 
-      <OrcamentoForm />
+      <FormContext.Provider value={value}>
+        <OrcamentoForm />
+      </FormContext.Provider>
     </S.Section>
   )
 }
