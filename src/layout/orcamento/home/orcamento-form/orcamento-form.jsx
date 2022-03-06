@@ -9,7 +9,7 @@ import {
   Final,
   Modal,
 } from '..'
-import { Button } from 'src/common/form-control'
+import { Button } from 'src/common/form'
 import { useForm } from '@/resources/contexts'
 
 import * as S from './orcamento-form.styles'

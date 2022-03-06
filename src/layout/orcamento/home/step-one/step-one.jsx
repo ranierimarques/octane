@@ -1,4 +1,4 @@
-import { Input, Label, Radio } from 'src/common/form-control'
+import { Input, Label, Radio } from 'src/common/form'
 
 import * as S from './step-one.styles'
 

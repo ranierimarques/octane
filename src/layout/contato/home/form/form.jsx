@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 
-import { Input, Label, Radio, Button } from 'src/common/form-control'
-import { FormContext } from 'src/resources/contexts'
+import { Input, Label, Radio, Button } from '@/common/form'
+import { FormContext } from '@/contexts'
 import { Modal } from '..'
 import { useFormData } from '../hooks'
 

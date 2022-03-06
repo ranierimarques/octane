@@ -1,5 +1,5 @@
-import { useForm } from 'src/resources/contexts'
-import { Loader } from 'src/common'
+import { useForm } from '@/contexts'
+import { Loader } from '@/common'
 
 import * as S from './button.styles'
 

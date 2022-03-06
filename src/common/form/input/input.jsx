@@ -1,4 +1,4 @@
-import { useForm } from 'src/resources/contexts'
+import { useForm } from '@/contexts'
 
 import * as S from './input.styles.js'
 
