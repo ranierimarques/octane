@@ -8,7 +8,7 @@ import * as S from './slider.styles'
 
 const initialState = { budget: 0, position: 0, min: 0, max: 0 }
 
-function reducer(state, action) {
+function reducer(_, action) {
   switch (action.type) {
     case 'slider_change':
       return {
@@ -22,8 +22,7 @@ function reducer(state, action) {
   }
 }
 
-function Slider({ config }) {
-  const { initial, range, step } = config
+function Slider({ initial, range, step }) {
   const sliderRef = useRef(null)
   const lastBudgetRef = useRef(null)
   const [state, dispatch] = useReducer(reducer, initialState)

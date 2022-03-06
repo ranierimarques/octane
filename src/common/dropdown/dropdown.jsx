@@ -2,8 +2,7 @@ import { useState, useRef } from 'react'
 
 import * as S from './dropdown.styles'
 
-function Dropdown({ config }) {
-  const { disabled, id, label, options } = config
+function Dropdown({ disabled, id, children, options }) {
   const dropdownRef = useRef(null)
   const inputRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -53,7 +52,7 @@ function Dropdown({ config }) {
           value={dropdownValue}
           readOnly
         />
-        <S.Label>{label}</S.Label>
+        <S.Label>{children}</S.Label>
         <S.ArrowDropDown />
         <S.BottomLine />
       </S.Div>

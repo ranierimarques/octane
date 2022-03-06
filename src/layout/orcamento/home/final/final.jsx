@@ -1,16 +1,9 @@
 import { useForm } from '@/resources/contexts'
-import { FormControl } from 'src/common'
+import { FormButton } from '@/common'
 
 import { HeartIcon } from '../svgs'
 
 import * as S from './final.styles'
-
-const configs = {
-  1: {
-    element: 'button',
-    text: 'Concluir',
-  },
-}
 
 function Final() {
   const { goBackToStart } = useForm()
@@ -26,7 +19,7 @@ function Final() {
         <S.Description>
           Fique atento, nossa equipe entrará em contato nas próximas 24 horas.
         </S.Description>
-        <FormControl onClick={goBackToStart} config={configs[1]} />
+        <FormButton onClick={goBackToStart}>Concluir</FormButton>
       </div>
 
       <S.Wire />

@@ -15,6 +15,10 @@ export const Form = styled.form`
   }
 `
 
+export const Container = styled.div`
+  flex-basis: 368px;
+`
+
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
