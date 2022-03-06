@@ -1,23 +1,11 @@
 import { forwardRef, useImperativeHandle } from 'react'
 
-import { ClientOnlyPortal, FormControl } from 'src/common'
-import { useModal } from 'src/resources/hooks'
-import { SuccessfulModal } from 'src/shared'
+import { ClientOnlyPortal, FormButton } from '@/common'
+import { useModal } from '@/hooks'
+import { SuccessfulModal } from '@/shared'
 import { InformationsModal } from '..'
 
 import * as S from './modal.styles'
-
-const configs = {
-  1: {
-    element: 'button',
-    text: 'Verificar informações',
-    variant: 'text',
-  },
-  2: {
-    element: 'button',
-    text: 'Enviar formulário',
-  },
-}
 
 function Modal(_, ref) {
   const { isModalOpen, handleOpenModal, handleCloseModal } = useModal()
@@ -59,8 +47,8 @@ function Modal(_, ref) {
         </S.Warning>
 
         <S.Buttons>
-          <FormControl config={configs[1]} />
-          <FormControl config={configs[2]} />
+          <FormButton variant="text">Verificar informações</FormButton>
+          <FormButton>Enviar formulário</FormButton>
         </S.Buttons>
 
         <S.CloseMenu onClick={handleCloseModal} />

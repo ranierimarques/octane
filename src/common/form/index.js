@@ -1,6 +1,0 @@
-export { default as Input } from './input/input'
-export { default as Button } from './button/button'
-export { default as Label } from './label/label'
-export { default as Slider } from './slider/slider'
-export { default as Radio } from './radio/radio'
-export { default as Dropdown } from './dropdown/dropdown'

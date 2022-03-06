@@ -1,6 +1,6 @@
 import { styled } from 'linaria/react'
 
-import { ArrowDropDown as ArrowDropDownSvg } from '../svgs'
+import { ArrowDropDown as ArrowDropDownSvg } from './svgs'
 
 export const Wrapper = styled.div`
   position: relative;

@@ -9,7 +9,7 @@ import {
   Final,
   Modal,
 } from '..'
-import { Button } from 'src/common/form'
+import { FormButton } from 'src/common'
 import { useForm } from '@/resources/contexts'
 
 import * as S from './orcamento-form.styles'
@@ -40,10 +40,10 @@ function OrcamentoForm() {
         <S.FormBackground>{currentStep}</S.FormBackground>
 
         <S.Buttons>
-          <Button onClick={handlePrevStep} variant="text">
+          <FormButton onClick={handlePrevStep} variant="text">
             Voltar
-          </Button>
-          <Button onClick={handleNextStep}>Continuar</Button>
+          </FormButton>
+          <FormButton onClick={handleNextStep}>Continuar</FormButton>
         </S.Buttons>
 
         <Modal ref={modalRef} />

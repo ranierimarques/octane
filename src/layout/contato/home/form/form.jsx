@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { Input, Label, Radio, Button } from '@/common/form'
+import { Input, Label, Radio, FormButton } from '@/common'
 import { FormContext } from '@/contexts'
 import { Modal } from '..'
 import { useFormData } from '../hooks'
@@ -63,7 +63,7 @@ function Form() {
           </Input>
         </S.Container>
 
-        <Button size="large">Enviar mensagem</Button>
+        <FormButton size="large">Enviar mensagem</FormButton>
 
         <Modal ref={modalRef} />
       </S.Form>

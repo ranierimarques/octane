@@ -1,9 +1,9 @@
 import { useForm } from '@/contexts'
-import { Loader } from '@/common'
+import { Loader } from '.'
 
-import * as S from './button.styles'
+import * as S from './form-button.styles'
 
-function Button({ variant = 'contained', size = '', children, ...props }) {
+function FormButton({ variant = 'contained', size = '', children, ...props }) {
   const { state } = useForm()
 
   return (
@@ -17,4 +17,4 @@ function Button({ variant = 'contained', size = '', children, ...props }) {
   )
 }
 
-export default Button
+export default FormButton
