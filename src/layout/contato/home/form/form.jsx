@@ -50,7 +50,7 @@ function Form() {
 
       <S.Container>
         <Label htmlFor="contact">Como podemos entrar em contato?</Label>
-        <Radio name="contact" options={['E-mail', 'Whatsapp']} />
+        <Radio name="contact" options={['E-mail', 'WhatsApp']} />
         <Input id="contact">Selecione uma opção</Input>
       </S.Container>
 

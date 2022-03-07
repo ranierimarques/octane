@@ -27,6 +27,8 @@ export const Label = styled.label`
   pointer-events: none;
 
   z-index: 2;
+
+  will-change: transform;
 `
 
 export const Input = styled.input`
@@ -67,7 +69,7 @@ export const Input = styled.input`
       ~ ${Label} {
         color: #fa5a47;
         font-weight: 500;
-        font-variation-settings: 'wght' 450;
+        font-variation-settings: 'wght' 500;
         transform: translateY(-8px) scale(0.75);
       }
 
@@ -90,7 +92,7 @@ export const Input = styled.input`
 
       + ${Label} {
         font-weight: 500;
-        font-variation-settings: 'wght' 450;
+        font-variation-settings: 'wght' 500;
         transform: translateY(-8px) scale(0.75);
       }
     }
@@ -107,7 +109,7 @@ export const Input = styled.input`
 
   :not(:placeholder-shown):not(:focus) + ${Label} {
     font-weight: 500;
-    font-variation-settings: 'wght' 450;
+    font-variation-settings: 'wght' 500;
     transform: translateY(-8px) scale(0.75);
   }
 `
@@ -127,6 +129,8 @@ export const BottomLine = styled.div`
 
   transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
     opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  will-change: transform;
 `
 
 // Double Input

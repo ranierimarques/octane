@@ -17,6 +17,8 @@ export const Link = styled.a`
 
   transition: color 0.2s ease, font-weight 0.2s ease, border-bottom 0.2s ease;
 
+  will-change: opacity;
+
   :hover {
     border-bottom: 2px solid #f93822;
     color: #e1e1e6;

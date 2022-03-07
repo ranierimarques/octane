@@ -2,7 +2,7 @@ import { useForm } from '@/contexts'
 
 import * as S from './input.styles.js'
 
-function Input({ disabled, type, autoComplete, id, children, hidden, variant }) {
+function Input({ disabled, type, autoComplete, id, children, variant }) {
   const { handleChangeData, state } = useForm()
 
   function handleInputChange(event) {
@@ -32,7 +32,7 @@ function Input({ disabled, type, autoComplete, id, children, hidden, variant }) 
 
   if (variant === 'website') {
     return (
-      <S.Wrapper isHidden={hidden}>
+      <S.Wrapper isHidden={false}>
         <S.Http className={disabled ? 'disabled' : ''}>http://</S.Http>
 
         <S.Div>
@@ -50,7 +50,7 @@ function Input({ disabled, type, autoComplete, id, children, hidden, variant }) 
   }
 
   return (
-    <S.Div isHidden={hidden}>
+    <S.Div isHidden={state[id]?.hidden}>
       <S.Input
         id={id}
         type={state[id]?.type || type}

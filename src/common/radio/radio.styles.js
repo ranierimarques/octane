@@ -1,10 +1,16 @@
 import { styled } from 'linaria/react'
 
+import { Div } from '../input/input.styles'
+
 export const Radios = styled.div`
   display: flex;
   flex-direction: ${props => (props.isVertical ? 'column' : 'row')};
   gap: ${props => (props.isVertical ? '12px' : '20px')};
   margin: ${props => (props.isVertical ? '4px 0 0' : '4px 0 16px')};
+
+  + ${Div} {
+    margin-top: 16px;
+  }
 `
 
 export const Label = styled.label`

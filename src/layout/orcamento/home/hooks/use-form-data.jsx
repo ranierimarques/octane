@@ -1,5 +1,26 @@
 import { useReducer } from 'react'
 
+const stateOptions = {
+  contact: {
+    type: {
+      'E-mail': 'email',
+      WhatsApp: 'tel',
+    },
+    autoComplete: {
+      'E-mail': 'email',
+      WhatsApp: 'tel',
+    },
+    children: payload => payload,
+    hidden: () => false,
+  },
+  howGotHere: {
+    type: {},
+    autoComplete: {},
+    children: () => '',
+    hidden: payload => payload !== 'Outro',
+  },
+}
+
 const initialState = {
   step: 0,
   data: {
@@ -7,11 +28,11 @@ const initialState = {
     companyName: '',
     companyTitle: '',
     contact: '',
+    howGotHere: '',
   },
   isSubmitDisabled: false,
   isLoading: false,
   howGotHere: {
-    disabled: true,
     hidden: true,
     optionSelected: '',
   },
@@ -39,15 +60,36 @@ function reducer(state, action) {
       return { ...state, step: action.payload }
     }
     case 'select_option': {
+      const type = stateOptions[action.id]?.type[action.payload]
+      const autoComplete = stateOptions[action.id]?.autoComplete[action.payload]
+      const children = stateOptions[action.id]?.children(action.payload)
+      const hidden = stateOptions[action.id]?.hidden(action.payload)
+
       return {
         ...state,
-        [action.id]: { ...state[action.id], optionSelected: action.payload },
+        data: {
+          ...state.data,
+          [action.id]: '',
+        },
+        [action.id]: {
+          ...state[action.id],
+          autoComplete,
+          type,
+          children,
+          hidden,
+          disabled: false,
+          optionSelected: action.payload,
+        },
       }
     }
     case 'deselect_option': {
       return {
         ...state,
-        [action.id]: { ...state[action.id], optionSelected: '' },
+        data: {
+          ...state.data,
+          [action.id]: '',
+        },
+        [action.id]: { ...initialState[action.id] },
       }
     }
     case 'reset': {

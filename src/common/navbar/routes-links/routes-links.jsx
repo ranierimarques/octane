@@ -17,7 +17,7 @@ function RoutesLinks({ closeMenu }) {
       {routes.map(route => (
         <li key={route.name} onClick={closeMenu}>
           <Link href={route.href} passHref>
-            <S.Link className={pathname == route.href && 'active'}>{route.name}</S.Link>
+            <S.Link className={pathname === route.href && 'active'}>{route.name}</S.Link>
           </Link>
         </li>
       ))}
