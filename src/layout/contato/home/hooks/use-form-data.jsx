@@ -6,7 +6,6 @@ const initialState = {
     contact: '',
     message: '',
   },
-  optionSelected: '',
   isSubmitDisabled: true,
   isLoading: false,
   contact: {
@@ -14,6 +13,7 @@ const initialState = {
     type: '',
     disabled: true,
     children: '',
+    optionSelected: '',
   },
 }
 
@@ -39,7 +39,7 @@ function reducer(state, action) {
 
       const data = {
         ...state.data,
-        contact: '',
+        [action.id]: '',
       }
 
       const isInputsFilled = Object.values(data).every(value => value !== '')
@@ -47,20 +47,21 @@ function reducer(state, action) {
       return {
         ...state,
         data,
-        optionSelected: action.payload,
         isSubmitDisabled: !isInputsFilled,
-        contact: {
+        [action.id]: {
+          ...state[action.id],
           autoComplete,
           type,
           disabled: false,
           children: action.payload,
+          optionSelected: action.payload,
         },
       }
     }
     case 'deselect_option': {
       const data = {
         ...state.data,
-        contact: '',
+        [action.id]: '',
       }
 
       const isInputsFilled = Object.values(data).every(value => value !== '')
@@ -70,11 +71,8 @@ function reducer(state, action) {
         data,
         optionSelected: '',
         isSubmitDisabled: !isInputsFilled,
-        contact: {
-          autoComplete: '',
-          type: '',
-          disabled: true,
-          children: '',
+        [action.id]: {
+          ...initialState[action.id],
         },
       }
     }
@@ -96,14 +94,14 @@ function useFormData() {
     dispatch({ type: 'change_data', data: id, payload: value })
   }
 
-  function handleOptionUnChecked(option) {
-    if (option === state.optionSelected) {
-      dispatch({ type: 'deselect_option' })
+  function handleOptionUnChecked(option, id) {
+    if (option === state[id].optionSelected) {
+      dispatch({ type: 'deselect_option', id })
     }
   }
 
-  function handleOptionChange(option) {
-    dispatch({ type: 'select_option', payload: option })
+  function handleOptionChange(option, id) {
+    dispatch({ type: 'select_option', id, payload: option })
   }
 
   return { state, handleChangeData, handleOptionUnChecked, handleOptionChange, dispatch }

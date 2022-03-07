@@ -1,26 +1,33 @@
 import { useReducer } from 'react'
 
 const initialState = {
+  step: 0,
   data: {
     name: '',
+    companyName: '',
+    companyTitle: '',
     contact: '',
-    message: '',
   },
-  optionSelected: '',
   isSubmitDisabled: false,
   isLoading: false,
+  howGotHere: {
+    disabled: true,
+    hidden: true,
+    optionSelected: '',
+  },
   contact: {
     autoComplete: '',
     type: '',
     disabled: true,
     children: '',
+    optionSelected: '',
   },
-  step: 0,
 }
 
 function reducer(state, action) {
   switch (action.type) {
     case 'change_data': {
+      return { ...state, data: { ...state.data, [action.data]: action.payload } }
     }
     case 'prev_step': {
       return { ...state, step: state.step - 1 }
@@ -30,6 +37,18 @@ function reducer(state, action) {
     }
     case 'change_step': {
       return { ...state, step: action.payload }
+    }
+    case 'select_option': {
+      return {
+        ...state,
+        [action.id]: { ...state[action.id], optionSelected: action.payload },
+      }
+    }
+    case 'deselect_option': {
+      return {
+        ...state,
+        [action.id]: { ...state[action.id], optionSelected: '' },
+      }
     }
     case 'reset': {
       return initialState
@@ -46,14 +65,14 @@ function useFormData() {
     dispatch({ type: 'change_data', data: id, payload: value })
   }
 
-  function handleOptionUnChecked(option) {
-    if (option === state.optionSelected) {
-      dispatch({ type: 'deselect_option' })
+  function handleOptionUnChecked(option, id) {
+    if (option === state[id].optionSelected) {
+      dispatch({ type: 'deselect_option', id })
     }
   }
 
-  function handleOptionChange(option) {
-    dispatch({ type: 'select_option', payload: option })
+  function handleOptionChange(option, id) {
+    dispatch({ type: 'select_option', id, payload: option })
   }
 
   function handlePrevStep() {

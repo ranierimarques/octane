@@ -9,12 +9,12 @@ import {
   Final,
   Modal,
 } from '..'
-import { FormButton } from 'src/common'
+import { FormButton } from '@/common'
 import { useForm } from '@/resources/contexts'
 
-import * as S from './orcamento-form.styles'
+import * as S from './form.styles'
 
-function OrcamentoForm() {
+function Form() {
   const { state, handlePrevStep, handleNextStep } = useForm()
   const modalRef = useRef(null)
 
@@ -54,4 +54,4 @@ function OrcamentoForm() {
   return <IntroductionForm />
 }
 
-export default OrcamentoForm
+export default Form

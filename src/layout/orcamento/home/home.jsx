@@ -1,6 +1,6 @@
-import { OrcamentoForm } from '.'
-import { useFormData } from './hooks'
 import { FormContext } from '@/contexts'
+import { useFormData } from './hooks'
+import { Form } from '.'
 
 import * as S from './home.styles'
 
@@ -19,7 +19,7 @@ function Home() {
       </S.Header>
 
       <FormContext.Provider value={value}>
-        <OrcamentoForm />
+        <Form />
       </FormContext.Provider>
     </S.Section>
   )

@@ -46,22 +46,20 @@ function StepOne() {
           options={['Redes sociais', 'Indicação', 'Google', 'Outro']}
           vertical
         />
-        <Input id="howGotHere" hidden disabled>
+        <Input id="howGotHere" type="text">
           Digite aqui
         </Input>
       </S.Container>
 
       <S.Container>
-        <Label htmlFor="contactForm" smallMargin>
+        <Label htmlFor="contact" smallMargin>
           Como você gostaria que entrássemos em contato?
         </Label>
-        <Label htmlFor="contactForm" description>
+        <Label htmlFor="contact" description>
           Selecione a melhor forma de entrarmos em contato.
         </Label>
-        <Radio name="contactForm" options={['E-mail', 'WhatsApp']} />
-        <Input id="contactForm" disabled>
-          Selecione uma opção
-        </Input>
+        <Radio name="contact" options={['E-mail', 'WhatsApp']} />
+        <Input id="contact">Selecione uma opção</Input>
       </S.Container>
     </S.Form>
   )

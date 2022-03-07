@@ -13,9 +13,9 @@ function Radio({ vertical, options, name }) {
             <S.Input
               type="radio"
               name={name}
-              checked={state.optionSelected === option}
-              onClick={() => handleOptionUnChecked(option)}
-              onChange={() => handleOptionChange(option)}
+              checked={state[name].optionSelected === option}
+              onClick={() => handleOptionUnChecked(option, name)}
+              onChange={() => handleOptionChange(option, name)}
             />
             <S.Tooltip>{option}</S.Tooltip>
           </S.Wrapper>

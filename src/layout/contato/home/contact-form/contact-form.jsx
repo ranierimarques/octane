@@ -1,8 +1,12 @@
+import { FormContext } from '@/contexts'
+import { useFormData } from '../hooks'
 import { ContactLinks, Details, Form, SocialLinks } from '..'
 
 import * as S from './contact-form.styles'
 
 function ContactForm() {
+  const value = useFormData()
+
   return (
     <S.ContactForm data-aos="zoom-in">
       <S.Left>
@@ -22,7 +26,9 @@ function ContactForm() {
       </S.Left>
 
       <S.Right>
-        <Form />
+        <FormContext.Provider value={value}>
+          <Form />
+        </FormContext.Provider>
       </S.Right>
     </S.ContactForm>
   )
