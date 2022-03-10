@@ -1,15 +1,20 @@
 import { useState, useRef } from 'react'
 
+import { useForm } from '@/contexts'
+
 import * as S from './dropdown.styles'
 
 function Dropdown({ disabled, id, children, options }) {
+  const { handleChangeData, state } = useForm()
   const dropdownRef = useRef(null)
   const inputRef = useRef(null)
+  const optionsRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
-  const [dropdownValue, setDropdownValue] = useState('')
+  const [position, setPosition] = useState('')
 
   function dropdownClose(event) {
     document.removeEventListener('click', dropdownClose, true)
+    document.removeEventListener('scroll', handleResize)
 
     const ref = dropdownRef.current
     const clickedOnDropdown = ref.contains(event.target)
@@ -22,21 +27,44 @@ function Dropdown({ disabled, id, children, options }) {
     setIsVisible(false)
   }
 
+  function handleResize() {
+    const optionsHeight = optionsRef.current.clientHeight
+    const dropdownDomRect = dropdownRef.current.getBoundingClientRect()
+
+    const marginBottom = dropdownDomRect.bottom + optionsHeight
+    const marginTop = dropdownDomRect.top - optionsHeight
+
+    const hasSpaceTop = marginTop > 84
+    const hasSpaceBottom = window.innerHeight - marginBottom >= 0
+
+    if (!hasSpaceBottom && hasSpaceTop) {
+      setPosition('top')
+      return
+    }
+
+    if (!hasSpaceTop && hasSpaceBottom) {
+      setPosition('')
+      return
+    }
+  }
+
   function handleDropdownOpen() {
     setIsVisible(true)
+    handleResize()
 
+    document.addEventListener('scroll', handleResize)
     document.addEventListener('click', dropdownClose, true)
   }
 
   function handleDropdownChange(event) {
-    const optionText = event.target.innerText
+    const optionText = event.target.textContent
 
-    if (optionText === dropdownValue) {
-      setDropdownValue('')
+    if (optionText === state.data[id]) {
+      handleChangeData('', id)
       return
     }
 
-    setDropdownValue(optionText)
+    handleChangeData(optionText, id)
   }
 
   return (
@@ -49,7 +77,7 @@ function Dropdown({ disabled, id, children, options }) {
           disabled={disabled}
           ref={inputRef}
           className={isVisible ? 'focus' : ''}
-          value={dropdownValue}
+          value={state.data[id]}
           readOnly
         />
         <S.Label>{children}</S.Label>
@@ -57,12 +85,12 @@ function Dropdown({ disabled, id, children, options }) {
         <S.BottomLine />
       </S.Div>
 
-      <S.Options isVisible={isVisible}>
+      <S.Options ref={optionsRef} isVisible={isVisible} className={position}>
         {options.map(option => (
           <S.Option
             key={option}
             onClick={handleDropdownChange}
-            className={dropdownValue === option ? 'active' : ''}
+            className={state.data[id] === option ? 'active' : ''}
           >
             {option}
           </S.Option>

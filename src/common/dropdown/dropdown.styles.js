@@ -9,6 +9,8 @@ export const Wrapper = styled.div`
 export const Div = styled.div`
   position: relative;
 
+  cursor: pointer;
+
   width: 100%;
 `
 
@@ -51,7 +53,7 @@ export const Input = styled.input`
 
   border-bottom: 1px solid #87879b;
 
-  cursor: pointer;
+  cursor: inherit;
 
   ::placeholder {
     user-select: none;
@@ -151,7 +153,12 @@ export const Options = styled.div`
 
   z-index: 5;
 
-  display: ${props => (props.isVisible ? 'block' : 'none')};
+  visibility: ${props => (props.isVisible ? 'visible' : 'hidden')};
+
+  &.top {
+    border-radius: 4px;
+    bottom: 48px;
+  }
 `
 
 export const Option = styled.div`

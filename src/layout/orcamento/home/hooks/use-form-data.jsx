@@ -2,21 +2,11 @@ import { useReducer } from 'react'
 
 const stateOptions = {
   contact: {
-    type: {
-      'E-mail': 'email',
-      WhatsApp: 'tel',
-    },
-    autoComplete: {
-      'E-mail': 'email',
-      WhatsApp: 'tel',
-    },
+    type: { 'E-mail': 'email', WhatsApp: 'tel' },
+    autoComplete: { 'E-mail': 'email', WhatsApp: 'tel' },
     children: payload => payload,
-    hidden: () => false,
   },
   howGotHere: {
-    type: {},
-    autoComplete: {},
-    children: () => '',
     hidden: payload => payload !== 'Outro',
   },
 }
@@ -27,11 +17,19 @@ const initialState = {
     name: '',
     companyName: '',
     companyTitle: '',
+    companyWebsite: '',
+    companyCategory: '',
+    service: '',
     contact: '',
     howGotHere: '',
+    description: '',
   },
   isSubmitDisabled: false,
   isLoading: false,
+  companyWebsite: {
+    disabled: true,
+    optionSelected: '',
+  },
   howGotHere: {
     hidden: true,
     optionSelected: '',
@@ -43,6 +41,25 @@ const initialState = {
     children: '',
     optionSelected: '',
   },
+}
+
+function hasProperty(property, action) {
+  const thisHasProperty = initialState[action.id].hasOwnProperty(property)
+  const options = stateOptions[action.id]
+
+  function getProperty() {
+    if (!thisHasProperty) return
+
+    return options[property][action.payload]
+  }
+
+  function callback() {
+    if (!thisHasProperty) return
+
+    return options[property](action.payload)
+  }
+
+  return { getProperty, callback }
 }
 
 function reducer(state, action) {
@@ -60,10 +77,10 @@ function reducer(state, action) {
       return { ...state, step: action.payload }
     }
     case 'select_option': {
-      const type = stateOptions[action.id]?.type[action.payload]
-      const autoComplete = stateOptions[action.id]?.autoComplete[action.payload]
-      const children = stateOptions[action.id]?.children(action.payload)
-      const hidden = stateOptions[action.id]?.hidden(action.payload)
+      const type = hasProperty('type', action).getProperty()
+      const autoComplete = hasProperty('autoComplete', action).getProperty()
+      const children = hasProperty('children', action).callback()
+      const hidden = hasProperty('hidden', action).callback()
 
       return {
         ...state,
