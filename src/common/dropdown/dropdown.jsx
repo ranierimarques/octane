@@ -4,6 +4,8 @@ import { useForm } from '@/contexts'
 
 import * as S from './dropdown.styles'
 
+const NAVBAR_HEIGHT = 84
+
 function Dropdown({ disabled, id, children, options }) {
   const { handleChangeData, state } = useForm()
   const dropdownRef = useRef(null)
@@ -13,6 +15,7 @@ function Dropdown({ disabled, id, children, options }) {
   const [position, setPosition] = useState('')
 
   function dropdownClose(event) {
+    window.removeEventListener('resize', handleResize)
     document.removeEventListener('click', dropdownClose, true)
     document.removeEventListener('scroll', handleResize)
 
@@ -34,24 +37,35 @@ function Dropdown({ disabled, id, children, options }) {
     const marginBottom = dropdownDomRect.bottom + optionsHeight
     const marginTop = dropdownDomRect.top - optionsHeight
 
-    const hasSpaceTop = marginTop > 84
-    const hasSpaceBottom = window.innerHeight - marginBottom >= 0
+    const spaceTop = marginTop - NAVBAR_HEIGHT
+    const spaceBottom = window.innerHeight - marginBottom
 
-    if (!hasSpaceBottom && hasSpaceTop) {
+    const hasSpaceTop = spaceTop >= 0
+    const hasSpaceBottom = spaceBottom >= 0
+
+    if (hasSpaceBottom) {
+      setPosition('')
+      return
+    }
+
+    if (hasSpaceTop) {
       setPosition('top')
       return
     }
 
-    if (!hasSpaceTop && hasSpaceBottom) {
+    if (spaceBottom >= spaceTop) {
       setPosition('')
       return
     }
+
+    setPosition('top')
   }
 
   function handleDropdownOpen() {
     setIsVisible(true)
     handleResize()
 
+    window.addEventListener('resize', handleResize)
     document.addEventListener('scroll', handleResize)
     document.addEventListener('click', dropdownClose, true)
   }
