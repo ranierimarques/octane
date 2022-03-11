@@ -1,19 +1,25 @@
+import { useForm } from '@/contexts'
+import { formatterBudget } from 'src/common/slider/utils'
 import * as S from './clipboard-informations.styles'
 
-const texts = [
-  { id: 1, title: 'Serviço selecionado', description: 'Projeto Web' },
-  { id: 2, title: 'Orçamento', description: 'R$ 4.500' },
-  { id: 3, title: 'Prazo', description: '50 dias' },
-  { id: 4, title: 'Tamanho da empresa', description: 'Pequena (10-50 Funcionários)' },
-  { id: 5, title: 'Como vamos entrar em contato', description: '+55 (85) 9 9917-3750' },
-]
-
-const auxTexts = [
-  { id: 1, title: 'Ranieri', description: 'Co-founder' },
-  { id: 2, title: 'Octane Studio', description: 'www.octane.com.br' },
-]
-
 function ClipboardInformations() {
+  const { state } = useForm()
+
+  const budgetFormatted = formatterBudget(state.data.budget)
+
+  const texts = [
+    { id: 1, title: 'Serviço selecionado', description: state.data.service },
+    { id: 2, title: 'Orçamento', description: `R$ ${budgetFormatted}` },
+    { id: 3, title: 'Prazo', description: state.data.deadline },
+    { id: 4, title: 'Tamanho da empresa', description: state.data.companyCategory },
+    { id: 5, title: 'Como vamos entrar em contato', description: state.data.contact },
+  ]
+
+  const auxTexts = [
+    { id: 1, title: state.data.name, description: state.data.companyTitle },
+    { id: 2, title: state.data.companyName, description: state.data.companyWebsite },
+  ]
+
   return (
     <S.ClipboardInformation>
       <S.Auxiliary>

@@ -27,6 +27,7 @@ const initialState = {
     howGotHere: '',
     description: '',
     budget: 0,
+    deadline: '',
   },
   isSubmitDisabled: false,
   isLoading: false,
