@@ -47,6 +47,8 @@ export const AuxTexts = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
+
+  overflow: hidden;
 `
 
 export const AuxTitle = styled.span`
@@ -55,6 +57,10 @@ export const AuxTitle = styled.span`
   font-size: 14px;
   line-height: 20px;
   color: #9e9eae;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const AuxDescription = styled.span`
@@ -63,6 +69,10 @@ export const AuxDescription = styled.span`
   font-size: 12px;
   line-height: 14px;
   color: #726a6a;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const Main = styled.div`
