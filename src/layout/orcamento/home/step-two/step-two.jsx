@@ -1,5 +1,4 @@
-import { Dropdown, Label, Input, Radio } from '@/common'
-
+import { Dropdown, Input, Label, Radio } from '@/common'
 import * as S from './step-two.styles'
 
 function StepTwo() {
@@ -54,7 +53,7 @@ function StepTwo() {
       <S.Container>
         <Label htmlFor="companyWebsite">A empresa já possui website?</Label>
         <Radio name="companyWebsite" options={['Sim, já possui.', 'Ainda não possui.']} />
-        <Input id="companyWebsite" variant="website" autoComplete="url" disabled>
+        <Input variant="website" id="companyWebsite" autoComplete="url">
           Seu site
         </Input>
       </S.Container>

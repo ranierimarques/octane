@@ -1,10 +1,8 @@
-import { useRef, useLayoutEffect, useMemo, useCallback, useReducer } from 'react'
-
+import { useCallback, useLayoutEffect, useMemo, useReducer, useRef } from 'react'
 import { Markers } from '.'
-import { formatterBudget } from './utils'
 import { composeSliderChange, getMarkers } from './helpers'
-
 import * as S from './slider.styles'
+import { formatterBudget } from './utils'
 
 const initialState = { budget: 0, position: 0, min: 0, max: 0 }
 

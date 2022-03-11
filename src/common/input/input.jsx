@@ -1,8 +1,7 @@
 import { useForm } from '@/contexts'
+import * as S from './input.styles'
 
-import * as S from './input.styles.js'
-
-function Input({ disabled, type, autoComplete, id, children, variant }) {
+function Input({ disabled, type, autoComplete, id, children, variant, ...props }) {
   const { handleChangeData, state } = useForm()
 
   function handleInputChange(event) {
@@ -17,11 +16,13 @@ function Input({ disabled, type, autoComplete, id, children, variant }) {
         <S.Textarea
           as="textarea"
           id={id}
-          type="text"
-          placeholder=" "
-          onChange={handleInputChange}
+          type={state[id]?.type || type}
+          autoComplete={state[id]?.autoComplete || autoComplete}
+          disabled={state[id]?.disabled}
           value={state.data[id]}
-          maxLength="20"
+          onChange={handleInputChange}
+          placeholder=" "
+          {...props}
         />
         <S.Label>{children}</S.Label>
         <S.BottomLine />
@@ -32,15 +33,18 @@ function Input({ disabled, type, autoComplete, id, children, variant }) {
 
   if (variant === 'website') {
     return (
-      <S.Wrapper isHidden={false}>
-        <S.Http className={disabled ? 'disabled' : ''}>http://</S.Http>
+      <S.Wrapper isHidden={state[id]?.hidden}>
+        <S.Http className={state[id]?.disabled ? 'disabled' : ''}>http://</S.Http>
 
         <S.Div>
           <S.Input
             id={id}
-            type="text"
+            type={state[id]?.type || type}
+            autoComplete={state[id]?.autoComplete || autoComplete}
+            disabled={state[id]?.disabled}
+            value={state.data[id]}
+            onChange={handleInputChange}
             placeholder="www.exemplo.com"
-            disabled={disabled}
           />
           <S.Label>{children}</S.Label>
           <S.BottomLine />

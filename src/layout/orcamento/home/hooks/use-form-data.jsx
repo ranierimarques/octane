@@ -9,6 +9,9 @@ const stateOptions = {
   howGotHere: {
     hidden: payload => payload !== 'Outro',
   },
+  companyWebsite: {
+    hidden: payload => payload === 'Ainda não possui.',
+  },
 }
 
 const initialState = {
@@ -27,6 +30,7 @@ const initialState = {
   isSubmitDisabled: false,
   isLoading: false,
   companyWebsite: {
+    hidden: false,
     disabled: true,
     optionSelected: '',
   },
