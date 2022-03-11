@@ -26,6 +26,7 @@ const initialState = {
     contact: '',
     howGotHere: '',
     description: '',
+    budget: 0,
   },
   isSubmitDisabled: false,
   isLoading: false,
@@ -44,6 +45,11 @@ const initialState = {
     disabled: true,
     children: '',
     optionSelected: '',
+  },
+  budget: {
+    position: 0,
+    min: 0,
+    max: 0,
   },
 }
 
@@ -69,7 +75,7 @@ function hasProperty(property, action) {
 function reducer(state, action) {
   switch (action.type) {
     case 'change_data': {
-      return { ...state, data: { ...state.data, [action.data]: action.payload } }
+      return { ...state, data: { ...state.data, [action.id]: action.payload } }
     }
     case 'prev_step': {
       return { ...state, step: state.step - 1 }
@@ -116,6 +122,20 @@ function reducer(state, action) {
     case 'reset': {
       return initialState
     }
+    case 'slider_change': {
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.id]: action.payload.budget,
+        },
+        [action.id]: {
+          position: action.payload.position,
+          min: action.payload.min,
+          max: action.payload.max,
+        },
+      }
+    }
     default:
       throw new Error()
   }
@@ -125,7 +145,7 @@ function useFormData() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   function handleChangeData(value, id) {
-    dispatch({ type: 'change_data', data: id, payload: value })
+    dispatch({ type: 'change_data', id, payload: value })
   }
 
   function handleOptionUnChecked(option, id) {

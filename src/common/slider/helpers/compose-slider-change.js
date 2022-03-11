@@ -1,6 +1,13 @@
 import { getBudget, getMarkerIndex, getMinAndMax, getPosition } from '.'
 
-export function composeSliderChange(markers, sliderRef, lastBudgetRef, step, dispatch) {
+export function composeSliderChange(
+  markers,
+  sliderRef,
+  lastBudgetRef,
+  step,
+  dispatch,
+  id
+) {
   function verifyLastBudget(budget) {
     if (lastBudgetRef.current === budget) return true
 
@@ -8,7 +15,7 @@ export function composeSliderChange(markers, sliderRef, lastBudgetRef, step, dis
   }
 
   function dispatchStates({ position, min, max, budget }) {
-    dispatch({ type: 'slider_change', payload: { position, min, max, budget } })
+    dispatch({ type: 'slider_change', id, payload: { position, min, max, budget } })
   }
 
   function usingPosition(value, state) {

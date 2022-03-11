@@ -1,7 +1,8 @@
-import { Slider, Dropdown, Label } from '@/common'
+import { Dropdown, Label, Slider } from '@/common'
 import { ClipboardInformations } from '..'
-
 import * as S from './step-three.styles'
+
+const sliderRange = [3000, 6000, 12000, 24000]
 
 function StepThree() {
   return (
@@ -12,7 +13,7 @@ function StepThree() {
           <Label description>
             Utilize o slider para determinar o quanto você pretende investir.
           </Label>
-          <Slider initial={4500} range={[3000, 6000, 12000, 24000]} step={50} />
+          <Slider id="budget" initial={4500} range={sliderRange} step={50} />
         </S.Container>
 
         <S.Container>
