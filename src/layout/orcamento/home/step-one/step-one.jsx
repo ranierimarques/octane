@@ -1,10 +1,9 @@
 import { Input, Label, Radio } from '@/common'
-
 import * as S from './step-one.styles'
 
 function StepOne() {
   return (
-    <S.Form>
+    <S.Wrapper>
       <S.Container>
         <Label htmlFor="name" smallMargin>
           Como podemos te chamar?
@@ -61,7 +60,7 @@ function StepOne() {
         <Radio name="contact" options={['E-mail', 'WhatsApp']} />
         <Input id="contact">Selecione uma opção</Input>
       </S.Container>
-    </S.Form>
+    </S.Wrapper>
   )
 }
 

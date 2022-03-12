@@ -43,6 +43,10 @@ export const Octane = styled.div`
   gap: 24px;
 `
 
+export const LogoLink = styled.a`
+  width: fit-content;
+`
+
 export const Slogan = styled.span`
   font-weight: 400;
   font-variation-settings: 'wght' 375;

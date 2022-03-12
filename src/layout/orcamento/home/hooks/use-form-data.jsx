@@ -29,8 +29,11 @@ const initialState = {
     budget: 0,
     deadline: '',
   },
-  isSubmitDisabled: false,
-  isLoading: false,
+  next: {
+    disabled: false,
+    loading: false,
+    children: '',
+  },
   companyWebsite: {
     hidden: false,
     disabled: true,

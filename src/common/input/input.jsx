@@ -66,6 +66,7 @@ function Input({ disabled, type, autoComplete, id, children, variant, ...props }
       />
       <S.Label>{state[id]?.children || children}</S.Label>
       <S.BottomLine />
+      <S.Counter>{state.data[id].length} / 60</S.Counter>
     </S.Div>
   )
 }

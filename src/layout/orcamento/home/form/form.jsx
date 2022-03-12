@@ -1,17 +1,15 @@
-import { useRef } from 'react'
-
-import {
-  IntroductionForm,
-  Navigation,
-  StepOne,
-  StepTwo,
-  StepThree,
-  Final,
-  Modal,
-} from '..'
 import { FormButton } from '@/common'
 import { useForm } from '@/resources/contexts'
-
+import { useRef } from 'react'
+import {
+  Final,
+  IntroductionForm,
+  Modal,
+  Navigation,
+  StepOne,
+  StepThree,
+  StepTwo,
+} from '..'
 import * as S from './form.styles'
 
 function Form() {
@@ -37,13 +35,15 @@ function Form() {
       <S.Background>
         <Navigation />
 
-        <S.FormBackground>{currentStep}</S.FormBackground>
+        <S.Form>{currentStep}</S.Form>
 
         <S.Buttons>
           <FormButton onClick={handlePrevStep} variant="text">
             Voltar
           </FormButton>
-          <FormButton onClick={handleNextStep}>Continuar</FormButton>
+          <FormButton id="next" onClick={handleNextStep}>
+            Continuar
+          </FormButton>
         </S.Buttons>
 
         <Modal ref={modalRef} />

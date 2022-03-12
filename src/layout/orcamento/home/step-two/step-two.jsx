@@ -3,7 +3,7 @@ import * as S from './step-two.styles'
 
 function StepTwo() {
   return (
-    <S.Form>
+    <S.Wrapper>
       <S.Container>
         <Label htmlFor="companyCategory" smallMargin>
           Em qual categoria a empresa se enquadra?
@@ -57,7 +57,7 @@ function StepTwo() {
           Seu site
         </Input>
       </S.Container>
-    </S.Form>
+    </S.Wrapper>
   )
 }
 

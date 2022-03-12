@@ -8,29 +8,6 @@ export const Div = styled.div`
   display: ${props => (props.isHidden ? 'none' : 'block')};
 `
 
-export const Label = styled.label`
-  position: absolute;
-  top: 15px;
-  left: 16px;
-
-  font-weight: 400;
-  font-variation-settings: 'wght' 375;
-  font-size: 16px;
-  line-height: 19px;
-  color: #87879b;
-
-  transform-origin: left top;
-  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 150ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  user-select: none;
-  pointer-events: none;
-
-  z-index: 2;
-
-  will-change: transform;
-`
-
 export const Input = styled.input`
   background: #1d1b1b;
   border-radius: 4px 4px 0px 0px;
@@ -112,6 +89,44 @@ export const Input = styled.input`
     font-variation-settings: 'wght' 500;
     transform: translateY(-8px) scale(0.75);
   }
+`
+
+export const Label = styled.label`
+  position: absolute;
+  top: 15px;
+  left: 16px;
+
+  font-weight: 400;
+  font-variation-settings: 'wght' 375;
+  font-size: 16px;
+  line-height: 19px;
+  color: #87879b;
+
+  transform-origin: left top;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  user-select: none;
+  pointer-events: none;
+
+  z-index: 2;
+
+  will-change: transform;
+`
+
+export const Counter = styled.span`
+  display: block;
+
+  position: absolute;
+  right: 16px;
+
+  margin-top: 6px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  color: #9e9eae;
 `
 
 export const BottomLine = styled.div`

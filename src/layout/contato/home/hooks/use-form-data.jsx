@@ -6,8 +6,10 @@ const initialState = {
     contact: '',
     message: '',
   },
-  isSubmitDisabled: true,
-  isLoading: false,
+  sendMessage: {
+    disabled: true,
+    loading: false,
+  },
   contact: {
     autoComplete: '',
     type: '',
@@ -29,7 +31,10 @@ function reducer(state, action) {
 
       return {
         ...state,
-        isSubmitDisabled: !isInputsFilled,
+        sendMessage: {
+          ...state.sendMessage,
+          disabled: !isInputsFilled,
+        },
         data,
       }
     }
@@ -47,7 +52,10 @@ function reducer(state, action) {
       return {
         ...state,
         data,
-        isSubmitDisabled: !isInputsFilled,
+        sendMessage: {
+          ...state.sendMessage,
+          disabled: !isInputsFilled,
+        },
         [action.id]: {
           ...state[action.id],
           autoComplete,
@@ -69,8 +77,10 @@ function reducer(state, action) {
       return {
         ...state,
         data,
-        optionSelected: '',
-        isSubmitDisabled: !isInputsFilled,
+        sendMessage: {
+          ...state.sendMessage,
+          disabled: !isInputsFilled,
+        },
         [action.id]: {
           ...initialState[action.id],
         },
@@ -80,7 +90,13 @@ function reducer(state, action) {
       return initialState
     }
     case 'submit': {
-      return { ...state, isLoading: true, isSubmitDisabled: true }
+      return {
+        ...state,
+        sendMessage: {
+          disabled: true,
+          loading: true,
+        },
+      }
     }
     default:
       throw new Error()

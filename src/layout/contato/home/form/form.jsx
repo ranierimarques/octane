@@ -1,9 +1,7 @@
-import { useRef } from 'react'
-
+import { FormButton, Input, Label, Radio } from '@/common'
 import { useForm } from '@/contexts'
-import { Input, Label, Radio, FormButton } from '@/common'
+import { useRef } from 'react'
 import { Modal } from '..'
-
 import * as S from './form.styles'
 
 function Form() {
@@ -29,14 +27,11 @@ function Form() {
       body: JSONdata,
     }
 
-    const response = await fetch(endpoint, options)
-    const result = await response.json()
+    await fetch(endpoint, options)
 
     handleOpenModal()
 
     dispatch({ type: 'reset' })
-
-    console.log(result)
   }
 
   return (
@@ -61,7 +56,9 @@ function Form() {
         </Input>
       </S.Container>
 
-      <FormButton size="large">Enviar mensagem</FormButton>
+      <FormButton id="sendMessage" size="large">
+        Enviar mensagem
+      </FormButton>
 
       <Modal ref={modalRef} />
     </S.Form>

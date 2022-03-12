@@ -1,6 +1,6 @@
 import { styled } from 'linaria/react'
 
-export const Form = styled.form`
+export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 

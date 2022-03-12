@@ -1,11 +1,8 @@
 import Link from 'next/link'
-
-import { RoutesLinks, SocialLinks } from '.'
-
 import { OctaneLogo } from 'public/svgs'
-import { HeartIcon, ArrowUp } from './svgs'
-
+import { RoutesLinks, SocialLinks } from '.'
 import * as S from './footer.styles'
+import { ArrowUp, HeartIcon } from './svgs'
 
 function Footer() {
   const scrollTo = () => window.scrollTo({ behavior: 'smooth', top: 0 })
@@ -15,10 +12,10 @@ function Footer() {
       <S.Content>
         <S.Top>
           <S.Octane>
-            <Link href="/">
-              <a>
+            <Link href="/" passHref>
+              <S.LogoLink>
                 <OctaneLogo />
-              </a>
+              </S.LogoLink>
             </Link>
             <S.Slogan>
               Um estúdio de inovação <br /> para quem quer inovar!

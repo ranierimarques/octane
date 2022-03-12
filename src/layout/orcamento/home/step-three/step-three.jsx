@@ -7,7 +7,7 @@ const sliderRange = [3000, 6000, 12000, 24000]
 function StepThree() {
   return (
     <S.Wrapper>
-      <S.Form>
+      <S.Box>
         <S.Container>
           <Label smallMargin>Quanto você está disposto a investir nesse projeto?</Label>
           <Label description>
@@ -39,7 +39,8 @@ function StepThree() {
             Selecione uma opção
           </Dropdown>
         </S.Container>
-      </S.Form>
+      </S.Box>
+
       <ClipboardInformations />
     </S.Wrapper>
   )

@@ -1,6 +1,5 @@
 import { useForm } from '@/resources/contexts'
 import { CheckMark } from '../svgs'
-
 import * as S from './navigation.styles'
 
 const tabs = [

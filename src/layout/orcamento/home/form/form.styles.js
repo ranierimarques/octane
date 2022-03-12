@@ -10,7 +10,7 @@ export const Background = styled.div`
   border-radius: 20px;
 `
 
-export const FormBackground = styled.div`
+export const Form = styled.form`
   background: #29292e;
   border: 1px solid #322f2f;
   border-width: 1px 0px 1px;
