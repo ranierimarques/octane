@@ -1,4 +1,5 @@
 import { styled } from 'linaria/react'
+import { ErrorIcon as ErrorIconSvg } from './svgs'
 
 export const Div = styled.div`
   position: relative;
@@ -6,6 +7,43 @@ export const Div = styled.div`
   width: 100%;
 
   display: ${props => (props.isHidden ? 'none' : 'block')};
+
+  &.error {
+    margin-bottom: 20px;
+
+    ${Label} {
+      color: #ff0f0f;
+    }
+
+    ${Input} {
+      padding-right: 44px;
+      border-bottom: 1px solid #ff0f0f;
+
+      :not(:disabled) {
+        :hover {
+          border-bottom: 1px solid #ff0f0f;
+        }
+
+        :focus {
+          ~ ${Label} {
+            color: #ff0f0f;
+          }
+        }
+      }
+    }
+
+    ${BottomLine} {
+      background: #ff0f0f;
+    }
+
+    ${Message} {
+      visibility: visible;
+    }
+
+    ${ErrorIcon} {
+      visibility: visible;
+    }
+  }
 `
 
 export const Input = styled.input`
@@ -114,21 +152,6 @@ export const Label = styled.label`
   will-change: transform;
 `
 
-export const Counter = styled.span`
-  display: block;
-
-  position: absolute;
-  right: 16px;
-
-  margin-top: 6px;
-
-  font-weight: 400;
-  font-size: 12px;
-  line-height: normal;
-  letter-spacing: 0.4px;
-  color: #9e9eae;
-`
-
 export const BottomLine = styled.div`
   position: absolute;
   bottom: 0;
@@ -148,11 +171,51 @@ export const BottomLine = styled.div`
   will-change: transform;
 `
 
-// Double Input
+export const ErrorIcon = styled(ErrorIconSvg)`
+  position: absolute;
+  top: 15px;
+  right: 12px;
 
-export const DoubleInput = styled.div`
+  pointer-events: none;
+
+  visibility: hidden;
+`
+
+export const Helpers = styled.div`
+  position: absolute;
+
+  width: 100%;
+
   display: flex;
+  justify-content: space-between;
   gap: 8px;
+
+  padding: 6px 16px 0;
+`
+
+export const Message = styled.span`
+  display: block;
+
+  font-weight: 500;
+  font-variation-settings: 'wght' 575;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: 0.04px;
+  color: #ff0f0f;
+
+  visibility: hidden;
+`
+
+export const Counter = styled.span`
+  display: ${props => (props.isVisible ? 'block' : 'none')};
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  color: #9e9eae;
+
+  white-space: nowrap;
 `
 
 // Textarea

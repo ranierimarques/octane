@@ -1,10 +1,31 @@
 import { useReducer } from 'react'
 
+const stateValidation = {
+  name: {
+    error: input => {
+      const str = input
+
+      const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+
+      const isSpecialChars = specialChars.test(str)
+      const isNumeric = !isNaN(str) && !isNaN(parseFloat(str))
+
+      return { hasError: isNumeric || isSpecialChars, isNumeric, isSpecialChars }
+    },
+    data: payload => {
+      if (payload.length > 60) return true
+    },
+  },
+}
+
 const initialState = {
   data: {
     name: '',
     contact: '',
     message: '',
+  },
+  name: {
+    error: { hasError: false },
   },
   sendMessage: {
     disabled: true,
@@ -22,11 +43,16 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'change_data': {
+      const validation = stateValidation[action.id]
+      const error = validation.error(action.input)
+      const dataValidated = validation.data(action.payload)
+
+      const hasError = dataValidated || error.hasError
+
       const data = {
         ...state.data,
-        [action.data]: action.payload,
+        [action.id]: hasError ? state.data[action.id] : action.payload,
       }
-
       const isInputsFilled = Object.values(data).every(value => value !== '')
 
       return {
@@ -34,6 +60,9 @@ function reducer(state, action) {
         sendMessage: {
           ...state.sendMessage,
           disabled: !isInputsFilled,
+        },
+        [action.id]: {
+          error,
         },
         data,
       }
@@ -106,8 +135,11 @@ function reducer(state, action) {
 function useFormData() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  function handleChangeData(value, id) {
-    dispatch({ type: 'change_data', data: id, payload: value })
+  function handleChangeData(event, id) {
+    const input = event.nativeEvent.data
+    const payload = event.target.value
+
+    dispatch({ type: 'change_data', id, input, payload })
   }
 
   function handleOptionUnChecked(option, id) {

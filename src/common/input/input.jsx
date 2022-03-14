@@ -4,12 +4,6 @@ import * as S from './input.styles'
 function Input({ disabled, type, autoComplete, id, children, variant, ...props }) {
   const { handleChangeData, state } = useForm()
 
-  function handleInputChange(event) {
-    const value = event.target.value
-
-    handleChangeData(value, id)
-  }
-
   if (variant === 'textarea') {
     return (
       <S.Div>
@@ -20,7 +14,7 @@ function Input({ disabled, type, autoComplete, id, children, variant, ...props }
           autoComplete={state[id]?.autoComplete || autoComplete}
           disabled={state[id]?.disabled}
           value={state.data[id]}
-          onChange={handleInputChange}
+          onChange={event => handleChangeData(event, id)}
           placeholder=" "
           {...props}
         />
@@ -43,7 +37,7 @@ function Input({ disabled, type, autoComplete, id, children, variant, ...props }
             autoComplete={state[id]?.autoComplete || autoComplete}
             disabled={state[id]?.disabled}
             value={state.data[id]}
-            onChange={handleInputChange}
+            onChange={event => handleChangeData(event, id)}
             placeholder="www.exemplo.com"
           />
           <S.Label>{children}</S.Label>
@@ -53,20 +47,33 @@ function Input({ disabled, type, autoComplete, id, children, variant, ...props }
     )
   }
 
+  const count = state.data[id].length
+  const error = state[id]?.error
+
   return (
-    <S.Div isHidden={state[id]?.hidden}>
+    <S.Div className={error?.hasError && 'error'} isHidden={state[id]?.hidden}>
       <S.Input
         id={id}
         type={state[id]?.type || type}
         autoComplete={state[id]?.autoComplete || autoComplete}
         disabled={state[id]?.disabled}
         value={state.data[id]}
-        onChange={handleInputChange}
+        onChange={event => handleChangeData(event, id)}
+        onBlur={event => handleChangeData(event, id)}
         placeholder=" "
       />
       <S.Label>{state[id]?.children || children}</S.Label>
       <S.BottomLine />
-      {state.data[id].length >= 40 && <S.Counter>{state.data[id].length} / 60</S.Counter>}
+      <S.ErrorIcon />
+
+      <S.Helpers>
+        <S.Message>
+          {error?.isSpecialChars &&
+            'Caracteres especiais não são permitidos, utilize somente letras.'}
+          {error?.isNumeric && 'Números não são permitidos, utilize somente letras.'}
+        </S.Message>
+        <S.Counter isVisible={count >= 40}>{count} / 60</S.Counter>
+      </S.Helpers>
     </S.Div>
   )
 }
