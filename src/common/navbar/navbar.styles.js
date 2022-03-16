@@ -4,7 +4,7 @@ export const Header = styled.header`
   width: 100%;
   height: 85px;
 
-  background: #121212e6;
+  background-color: rgba(18, 18, 18, 0.9);
   border-bottom: 1px solid #322f2f;
 
   position: sticky;

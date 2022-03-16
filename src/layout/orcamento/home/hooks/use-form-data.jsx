@@ -1,16 +1,38 @@
 import { useReducer } from 'react'
 
+function getProperties(stateOptions, action) {
+  const properties = {}
+
+  const elementOptions = stateOptions[action.id]
+  const elementProperties = Object.keys(elementOptions)
+
+  for (const property of elementProperties) {
+    const options = elementOptions[property]
+
+    if (typeof options === 'object') properties[property] = options[action.payload]
+    if (typeof options === 'function') properties[property] = options(action.payload)
+    if (typeof options === 'boolean') properties[property] = options
+  }
+
+  return properties
+}
+
 const stateOptions = {
   contact: {
     type: { 'E-mail': 'email', WhatsApp: 'tel' },
     autoComplete: { 'E-mail': 'email', WhatsApp: 'tel' },
+    disabled: false,
     children: payload => payload,
+    optionSelected: payload => payload,
   },
   howGotHere: {
     hidden: payload => payload !== 'Outro',
+    optionSelected: payload => payload,
   },
   companyWebsite: {
     hidden: payload => payload === 'Ainda não possui.',
+    disabled: false,
+    optionSelected: payload => payload,
   },
 }
 
@@ -57,25 +79,6 @@ const initialState = {
   },
 }
 
-function hasProperty(property, action) {
-  const thisHasProperty = initialState[action.id].hasOwnProperty(property)
-  const options = stateOptions[action.id]
-
-  function getProperty() {
-    if (!thisHasProperty) return
-
-    return options[property][action.payload]
-  }
-
-  function callback() {
-    if (!thisHasProperty) return
-
-    return options[property](action.payload)
-  }
-
-  return { getProperty, callback }
-}
-
 function reducer(state, action) {
   switch (action.type) {
     case 'change_data': {
@@ -91,35 +94,18 @@ function reducer(state, action) {
       return { ...state, step: action.payload }
     }
     case 'select_option': {
-      const type = hasProperty('type', action).getProperty()
-      const autoComplete = hasProperty('autoComplete', action).getProperty()
-      const children = hasProperty('children', action).callback()
-      const hidden = hasProperty('hidden', action).callback()
+      const properties = getProperties(stateOptions, action)
 
       return {
         ...state,
-        data: {
-          ...state.data,
-          [action.id]: '',
-        },
-        [action.id]: {
-          ...state[action.id],
-          autoComplete,
-          type,
-          children,
-          hidden,
-          disabled: false,
-          optionSelected: action.payload,
-        },
+        data: { ...state.data, [action.id]: '' },
+        [action.id]: { ...state[action.id], ...properties },
       }
     }
     case 'deselect_option': {
       return {
         ...state,
-        data: {
-          ...state.data,
-          [action.id]: '',
-        },
+        data: { ...state.data, [action.id]: '' },
         [action.id]: { ...initialState[action.id] },
       }
     }

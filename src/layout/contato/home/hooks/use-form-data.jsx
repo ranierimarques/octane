@@ -1,20 +1,77 @@
-import { useReducer } from 'react'
+import { useReducer, useRef } from 'react'
 
-const stateValidation = {
+function getProperties(stateOptions, action) {
+  const properties = {}
+
+  const elementOptions = stateOptions[action.id]
+  const elementProperties = Object.keys(elementOptions)
+
+  for (const property of elementProperties) {
+    const options = elementOptions[property]
+
+    if (typeof options === 'object') properties[property] = options[action.payload]
+    if (typeof options === 'function') properties[property] = options(action.payload)
+    if (typeof options === 'boolean') properties[property] = options
+  }
+
+  return properties
+}
+
+const stateOptions = {
+  contact: {
+    type: { 'E-mail': 'email', WhatsApp: 'tel' },
+    autoComplete: { 'E-mail': 'email', WhatsApp: 'tel' },
+    disabled: false,
+    children: payload => payload,
+    optionSelected: payload => payload,
+  },
+}
+
+const errorMessage = {
+  number: 'Números não são permitidos, utilize somente letras.',
+  specialChars: 'Caracteres especiais não são permitidos, utilize somente letras.',
+  empty: '*Este campo é obrigatório.',
+}
+
+const inputValidation = {
   name: {
-    error: input => {
-      const str = input
+    getError: (action, data) => {
+      const str = action.input
+
+      const formStart = Object.values(data).some(value => value !== '')
+
+      if (!formStart) return { hasError: false }
 
       const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
-      const isSpecialChars = specialChars.test(str)
-      const isNumeric = !isNaN(str) && !isNaN(parseFloat(str))
+      const isSpecialChars = specialChars.test(str) && 'number'
+      const isNumeric = !isNaN(str) && !isNaN(parseFloat(str)) && 'specialChars'
+      const isEmpty = action.payload.length < 1 && 'empty'
 
-      return { hasError: isNumeric || isSpecialChars, isNumeric, isSpecialChars }
+      const hasError = isNumeric || isSpecialChars || isEmpty
+
+      return { hasError, message: errorMessage[hasError] }
     },
-    data: payload => {
-      if (payload.length > 60) return true
+
+    getValue: (action, currentValue, error) => {
+      let value = action.payload
+
+      if (action.payload.length > 60) value = currentValue
+      if (error.hasError) value = currentValue
+      if (action.payload.length < 1) value = ''
+
+      return value
     },
+  },
+  contact: {
+    getError: () => {},
+
+    getValue: action => action.payload,
+  },
+  message: {
+    getError: () => {},
+    
+    getValue: action => action.payload,
   },
 }
 
@@ -24,12 +81,24 @@ const initialState = {
     contact: '',
     message: '',
   },
-  name: {
-    error: { hasError: false },
-  },
   sendMessage: {
     disabled: true,
     loading: false,
+  },
+  name: {
+    error: {
+      hasError: false,
+    },
+  },
+  contact: {
+    error: {
+      hasError: false,
+    },
+  },
+  message: {
+    error: {
+      hasError: false,
+    },
   },
   contact: {
     autoComplete: '',
@@ -43,76 +112,33 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'change_data': {
-      const validation = stateValidation[action.id]
-      const error = validation.error(action.input)
-      const dataValidated = validation.data(action.payload)
+      const validation = inputValidation[action.id]
 
-      const hasError = dataValidated || error.hasError
+      const data = { ...state.data, [action.id]: action.payload }
 
-      const data = {
-        ...state.data,
-        [action.id]: hasError ? state.data[action.id] : action.payload,
-      }
-      const isInputsFilled = Object.values(data).every(value => value !== '')
+      const error = validation.getError(action, data)
+      const value = validation.getValue(action, state.data[action.id], error)
 
       return {
         ...state,
-        sendMessage: {
-          ...state.sendMessage,
-          disabled: !isInputsFilled,
-        },
-        [action.id]: {
-          error,
-        },
-        data,
+        [action.id]: { ...state[action.id], error },
+        data: { ...state.data, [action.id]: value },
       }
     }
     case 'select_option': {
-      const type = action.payload === 'E-mail' ? 'email' : 'tel'
-      const autoComplete = action.payload === 'E-mail' ? 'email' : 'tel'
-
-      const data = {
-        ...state.data,
-        [action.id]: '',
-      }
-
-      const isInputsFilled = Object.values(data).every(value => value !== '')
+      const properties = getProperties(stateOptions, action)
 
       return {
         ...state,
-        data,
-        sendMessage: {
-          ...state.sendMessage,
-          disabled: !isInputsFilled,
-        },
-        [action.id]: {
-          ...state[action.id],
-          autoComplete,
-          type,
-          disabled: false,
-          children: action.payload,
-          optionSelected: action.payload,
-        },
+        data: { ...state.data, [action.id]: '' },
+        [action.id]: { ...state[action.id], ...properties },
       }
     }
     case 'deselect_option': {
-      const data = {
-        ...state.data,
-        [action.id]: '',
-      }
-
-      const isInputsFilled = Object.values(data).every(value => value !== '')
-
       return {
         ...state,
-        data,
-        sendMessage: {
-          ...state.sendMessage,
-          disabled: !isInputsFilled,
-        },
-        [action.id]: {
-          ...initialState[action.id],
-        },
+        data: { ...state.data, [action.id]: '' },
+        [action.id]: { ...initialState[action.id] },
       }
     }
     case 'reset': {
@@ -134,10 +160,16 @@ function reducer(state, action) {
 
 function useFormData() {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const timeoutRef = useRef(null)
 
   function handleChangeData(event, id) {
     const input = event.nativeEvent.data
     const payload = event.target.value
+
+    clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => {
+      console.log('eae')
+    }, 30000) // 30 Seconds
 
     dispatch({ type: 'change_data', id, input, payload })
   }

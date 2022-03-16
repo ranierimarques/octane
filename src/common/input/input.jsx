@@ -1,7 +1,16 @@
 import { useForm } from '@/contexts'
 import * as S from './input.styles'
 
-function Input({ disabled, type, autoComplete, id, children, variant, ...props }) {
+function Input({
+  disabled,
+  type,
+  autoComplete,
+  id,
+  children,
+  variant,
+  maxLength,
+  ...props
+}) {
   const { handleChangeData, state } = useForm()
 
   if (variant === 'textarea') {
@@ -60,19 +69,19 @@ function Input({ disabled, type, autoComplete, id, children, variant, ...props }
         value={state.data[id]}
         onChange={event => handleChangeData(event, id)}
         onBlur={event => handleChangeData(event, id)}
+        maxLength={maxLength}
         placeholder=" "
+        {...props}
       />
       <S.Label>{state[id]?.children || children}</S.Label>
       <S.BottomLine />
       <S.ErrorIcon />
 
       <S.Helpers>
-        <S.Message>
-          {error?.isSpecialChars &&
-            'Caracteres especiais não são permitidos, utilize somente letras.'}
-          {error?.isNumeric && 'Números não são permitidos, utilize somente letras.'}
-        </S.Message>
-        <S.Counter isVisible={count >= 40}>{count} / 60</S.Counter>
+        <S.Message>{error?.message}</S.Message>
+        <S.Counter isVisible={count >= maxLength - 20}>
+          {count} / {maxLength}
+        </S.Counter>
       </S.Helpers>
     </S.Div>
   )

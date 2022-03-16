@@ -38,7 +38,8 @@ function Form() {
     <S.Form onSubmit={handleSubmit}>
       <S.Container>
         <Label htmlFor="name">Qual seu nome?</Label>
-        <Input id="name" type="text" autoComplete="name">
+        {/* TODO: autoComplete="name" */}
+        <Input id="name" type="text" autoComplete="off" maxLength="60" required>
           Nome
         </Input>
       </S.Container>
