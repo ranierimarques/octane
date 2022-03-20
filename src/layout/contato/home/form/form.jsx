@@ -52,7 +52,7 @@ function Form() {
 
       <S.Container>
         <Label htmlFor="message">Sua mensagem</Label>
-        <Input id="message" type="text" variant="textarea">
+        <Input id="message" type="text" variant="textarea" maxLength="320" required>
           Mensagem
         </Input>
       </S.Container>

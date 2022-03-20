@@ -44,8 +44,8 @@ const inputValidation = {
 
       const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
-      const isSpecialChars = specialChars.test(str) && 'number'
-      const isNumeric = !isNaN(str) && !isNaN(parseFloat(str)) && 'specialChars'
+      const isSpecialChars = specialChars.test(str) && 'specialChars'
+      const isNumeric = !isNaN(str) && !isNaN(parseFloat(str)) && 'number'
       const isEmpty = action.payload.length < 1 && 'empty'
 
       const hasError = isNumeric || isSpecialChars || isEmpty
@@ -69,8 +69,18 @@ const inputValidation = {
     getValue: action => action.payload,
   },
   message: {
-    getError: () => {},
-    
+    getError: (action, data) => {
+      const formStart = Object.values(data).some(value => value !== '')
+
+      if (!formStart) return { hasError: false }
+
+      const isEmpty = action.payload.length < 1 && 'empty'
+
+      const hasError = isEmpty
+
+      return { hasError, message: errorMessage[hasError] }
+    },
+
     getValue: action => action.payload,
   },
 }
@@ -82,7 +92,6 @@ const initialState = {
     message: '',
   },
   sendMessage: {
-    disabled: true,
     loading: false,
   },
   name: {
@@ -148,7 +157,6 @@ function reducer(state, action) {
       return {
         ...state,
         sendMessage: {
-          disabled: true,
           loading: true,
         },
       }

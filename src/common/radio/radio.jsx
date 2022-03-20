@@ -1,5 +1,4 @@
 import { useForm } from '@/contexts'
-
 import * as S from './radio.styles'
 
 function Radio({ vertical, options, name }) {
@@ -16,6 +15,7 @@ function Radio({ vertical, options, name }) {
               checked={state[name].optionSelected === option}
               onClick={() => handleOptionUnChecked(option, name)}
               onChange={() => handleOptionChange(option, name)}
+              required
             />
             <S.Tooltip>{option}</S.Tooltip>
           </S.Wrapper>

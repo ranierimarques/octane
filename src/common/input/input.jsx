@@ -13,9 +13,12 @@ function Input({
 }) {
   const { handleChangeData, state } = useForm()
 
+  const count = state.data[id].length
+  const error = state[id]?.error
+
   if (variant === 'textarea') {
     return (
-      <S.Div>
+      <S.Div className={error?.hasError && 'error'}>
         <S.Textarea
           as="textarea"
           id={id}
@@ -24,12 +27,22 @@ function Input({
           disabled={state[id]?.disabled}
           value={state.data[id]}
           onChange={event => handleChangeData(event, id)}
+          onBlur={event => handleChangeData(event, id)}
+          maxLength={maxLength}
           placeholder=" "
           {...props}
         />
         <S.Label>{children}</S.Label>
         <S.BottomLine />
         <S.TopOverflow />
+        <S.ErrorIcon />
+
+        <S.Helpers>
+          <S.Message>{error?.message}</S.Message>
+          <S.Counter isVisible={count >= maxLength / 2}>
+            {count} / {maxLength}
+          </S.Counter>
+        </S.Helpers>
       </S.Div>
     )
   }
@@ -55,9 +68,6 @@ function Input({
       </S.Wrapper>
     )
   }
-
-  const count = state.data[id].length
-  const error = state[id]?.error
 
   return (
     <S.Div className={error?.hasError && 'error'} isHidden={state[id]?.hidden}>

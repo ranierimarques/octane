@@ -179,6 +179,8 @@ export const ErrorIcon = styled(ErrorIconSvg)`
   pointer-events: none;
 
   visibility: hidden;
+
+  z-index: 2;
 `
 
 export const Helpers = styled.div`

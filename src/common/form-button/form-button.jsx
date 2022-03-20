@@ -8,7 +8,7 @@ function FormButton({ variant = 'contained', size = '', id, children, ...props }
   const isInputsFilled = Object.values(state.data).every(value => value !== '')
 
   return (
-    <S.Button className={`${variant} ${size}`} disabled={!isInputsFilled} {...props}>
+    <S.Button className={`${variant} ${size}`} disabled={false} {...props}>
       {state[id]?.loading ? <Loader /> : state[id]?.children || children}
     </S.Button>
   )
