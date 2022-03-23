@@ -8,6 +8,35 @@ export const Div = styled.div`
 
   display: ${props => (props.isHidden ? 'none' : 'block')};
 
+  &.attention::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 2px solid #fa5a47;
+    border-radius: 8px;
+
+    animation: dash 0.7s ease-in-out alternate infinite;
+
+    pointer-events: none;
+
+    @keyframes dash {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
   &.error {
     margin-bottom: 20px;
 

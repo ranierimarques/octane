@@ -7,6 +7,7 @@
       "@/hooks": ["src/resources/hooks"],
       "@/utils": ["src/resources/utils"],
       "@/contexts": ["src/resources/contexts"],
+      "@/validations": ["src/resources/validations"],
       "@/layout/*": ["src/layout/*"],
       "@/resources/*": ["src/resources/*"]
     }

@@ -1,12 +1,43 @@
 import { styled } from 'linaria/react'
-
 import { Div } from '../input/input.styles'
 
 export const Radios = styled.div`
+  position: relative;
   display: flex;
   flex-direction: ${props => (props.isVertical ? 'column' : 'row')};
   gap: ${props => (props.isVertical ? '12px' : '20px')};
   margin: ${props => (props.isVertical ? '4px 0 0' : '4px 0 16px')};
+
+  width: fit-content;
+
+  &.attention::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 2px solid #fa5a47;
+    border-radius: 8px;
+
+    animation: dash 0.7s ease-in-out alternate infinite;
+
+    pointer-events: none;
+
+    @keyframes dash {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
 
   + ${Div} {
     margin-top: 16px;

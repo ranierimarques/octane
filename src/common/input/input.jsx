@@ -16,9 +16,14 @@ function Input({
   const count = state.data[id].length
   const error = state[id]?.error
 
+  const counterVisibility =
+    count >=
+    (state[id]?.maxLength || maxLength) -
+      ((state[id]?.maxLength || maxLength) <= 20 ? 0 : 20)
+
   if (variant === 'textarea') {
     return (
-      <S.Div className={error?.hasError && 'error'}>
+      <S.Div className={error?.error && 'error'}>
         <S.Textarea
           as="textarea"
           id={id}
@@ -29,6 +34,7 @@ function Input({
           onChange={event => handleChangeData(event, id)}
           onBlur={event => handleChangeData(event, id)}
           maxLength={maxLength}
+          title="Preencha este campo."
           placeholder=" "
           {...props}
         />
@@ -70,7 +76,7 @@ function Input({
   }
 
   return (
-    <S.Div className={error?.hasError && 'error'} isHidden={state[id]?.hidden}>
+    <S.Div className={error?.error && 'error'} isHidden={state[id]?.hidden}>
       <S.Input
         id={id}
         type={state[id]?.type || type}
@@ -79,7 +85,8 @@ function Input({
         value={state.data[id]}
         onChange={event => handleChangeData(event, id)}
         onBlur={event => handleChangeData(event, id)}
-        maxLength={maxLength}
+        maxLength={state[id]?.maxLength || maxLength}
+        title={error?.title}
         placeholder=" "
         {...props}
       />
@@ -89,8 +96,8 @@ function Input({
 
       <S.Helpers>
         <S.Message>{error?.message}</S.Message>
-        <S.Counter isVisible={count >= maxLength - 20}>
-          {count} / {maxLength}
+        <S.Counter isVisible={counterVisibility}>
+          {count} / {state[id]?.maxLength || maxLength}
         </S.Counter>
       </S.Helpers>
     </S.Div>

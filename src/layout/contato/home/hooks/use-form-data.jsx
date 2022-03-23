@@ -1,84 +1,72 @@
+import { ValidationBuilder } from '@/validations'
 import { useReducer, useRef } from 'react'
+import { getConfigChanges } from '../helpers'
 
-function getProperties(stateOptions, action) {
-  const properties = {}
-
-  const elementOptions = stateOptions[action.id]
-  const elementProperties = Object.keys(elementOptions)
-
-  for (const property of elementProperties) {
-    const options = elementOptions[property]
-
-    if (typeof options === 'object') properties[property] = options[action.payload]
-    if (typeof options === 'function') properties[property] = options(action.payload)
-    if (typeof options === 'boolean') properties[property] = options
-  }
-
-  return properties
-}
-
-const stateOptions = {
+const inputsConfig = {
   contact: {
     type: { 'E-mail': 'email', WhatsApp: 'tel' },
     autoComplete: { 'E-mail': 'email', WhatsApp: 'tel' },
     disabled: false,
     children: payload => payload,
     optionSelected: payload => payload,
+    maxLength: { 'E-mail': '100', WhatsApp: '11' },
   },
 }
 
-const errorMessage = {
-  number: 'Números não são permitidos, utilize somente letras.',
-  specialChars: 'Caracteres especiais não são permitidos, utilize somente letras.',
-  empty: '*Este campo é obrigatório.',
-}
-
-const inputValidation = {
+const inputsValidation = {
   name: {
-    getError: (action, data) => {
-      const str = action.input
-
+    getError(action, data) {
       const formStart = Object.values(data).some(value => value !== '')
+      if (!formStart) return { error: null }
 
-      if (!formStart) return { hasError: false }
+      const error = new ValidationBuilder(action)
+        .isEmpty()
+        .isNumber()
+        .isSpecialChars()
+        .validate()
 
-      const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
-
-      const isSpecialChars = specialChars.test(str) && 'specialChars'
-      const isNumeric = !isNaN(str) && !isNaN(parseFloat(str)) && 'number'
-      const isEmpty = action.payload.length < 1 && 'empty'
-
-      const hasError = isNumeric || isSpecialChars || isEmpty
-
-      return { hasError, message: errorMessage[hasError] }
+      return error
     },
 
     getValue: (action, currentValue, error) => {
-      let value = action.payload
+      if (action.payload.length > 60) return currentValue
+      if (action.payload.length < 1) return ''
+      if (error.error) return currentValue
 
-      if (action.payload.length > 60) value = currentValue
-      if (error.hasError) value = currentValue
-      if (action.payload.length < 1) value = ''
-
-      return value
+      return action.payload
     },
   },
   contact: {
-    getError: () => {},
+    getError(action, data, optionSelected) {
+      const formStart = Object.values(data).some(value => value !== '')
+      if (!formStart) return { error: null }
+
+      const errorOption = {
+        email: () => {
+          const error = new ValidationBuilder(action).isEmpty().isEmail().validate()
+
+          return error
+        },
+        tel: () => {
+          const error = new ValidationBuilder(action).isEmpty().isPhone().validate()
+
+          return error
+        },
+      }
+
+      return errorOption[optionSelected]()
+    },
 
     getValue: action => action.payload,
   },
   message: {
     getError: (action, data) => {
       const formStart = Object.values(data).some(value => value !== '')
+      if (!formStart) return { error: null }
 
-      if (!formStart) return { hasError: false }
+      const error = new ValidationBuilder(action).isEmpty().validate()
 
-      const isEmpty = action.payload.length < 1 && 'empty'
-
-      const hasError = isEmpty
-
-      return { hasError, message: errorMessage[hasError] }
+      return error
     },
 
     getValue: action => action.payload,
@@ -96,17 +84,12 @@ const initialState = {
   },
   name: {
     error: {
-      hasError: false,
-    },
-  },
-  contact: {
-    error: {
-      hasError: false,
+      error: null,
     },
   },
   message: {
     error: {
-      hasError: false,
+      error: null,
     },
   },
   contact: {
@@ -115,32 +98,55 @@ const initialState = {
     disabled: true,
     children: '',
     optionSelected: '',
+    maxLength: '',
+    error: {
+      error: null,
+    },
   },
 }
 
 function reducer(state, action) {
   switch (action.type) {
     case 'change_data': {
-      const validation = inputValidation[action.id]
-
-      const data = { ...state.data, [action.id]: action.payload }
-
-      const error = validation.getError(action, data)
-      const value = validation.getValue(action, state.data[action.id], error)
+      const validation = inputsValidation[action.id]
+      const value = validation.getValue(
+        action,
+        state.data[action.id],
+        state[action.id].error
+      )
 
       return {
         ...state,
-        [action.id]: { ...state[action.id], error },
         data: { ...state.data, [action.id]: value },
       }
     }
+    case 'handle_erros': {
+      const data = { ...state.data, [action.id]: action.payload }
+      const validation = inputsValidation[action.id]
+      const optionSelected = state[action.id].type
+
+      const error = validation.getError(action, data, optionSelected)
+      const errors = { [action.id]: { ...state[action.id], error } }
+
+      const formStart = Object.values(data).some(value => value !== '')
+
+      if (!formStart) {
+        // Imperative
+        Object.keys(state.data).forEach(key => {
+          errors[key] = { ...state[key], error: { error: null } }
+        })
+      }
+
+      return { ...state, ...errors }
+    }
     case 'select_option': {
-      const properties = getProperties(stateOptions, action)
+      const inputConfig = inputsConfig[action.id]
+      const config = getConfigChanges(inputConfig, action.payload)
 
       return {
         ...state,
         data: { ...state.data, [action.id]: '' },
-        [action.id]: { ...state[action.id], ...properties },
+        [action.id]: { ...state[action.id], ...config },
       }
     }
     case 'deselect_option': {
@@ -174,11 +180,12 @@ function useFormData() {
     const input = event.nativeEvent.data
     const payload = event.target.value
 
-    clearTimeout(timeoutRef.current)
-    timeoutRef.current = setTimeout(() => {
-      console.log('eae')
-    }, 30000) // 30 Seconds
+    // clearTimeout(timeoutRef.current)
+    // timeoutRef.current = setTimeout(() => {
+    //   console.log('eae')
+    // }, 30000) // 30 Seconds
 
+    dispatch({ type: 'handle_erros', id, input, payload })
     dispatch({ type: 'change_data', id, input, payload })
   }
 

@@ -15,6 +15,10 @@ function Form() {
   async function handleSubmit(event) {
     event.preventDefault()
 
+    const form = event.target
+    console.log(form.name.validity)
+    if (!form.checkValidity()) return
+
     dispatch({ type: 'submit' })
 
     const data = { ...state.data, contactOption: state.contact.optionSelected }
@@ -35,7 +39,7 @@ function Form() {
   }
 
   return (
-    <S.Form onSubmit={handleSubmit}>
+    <S.Form onSubmit={handleSubmit} noValidate>
       <S.Container>
         <Label htmlFor="name">Qual seu nome?</Label>
         {/* TODO: autoComplete="name" */}

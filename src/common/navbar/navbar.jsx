@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { MenuButton, NavLinks } from '.'
-
 import * as S from './navbar.styles'
 
 function toggleScrollbarVisibility(menuOpen) {
