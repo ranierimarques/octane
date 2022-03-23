@@ -1,74 +1,50 @@
 import { ValidationBuilder } from '@/validations'
 import { useReducer, useRef } from 'react'
-import { getConfigChanges } from '../helpers'
+import { clearAllInputErrors, formStart, getConfig } from '../helpers'
 
-const inputsConfig = {
-  contact: {
-    type: { 'E-mail': 'email', WhatsApp: 'tel' },
-    autoComplete: { 'E-mail': 'email', WhatsApp: 'tel' },
-    disabled: false,
-    children: payload => payload,
-    optionSelected: payload => payload,
-    maxLength: { 'E-mail': '100', WhatsApp: '11' },
-  },
-}
-
-const inputsValidation = {
+const inputs = {
   name: {
-    getError(action, data) {
-      const formStart = Object.values(data).some(value => value !== '')
-      if (!formStart) return { error: null }
+    getError: action =>
+      new ValidationBuilder(action).isEmpty().isNumber().isSpecialChars().validate(),
 
+    getValue: (action, state) => {
+      const currentValue = state.data[action.id]
       const error = new ValidationBuilder(action)
         .isEmpty()
         .isNumber()
         .isSpecialChars()
+        .isMaxLength(60)
         .validate()
 
-      return error
-    },
-
-    getValue: (action, currentValue, error) => {
-      if (action.payload.length > 60) return currentValue
-      if (action.payload.length < 1) return ''
+      if (error.error === 'empty') return ''
+      if (error.error === 'maxLength') return currentValue
       if (error.error) return currentValue
 
       return action.payload
     },
   },
   contact: {
-    getError(action, data, optionSelected) {
-      const formStart = Object.values(data).some(value => value !== '')
-      if (!formStart) return { error: null }
-
-      const errorOption = {
-        email: () => {
-          const error = new ValidationBuilder(action).isEmpty().isEmail().validate()
-
-          return error
-        },
-        tel: () => {
-          const error = new ValidationBuilder(action).isEmpty().isPhone().validate()
-
-          return error
-        },
+    config: {
+      type: { 'E-mail': 'email', WhatsApp: 'tel' },
+      autoComplete: { 'E-mail': 'email', WhatsApp: 'tel' },
+      disabled: false,
+      children: payload => payload,
+      optionSelected: payload => payload,
+      maxLength: { 'E-mail': '100', WhatsApp: '11' },
+    },
+    getError: (action, state) => {
+      const optionSelected = state[action.id].type
+      const options = {
+        email: () => new ValidationBuilder(action).isEmpty().isEmail().validate(),
+        tel: () => new ValidationBuilder(action).isEmpty().isPhone().validate(),
       }
 
-      return errorOption[optionSelected]()
+      return options[optionSelected]()
     },
-
     getValue: action => action.payload,
   },
   message: {
-    getError: (action, data) => {
-      const formStart = Object.values(data).some(value => value !== '')
-      if (!formStart) return { error: null }
-
-      const error = new ValidationBuilder(action).isEmpty().validate()
-
-      return error
-    },
-
+    getError: action => new ValidationBuilder(action).isEmpty().validate(),
     getValue: action => action.payload,
   },
 }
@@ -108,12 +84,8 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'change_data': {
-      const validation = inputsValidation[action.id]
-      const value = validation.getValue(
-        action,
-        state.data[action.id],
-        state[action.id].error
-      )
+      const input = inputs[action.id]
+      const value = input.getValue(action, state)
 
       return {
         ...state,
@@ -121,27 +93,20 @@ function reducer(state, action) {
       }
     }
     case 'handle_erros': {
-      const data = { ...state.data, [action.id]: action.payload }
-      const validation = inputsValidation[action.id]
-      const optionSelected = state[action.id].type
+      const input = inputs[action.id]
+      const error = input.getError(action, state)
 
-      const error = validation.getError(action, data, optionSelected)
-      const errors = { [action.id]: { ...state[action.id], error } }
-
-      const formStart = Object.values(data).some(value => value !== '')
-
-      if (!formStart) {
-        // Imperative
-        Object.keys(state.data).forEach(key => {
-          errors[key] = { ...state[key], error: { error: null } }
-        })
+      const isFormStart = formStart(action, state)
+      const inputError = {
+        [action.id]: { ...state[action.id], error: isFormStart ? error : null },
       }
 
-      return { ...state, ...errors }
+      if (!isFormStart) return clearAllInputErrors(state)
+      return { ...state, ...inputError }
     }
     case 'select_option': {
-      const inputConfig = inputsConfig[action.id]
-      const config = getConfigChanges(inputConfig, action.payload)
+      const inputConfig = inputs[action.id].config
+      const config = getConfig(inputConfig, action.payload)
 
       return {
         ...state,

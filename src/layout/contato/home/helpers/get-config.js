@@ -1,4 +1,4 @@
-export function getConfigChanges(inputConfig, payload) {
+export function getConfig(inputConfig, payload) {
   const propertiesToValidate = Object.keys(inputConfig)
 
   const inputProperties = {}

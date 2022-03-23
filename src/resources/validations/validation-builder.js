@@ -34,6 +34,17 @@ export class ValidationBuilder {
     return this
   }
 
+  isMaxLength(maxLength) {
+    if (this.payload.length > maxLength) {
+      const index = this.erros.length
+      this.erros.push({
+        occurrence: index,
+        error: 'maxLength',
+      })
+    }
+    return this
+  }
+
   isSpecialChars() {
     const specialCharsRegExp = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
     if (specialCharsRegExp.test(this.input)) {
@@ -82,11 +93,3 @@ export class ValidationBuilder {
     return { ...rest }
   }
 }
-
-// const action = {
-//   payload: '',
-// }
-
-// const emailValidation = new ValidationBuilder(action).isEmpty().isEmail().validate()
-
-// console.log(emailValidation)
