@@ -30,7 +30,7 @@ const inputs = {
       disabled: false,
       children: payload => payload,
       optionSelected: payload => payload,
-      maxLength: { 'E-mail': '100', WhatsApp: '11' },
+      maxLength: { 'E-mail': '100', WhatsApp: '16' },
     },
     getError: (action, state) => {
       const optionSelected = state[action.id].type

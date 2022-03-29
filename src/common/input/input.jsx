@@ -1,4 +1,5 @@
 import { useForm } from '@/contexts'
+import { beforeMaskedStateChange } from './helpers'
 import * as S from './input.styles'
 
 function Input({
@@ -80,12 +81,14 @@ function Input({
       <S.Input
         id={id}
         type={state[id]?.type || type}
+        mask={state[id]?.type === 'tel' ? '(99) 9 9999-9999' : ''}
+        beforeMaskedStateChange={beforeMaskedStateChange}
         autoComplete={state[id]?.autoComplete || autoComplete}
         disabled={state[id]?.disabled}
         value={state.data[id]}
         onChange={event => handleChangeData(event, id)}
         onBlur={event => handleChangeData(event, id)}
-        maxLength={state[id]?.maxLength || maxLength}
+        maxLength={state[id]?.type === 'tel' ? '' : state[id]?.maxLength || maxLength}
         title={error?.title}
         placeholder=" "
         {...props}

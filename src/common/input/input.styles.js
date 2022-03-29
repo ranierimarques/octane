@@ -1,4 +1,5 @@
 import { styled } from 'linaria/react'
+import InputMask from 'react-input-mask'
 import { ErrorIcon as ErrorIconSvg } from './svgs'
 
 export const Div = styled.div`
@@ -75,7 +76,7 @@ export const Div = styled.div`
   }
 `
 
-export const Input = styled.input`
+export const Input = styled(InputMask)`
   background: #1d1b1b;
   border-radius: 4px 4px 0px 0px;
 

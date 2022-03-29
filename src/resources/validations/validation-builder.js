@@ -73,9 +73,11 @@ export class ValidationBuilder {
   }
 
   isPhone() {
+    const str = this.payload.replace(/[^0-9]/g, '')
+
     const phoneRegExp =
       /^[\+]?\d{2,}?[(]?\d{2,}[)]?[-\s\.]?\d{2,}?[-\s\.]?\d{2,}[-\s\.]?\d{0,9}$/im
-    if (!phoneRegExp.test(this.payload)) {
+    if (!phoneRegExp.test(str)) {
       const index = this.erros.length
       this.erros.push({
         occurrence: index,
