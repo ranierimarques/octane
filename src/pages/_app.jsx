@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#121212" />
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="icon" href="/favicon/favicon.ico" />
         <meta name="msapplication-TileColor" content="#121212" />
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#121212" />
