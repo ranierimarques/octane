@@ -25,11 +25,7 @@ function MyApp({ Component, pageProps }) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link
           rel="icon"
           type="image/png"
@@ -44,7 +40,7 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#121212" />
-        <link rel="icon" href="/favicon/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="msapplication-TileColor" content="#121212" />
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#121212" />
