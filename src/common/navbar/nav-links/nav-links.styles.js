@@ -51,24 +51,18 @@ export const NavLinks = styled.ul`
     flex-direction: column;
     gap: 16px;
 
-    margin-top: 85px;
-
     position: fixed;
     left: 0;
-    top: 0;
+    bottom: 0;
 
     width: 100%;
-
-    min-height: 460px;
-    height: calc(100vh - 85px); // fallback
-    height: -webkit-fill-available;
+    height: calc(100vh - 85px);
 
     padding: 48px 24px 0;
 
     background: #121212;
-  }
 
-  @media (max-height: 548px) and (max-width: 1120px) {
-    position: absolute;
+    overflow-y: scroll; // fallback
+    overflow-y: overlay;
   }
 `

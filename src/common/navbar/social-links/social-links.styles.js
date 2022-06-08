@@ -4,8 +4,10 @@ export const SocialLinks = styled.ul`
   display: none;
   gap: 32px;
 
-  position: absolute;
-  bottom: 40px;
+  margin-bottom: 40px;
+  margin-top: auto;
+
+  padding-top: 64px;
 
   @media (max-width: 1120px) {
     display: flex;

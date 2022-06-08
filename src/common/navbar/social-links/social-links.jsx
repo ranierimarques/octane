@@ -1,6 +1,6 @@
 import * as S from './social-links.styles'
 
-const social = [
+const socials = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/octane-studio/' },
   { name: 'Instagram', href: 'https://www.instagram.com/octane.std/' },
   { name: 'Behance', href: 'https://www.behance.net/octanestudio' },
@@ -9,7 +9,7 @@ const social = [
 function SocialLinks() {
   return (
     <S.SocialLinks>
-      {social.map(social => (
+      {socials.map(social => (
         <li key={social.name}>
           <S.Link href={social.href} target="_blank" rel="noreferrer noopener">
             {social.name}
