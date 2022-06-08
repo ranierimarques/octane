@@ -1,11 +1,8 @@
-import { useRouter } from 'next/router'
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
+import { OctaneLogo } from 'public/svgs'
 import { Button } from 'src/common'
 import { RoutesLinks, SocialLinks } from '..'
-
-import { OctaneLogo } from 'public/svgs'
-
 import * as S from './nav-links.styles'
 
 function NavLinks({ menuOpen, closeMenu }) {

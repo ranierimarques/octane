@@ -1,7 +1,6 @@
-import Head from 'next/head'
-
-import { Home, WebsiteImportance, OurServices, Methodologies } from '@/layout/servicos'
+import { Home, Methodologies, OurServices, WebsiteImportance } from '@/layout/servicos'
 import { LastCall } from '@/shared'
+import Head from 'next/head'
 
 function Servicos() {
   return (

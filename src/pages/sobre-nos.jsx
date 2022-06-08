@@ -1,6 +1,5 @@
-import Head from 'next/head'
-
 import { Home, WhatIsOctane } from '@/layout/sobre-nos'
+import Head from 'next/head'
 
 function SobreNos() {
   return (

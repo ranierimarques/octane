@@ -1,5 +1,4 @@
-import { Clipboard, Template, QrCode, Code, Cloud } from '../svgs'
-
+import { Clipboard, Cloud, Code, QrCode, Template } from '../svgs'
 import * as S from './tab-list.styles'
 
 const tabs = [

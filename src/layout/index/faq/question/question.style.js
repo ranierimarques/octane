@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react'
-
 import { ArrowDown as ArrowDownSvg } from '../svgs'
 
 export const Item = styled.div`

@@ -1,5 +1,4 @@
 import { CircleShape } from '../svgs'
-
 import * as S from './details.styles'
 
 function Details() {

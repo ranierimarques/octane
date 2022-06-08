@@ -11,7 +11,6 @@ import {
   TemplateLarge,
   UiUx,
 } from '../svgs'
-
 import * as S from './tab-panel.styles'
 
 const panelList = {

@@ -1,7 +1,5 @@
 import { Cards } from '.'
-
 import { OctaneText } from './svgs'
-
 import * as S from './why-choose-octane.styles'
 
 function WhyChooseOctane() {

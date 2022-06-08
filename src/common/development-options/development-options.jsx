@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-
 import * as S from './development-options.styles'
 
 function DevelopmentOptions() {

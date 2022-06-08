@@ -1,5 +1,4 @@
 import { Button } from 'src/common'
-
 import * as S from './home.styles'
 
 function Home() {

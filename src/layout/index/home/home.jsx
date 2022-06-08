@@ -1,11 +1,8 @@
 import Image from 'next/image'
-
 import { Button } from 'src/common'
-
+import * as S from './home.styles'
 import { illustration } from './images'
 import { OctaneGhost } from './svgs'
-
-import * as S from './home.styles'
 
 function Home() {
   return (

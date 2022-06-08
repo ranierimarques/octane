@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react'
-
 import { OctaneGhost as OctaneGhostSvg } from '../svgs'
 
 export const Details = styled.div`

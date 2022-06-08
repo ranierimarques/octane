@@ -1,8 +1,6 @@
 import { Navigation } from '.'
-
-import { OctaneGhost } from './svgs'
-
 import * as S from './how-we-work.styles'
+import { OctaneGhost } from './svgs'
 
 function HowWeWork() {
   return (

@@ -1,9 +1,6 @@
 import { useRef } from 'react'
-
 import { Modal } from '..'
-
-import { ApproveUser, PenTool, Bolt } from '../svgs'
-
+import { ApproveUser, Bolt, PenTool } from '../svgs'
 import * as S from './cards.styles'
 
 const cards = [

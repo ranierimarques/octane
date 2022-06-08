@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { FormControl } from 'src/common'
 import { ProtectedFiles } from '../svgs'
-
 import * as S from './informations-modal.styles'
 
 const stepQuestions = {

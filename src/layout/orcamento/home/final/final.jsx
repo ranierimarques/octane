@@ -1,8 +1,6 @@
-import { useForm } from '@/resources/contexts'
 import { FormButton } from '@/common'
-
+import { useForm } from '@/resources/contexts'
 import { HeartIcon } from '../svgs'
-
 import * as S from './final.styles'
 
 function Final() {

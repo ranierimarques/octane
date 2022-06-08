@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-
 import * as S from './question.style'
 
 function Question({ question }) {

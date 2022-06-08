@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import { TabList, TabPanel } from '..'
 
 function Navigation() {

@@ -1,8 +1,6 @@
 import Link from 'next/link'
-
-import { ArrowDown } from './svgs'
-
 import * as S from './button.styles'
+import { ArrowDown } from './svgs'
 
 function Button({
   variant,

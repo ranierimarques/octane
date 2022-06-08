@@ -1,6 +1,5 @@
 import { styled } from 'linaria/react'
-
-import { MenuMobile, CloseMenu } from '../svgs'
+import { CloseMenu, MenuMobile } from '../svgs'
 
 export const MenuMobileButton = styled.button`
   display: none;

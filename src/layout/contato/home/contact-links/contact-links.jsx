@@ -1,5 +1,4 @@
 import { Email, Location, Phone } from '../svgs'
-
 import * as S from './contact-links.styles'
 
 const contacts = [

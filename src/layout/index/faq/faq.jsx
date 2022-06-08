@@ -1,5 +1,4 @@
 import { Question } from '.'
-
 import * as S from './faq.styles'
 
 const questions = [

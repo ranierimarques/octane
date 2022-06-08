@@ -1,8 +1,7 @@
 import { FormContext } from '@/contexts'
-import { useFormData } from './hooks'
 import { Form } from '.'
-
 import * as S from './home.styles'
+import { useFormData } from './hooks'
 
 function Home() {
   const value = useFormData()

@@ -1,5 +1,4 @@
 import { Navigation } from '.'
-
 import * as S from './methodologies.styles'
 
 function Methodologies() {

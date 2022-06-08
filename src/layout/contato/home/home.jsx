@@ -1,5 +1,4 @@
 import { ContactForm } from '.'
-
 import * as S from './home.styles'
 
 function Home() {

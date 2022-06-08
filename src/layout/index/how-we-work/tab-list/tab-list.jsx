@@ -1,5 +1,4 @@
 import { Analytics, CheckMark, CodeSlash, PenTool } from '../svgs'
-
 import * as S from './tab-list.styles'
 
 const tabs = [

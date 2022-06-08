@@ -1,9 +1,6 @@
 import { useRef } from 'react'
-
 import { Modal } from '..'
-
-import { QrCode, DesktopComputer, Code } from '../svgs'
-
+import { Code, DesktopComputer, QrCode } from '../svgs'
 import * as S from './cards.styles'
 
 const cards = [

@@ -1,5 +1,4 @@
-import { InstagramIcon, LinkedinIcon, BehanceIcon } from '../svgs'
-
+import { BehanceIcon, InstagramIcon, LinkedinIcon } from '../svgs'
 import * as S from './social-links.styles'
 
 const social = [

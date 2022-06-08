@@ -1,7 +1,5 @@
 import { Fragment, memo } from 'react'
-
 import { formatterBudget } from '../utils'
-
 import * as S from './markers.styles'
 
 function createLines() {

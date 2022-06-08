@@ -1,6 +1,5 @@
-import Head from 'next/head'
-
 import { Home } from '@/layout/contato'
+import Head from 'next/head'
 
 function Contato() {
   return (

@@ -1,7 +1,5 @@
-import { useState, useRef } from 'react'
-
 import { useForm } from '@/contexts'
-
+import { useRef, useState } from 'react'
 import * as S from './dropdown.styles'
 
 const NAVBAR_HEIGHT = 84

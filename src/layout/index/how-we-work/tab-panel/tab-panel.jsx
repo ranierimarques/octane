@@ -1,9 +1,6 @@
 import { useRef } from 'react'
-
 import { Modal } from '..'
-
 import { StretchedArrow } from '../svgs'
-
 import * as S from './tab-panel.styles'
 
 const panelsList = {

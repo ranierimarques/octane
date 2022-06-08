@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react'
-
 import { Wire as WireSvg } from 'public/svgs'
 
 export const Section = styled.section`

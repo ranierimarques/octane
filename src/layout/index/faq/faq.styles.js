@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react'
-
 import { Shape2d as Shape2dSvg } from './svgs'
 
 export const Section = styled.section`

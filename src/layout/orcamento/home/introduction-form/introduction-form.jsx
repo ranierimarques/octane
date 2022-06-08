@@ -1,10 +1,7 @@
-import Image from 'next/image'
-
-import { Button } from 'src/common'
 import { useForm } from '@/resources/contexts'
-
-import { octaneGhostTop, octaneGhostBottom } from '../images'
-
+import Image from 'next/image'
+import { Button } from 'src/common'
+import { octaneGhostBottom, octaneGhostTop } from '../images'
 import * as S from './introduction-form.styles'
 
 function IntroductionForm() {

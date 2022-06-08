@@ -1,5 +1,4 @@
 import { styled } from 'linaria/react'
-
 import { CloseMenu as CloseMenuSvg } from 'public/svgs'
 
 export const Modal = styled.div`

@@ -1,7 +1,6 @@
 import { FormContext } from '@/contexts'
-import { useFormData } from '../hooks'
 import { ContactLinks, Details, Form, SocialLinks } from '..'
-
+import { useFormData } from '../hooks'
 import * as S from './contact-form.styles'
 
 function ContactForm() {

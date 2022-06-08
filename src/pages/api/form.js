@@ -1,6 +1,6 @@
-import { ref, push } from 'firebase/database'
 import { database } from '@/resources/services/firebase'
 import { getDate } from '@/resources/utils'
+import { push, ref } from 'firebase/database'
 
 export default async function handler(req, res) {
   const { name, contact, message, contactOption } = req.body

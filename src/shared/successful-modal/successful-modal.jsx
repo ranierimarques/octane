@@ -1,6 +1,5 @@
-import { SuccessCheck } from './svgs'
-
 import * as S from './successful-modal.styles'
+import { SuccessCheck } from './svgs'
 
 function SuccessfulModal({ isModalOpen, onCloseModal }) {
   return (

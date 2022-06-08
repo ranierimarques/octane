@@ -1,5 +1,4 @@
 import { Illustration } from './svgs'
-
 import * as S from './what-is-octane.styles'
 
 function WhatIsOctane() {
