@@ -12,12 +12,12 @@ function MetaSEO({ title, description, image, alt, url }) {
       <meta property="og:description" content={description} />
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:site_name" content="Octane Studio" />
-      <meta property="og:image" itemProp="image" content={image} />
+      <meta property="og:image" content={image} />
       <meta property="og:image:secure_url" content={image} />
       <meta property="og:image:alt" content={alt} />
       <meta property="og:image:type" content="image/jpeg" />
-      <meta property="og:image:width" content="300" />
-      <meta property="og:image:height" content="300" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="628" />
       <meta property="twitter:card" content="summary_large_image" />
       <link rel="canonical" href={url} />
       <meta
