@@ -1,29 +1,25 @@
+import { MetaSEO } from '@/common'
 import { Faq, Home, HowWeWork, WhyChooseOctane } from '@/layout/index'
 import { LastCall } from '@/shared'
-import Head from 'next/head'
+
+const meta = {
+  title: 'Octane - Construção de sites modernos.',
+  description: `Somos um estúdio de design e desenvolvimento de software. Realizamos entregas nacionais e internacionais, somos referência em design e código de qualidade.`,
+  image: 'https://octanestd.com/sharing-cards/home.jpg',
+  alt: `Design e desenvolvimento de sites modernos, escaláveis e rápidos.`,
+  url: 'https://octanestd.com',
+}
 
 function Index() {
   return (
     <main>
-      <Head>
-        <title>Octane - Construção de sites modernos.</title>
-        <meta
-          name="description"
-          content="Somos um estúdio de design e desenvolvimento de software. Realizamos entregas nacionais e internacionais, somos referência em design e código de qualidade."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://octanestd.com" />
-        <meta property="og:title" content="Octane - Construção de sites modernos." />
-        <meta
-          property="og:description"
-          content="Somos um estúdio de design e desenvolvimento de software. Realizamos entregas nacionais e internacionais, somos referência em design e código de qualidade."
-        />
-        <meta
-          property="og:image"
-          content="https://octanestd.com/sharing-cards/home.jpg"
-        />
-        <meta property="twitter:card" content="summary_large_image" />
-      </Head>
+      <MetaSEO
+        title={meta.title}
+        description={meta.description}
+        image={meta.image}
+        alt={meta.alt}
+        url={meta.url}
+      />
 
       <Home />
       <WhyChooseOctane />
